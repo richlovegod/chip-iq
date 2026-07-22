@@ -1,0 +1,48 @@
+{
+ "stock_id": "7729",
+ "stock_name": "仲恩生醫",
+ "market": "興櫃",
+ "updated_at": "2026-07-23",
+ "today": {
+  "date": "2026-07-22",
+  "latest_price": 73.9,
+  "avg_price": 71.97,
+  "prev_avg_price": 70.84,
+  "high": 74.7,
+  "low": 71.1,
+  "volume": 126232
+ },
+ "capital": {
+  "capital_musd": 848.36,
+  "rank": 52
+ },
+ "market_makers": [
+  {
+   "dealer_code": "538T",
+   "dealer_name": "第一金自營"
+  },
+  {
+   "dealer_code": "9A0T",
+   "dealer_name": "永豐金自營"
+  },
+  {
+   "dealer_code": "611T",
+   "dealer_name": "台中銀自營"
+  }
+ ],
+ "shares_outstanding": 80572991,
+ "shares_source": "MOPS 已發行普通股數",
+ "shares_note": "MOPS 已發行普通股數，每次執行重抓；與 fetch_peers.py 同源，確保全站市值一致",
+ "sources": {
+  "quote_history": "TPEx 興櫃個股歷史行情（無最後成交價，僅最高/最低/均價）",
+  "today": "TPEx OpenAPI 興櫃股票當日行情表",
+  "market_makers": "TPEx OpenAPI 興櫃推薦證券商",
+  "broker_daily": "⚠️ 尚未接入 — 官方無興櫃分點資料，待公司現行系統提供"
+ },
+ "data_status": {
+  "quote": "live",
+  "marketcap": "live",
+  "market_makers": "live",
+  "broker": "fixture"
+ }
+}

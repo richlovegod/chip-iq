@@ -1,0 +1,569 @@
+{
+ "_fixture": true,
+ "_source": "《生技籌碼與市值綜合日報》2026-07-21（Google Apps Script 產出）",
+ "_note": "暫用範例資料，待接入實際分點資料源後汰換；同時作為驗收黃金樣本",
+ "_limitation": "原報表僅提供已加總的 1/5/10 日窗格，無每日明細，故無法支援任意區間",
+ "stock_id": "7729",
+ "date": "2026-07-21",
+ "market_makers": [
+  "台中銀自營",
+  "台中銀證券",
+  "永豐金自營",
+  "第一金自營"
+ ],
+ "market_maker_note": "造市商（TPEx 興櫃推薦證券商）均價顯示 0.00 為造市結構所致，屬正常非缺漏",
+ "windows": {
+  "1": {
+   "buy": [
+    {
+     "broker_name": "第一金自營",
+     "net_shares": 11607,
+     "avg_price": 0.0,
+     "share_pct": 9.11,
+     "is_market_maker": true,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-台北",
+     "net_shares": 11000,
+     "avg_price": 70.93,
+     "share_pct": 8.63,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-台北",
+     "net_shares": 6000,
+     "avg_price": 71.2,
+     "share_pct": 4.71,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國泰-敦南",
+     "net_shares": 5800,
+     "avg_price": 71.07,
+     "share_pct": 4.55,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "元大-南勢角",
+     "net_shares": 5118,
+     "avg_price": 70.82,
+     "share_pct": 4.02,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "玉山-士林",
+     "net_shares": 5000,
+     "avg_price": 70.8,
+     "share_pct": 3.92,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台新-台北營業部",
+     "net_shares": 5000,
+     "avg_price": 71.4,
+     "share_pct": 3.92,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-大里",
+     "net_shares": 3568,
+     "avg_price": 71.71,
+     "share_pct": 2.8,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-城中",
+     "net_shares": 3000,
+     "avg_price": 70.5,
+     "share_pct": 2.35,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台新-虎尾",
+     "net_shares": 3000,
+     "avg_price": 71.5,
+     "share_pct": 2.35,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "其他分點",
+     "net_shares": 10351,
+     "avg_price": 71.0,
+     "share_pct": 8.12,
+     "is_market_maker": false,
+     "is_other": true
+    }
+   ],
+   "sell": [
+    {
+     "broker_name": "統一",
+     "net_shares": -19000,
+     "avg_price": 70.54,
+     "share_pct": 14.91,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-竹科",
+     "net_shares": -8000,
+     "avg_price": 70.1,
+     "share_pct": 6.28,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-新竹",
+     "net_shares": -5000,
+     "avg_price": 71.2,
+     "share_pct": 3.92,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "元大-板橋三民",
+     "net_shares": -5000,
+     "avg_price": 71.0,
+     "share_pct": 3.92,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "永豐金-苓雅",
+     "net_shares": -5000,
+     "avg_price": 70.1,
+     "share_pct": 3.92,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台新-三民",
+     "net_shares": -4000,
+     "avg_price": 70.45,
+     "share_pct": 3.14,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "永豐金自營",
+     "net_shares": -3317,
+     "avg_price": 0.0,
+     "share_pct": 2.6,
+     "is_market_maker": true,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-嘉義",
+     "net_shares": -3000,
+     "avg_price": 71.3,
+     "share_pct": 2.35,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-經紀",
+     "net_shares": -3000,
+     "avg_price": 69.4,
+     "share_pct": 2.35,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-板橋",
+     "net_shares": -2000,
+     "avg_price": 71.65,
+     "share_pct": 1.57,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "其他分點",
+     "net_shares": -12127,
+     "avg_price": 64.67,
+     "share_pct": 9.51,
+     "is_market_maker": false,
+     "is_other": true
+    }
+   ],
+   "total_buy": 69444,
+   "total_sell": -69444
+  },
+  "5": {
+   "buy": [
+    {
+     "broker_name": "凱基-台北",
+     "net_shares": 47150,
+     "avg_price": 70.37,
+     "share_pct": 4.04,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國泰-敦南",
+     "net_shares": 42730,
+     "avg_price": 70.56,
+     "share_pct": 3.66,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-三重",
+     "net_shares": 42000,
+     "avg_price": 70.42,
+     "share_pct": 3.6,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國票-九鼎",
+     "net_shares": 30000,
+     "avg_price": 71.03,
+     "share_pct": 2.57,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-城中",
+     "net_shares": 18000,
+     "avg_price": 71.07,
+     "share_pct": 1.54,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "玉山-士林",
+     "net_shares": 15000,
+     "avg_price": 70.73,
+     "share_pct": 1.29,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台新-台北營業部",
+     "net_shares": 14856,
+     "avg_price": 70.84,
+     "share_pct": 1.27,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國泰-新莊",
+     "net_shares": 10000,
+     "avg_price": 69.73,
+     "share_pct": 0.86,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "永豐金-新莊",
+     "net_shares": 10000,
+     "avg_price": 75.0,
+     "share_pct": 0.86,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "中國信託-松江",
+     "net_shares": 8400,
+     "avg_price": 75.36,
+     "share_pct": 0.72,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "其他分點",
+     "net_shares": 271450,
+     "avg_price": null,
+     "share_pct": 23.26,
+     "is_market_maker": false,
+     "is_other": true
+    }
+   ],
+   "sell": [
+    {
+     "broker_name": "統一",
+     "net_shares": -231700,
+     "avg_price": 70.9,
+     "share_pct": 19.85,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "永豐金-南京",
+     "net_shares": -27883,
+     "avg_price": 69.4,
+     "share_pct": 2.39,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-陽明",
+     "net_shares": -23410,
+     "avg_price": 70.17,
+     "share_pct": 2.01,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "元大-復北",
+     "net_shares": -20926,
+     "avg_price": 68.48,
+     "share_pct": 1.79,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國票-長城",
+     "net_shares": -20000,
+     "avg_price": 70.95,
+     "share_pct": 1.71,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台新-台中",
+     "net_shares": -20000,
+     "avg_price": 67.38,
+     "share_pct": 1.71,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-新台中",
+     "net_shares": -20000,
+     "avg_price": 70.77,
+     "share_pct": 1.71,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-經紀",
+     "net_shares": -12000,
+     "avg_price": 70.85,
+     "share_pct": 1.03,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-士林",
+     "net_shares": -10000,
+     "avg_price": 72.7,
+     "share_pct": 0.86,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-新竹",
+     "net_shares": -9900,
+     "avg_price": 70.53,
+     "share_pct": 0.85,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "其他分點",
+     "net_shares": -113767,
+     "avg_price": null,
+     "share_pct": 9.75,
+     "is_market_maker": false,
+     "is_other": true
+    }
+   ],
+   "total_buy": 509586,
+   "total_sell": -509586
+  },
+  "10": {
+   "buy": [
+    {
+     "broker_name": "統一-城中",
+     "net_shares": 141000,
+     "avg_price": 76.05,
+     "share_pct": 4.78,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國泰-敦南",
+     "net_shares": 76720,
+     "avg_price": 71.85,
+     "share_pct": 2.6,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台新-台北營業部",
+     "net_shares": 67726,
+     "avg_price": 74.13,
+     "share_pct": 2.29,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-台北",
+     "net_shares": 64290,
+     "avg_price": 71.95,
+     "share_pct": 2.18,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "統一-三重",
+     "net_shares": 46000,
+     "avg_price": 70.73,
+     "share_pct": 1.56,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "中國信託-松江",
+     "net_shares": 32299,
+     "avg_price": 76.06,
+     "share_pct": 1.09,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-大安",
+     "net_shares": 32000,
+     "avg_price": 76.45,
+     "share_pct": 1.08,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國票-九鼎",
+     "net_shares": 30000,
+     "avg_price": 71.03,
+     "share_pct": 1.02,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "玉山-士林",
+     "net_shares": 24000,
+     "avg_price": 71.38,
+     "share_pct": 0.81,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "玉山-嘉義",
+     "net_shares": 20000,
+     "avg_price": 79.38,
+     "share_pct": 0.68,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "其他分點",
+     "net_shares": 575966,
+     "avg_price": null,
+     "share_pct": 19.51,
+     "is_market_maker": false,
+     "is_other": true
+    }
+   ],
+   "sell": [
+    {
+     "broker_name": "統一",
+     "net_shares": -342700,
+     "avg_price": 71.97,
+     "share_pct": 11.61,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "永豐金-南京",
+     "net_shares": -52883,
+     "avg_price": 72.07,
+     "share_pct": 1.79,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "元大-復北",
+     "net_shares": -42778,
+     "avg_price": 71.36,
+     "share_pct": 1.45,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "兆豐-新竹",
+     "net_shares": -42570,
+     "avg_price": 74.25,
+     "share_pct": 1.44,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "凱基-經紀",
+     "net_shares": -27000,
+     "avg_price": 72.39,
+     "share_pct": 0.91,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "康和-台北",
+     "net_shares": -26000,
+     "avg_price": 72.5,
+     "share_pct": 0.88,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "富邦-敦南",
+     "net_shares": -24691,
+     "avg_price": 71.3,
+     "share_pct": 0.84,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "國泰-忠孝",
+     "net_shares": -23001,
+     "avg_price": 76.81,
+     "share_pct": 0.78,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "華南永昌-竹北",
+     "net_shares": -22000,
+     "avg_price": 75.3,
+     "share_pct": 0.75,
+     "is_market_maker": false,
+     "is_other": false
+    },
+    {
+     "broker_name": "台中銀證券",
+     "net_shares": -20454,
+     "avg_price": 0.0,
+     "share_pct": 0.69,
+     "is_market_maker": true,
+     "is_other": false
+    },
+    {
+     "broker_name": "其他分點",
+     "net_shares": -485924,
+     "avg_price": null,
+     "share_pct": 16.46,
+     "is_market_maker": false,
+     "is_other": true
+    }
+   ],
+   "total_buy": 1110001,
+   "total_sell": -1110001
+  }
+ }
+}
