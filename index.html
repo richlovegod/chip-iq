@@ -170,6 +170,20 @@
 
 <!-- 市值戰報 -->
 <section id="cap" class="panel">
+  <div class="card">
+    <h2>◎ 生技醫療全市場排名 <small>上市＋上櫃＋興櫃，產業別代碼 22</small></h2>
+    <div class="kpi" id="rankKpi" style="margin-bottom:0"></div>
+    <div class="tip" id="rankTip"></div>
+  </div>
+  <div class="card">
+    <h2>◎ 大盤市值 Top 30</h2>
+    <table>
+      <thead><tr><th>名次</th><th>變化</th><th>代碼</th><th>名稱</th><th>市場</th>
+      <th class="num">今日（億）</th><th class="num">前日（億）</th><th class="num">日變動</th></tr></thead>
+      <tbody id="top30Body"></tbody>
+    </table>
+    <div class="tip" id="top30Tip"></div>
+  </div>
   <div class="filters" id="capSel"></div>
   <div class="card">
     <h2>◎ 市值走勢 <small>市值＝成交均價 × 已發行股數</small></h2>
@@ -229,7 +243,7 @@
 </div>
 
 <script>
-var Q=null, F=null, M=null, P=null;
+var Q=null, F=null, M=null, P=null, U=null;
 
 function tab(e,id){
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));
@@ -341,6 +355,52 @@ function renderCap(days){
     ['區間總成交量',nf(totVol)+' 股'],
     ['日均成交量',nf(Math.round(totVol/s.length))+' 股']
   ].map(function(r){return '<tr><td style="color:#9fb4cc">'+r[0]+'</td><td class="num">'+r[1]+'</td></tr>';}).join('');
+}
+
+/* ---------- 全市場排名 ---------- */
+/* 名次上升＝數字變小，依台股慣例用紅色▲；下降用綠色▼ */
+function rankArrow(ch){
+  if(ch==null) return '<span class="flat">—</span>';
+  if(ch>0) return '<span class="up">▲'+ch+'</span>';
+  if(ch<0) return '<span class="down">▼'+(-ch)+'</span>';
+  return '<span class="flat">—</span>';
+}
+
+function renderUniverse(){
+  if(!U||!U.focus){document.getElementById('rankKpi').innerHTML='';return;}
+  var f=U.focus;
+  var dCap=f.prev_cap==null?null:f.cap-f.prev_cap;
+  document.getElementById('rankKpi').innerHTML=[
+    ['生技全市場排名','<span class="up">第 '+f.rank+'</span>','共 '+U.total+' 家'],
+    ['名次變化',rankArrow(f.rank_change),f.prev_rank?('前日第 '+f.prev_rank):'—'],
+    ['市值','<span class="'+cls(dCap)+'">'+nf(f.cap,2)+'</span> 億',
+      dCap==null?'—':'<span class="'+cls(dCap)+'">'+sign(dCap,2)+' 億</span>'],
+    ['前日市值',nf(f.prev_cap,2)+' 億',U.prev_date]
+  ].map(function(b){
+    return '<div class="box"><div class="n">'+b[1]+'</div><div class="l">'+b[0]+'</div><div class="d">'+b[2]+'</div></div>';
+  }).join('');
+
+  document.getElementById('rankTip').innerHTML=
+    '基準日 <b>'+U.as_of+'</b>（對前一交易日 '+U.prev_date+'）　|　'
+    +esc(U.method.price)+'　|　市值＝已發行普通股數 × 當日價格';
+
+  document.getElementById('top30Body').innerHTML=U.top.map(function(r){
+    var d=r.prev_cap==null?null:(r.cap/r.prev_cap-1)*100;
+    return '<tr class="'+(r.code===U.focus.code?'me':'')+'">'
+      +'<td><b>'+r.rank+'</b></td><td>'+rankArrow(r.rank_change)+'</td>'
+      +'<td>'+r.code+'</td><td>'+esc(r.name)+'</td>'
+      +'<td><span class="mkt">'+r.market+'</span></td>'
+      +'<td class="num"><b>'+nf(r.cap,2)+'</b></td>'
+      +'<td class="num" style="color:#8b9bb0">'+nf(r.prev_cap,2)+'</td>'
+      +'<td class="num '+cls(d)+'">'+(d==null?'—':sign(d,2)+'%')+'</td></tr>';
+  }).join('');
+
+  var tot=U.top.reduce(function(a,r){return a+r.cap;},0);
+  document.getElementById('top30Tip').innerHTML=
+    'Top 30 合計 <b>'+nf(tot,0)+' 億</b>　|　入榜門檻 <b>'+nf(U.top[U.top.length-1].cap,2)+' 億</b>'
+    +'　|　7729 目前 <b>'+nf(U.focus.cap,2)+' 億</b>，距離入榜還差 '
+    +nf(U.top[U.top.length-1].cap-U.focus.cap,2)+' 億'
+    +(U.no_price?'　|　'+U.no_price+' 家因查無價格未納入排名':'');
 }
 
 /* ---------- 同業比較 ---------- */
@@ -546,9 +606,10 @@ Promise.all([
   fetch('data/quote_daily.json').then(function(r){return r.json();}),
   fetch('data/broker_fixture.json').then(function(r){return r.json();}),
   fetch('data/meta.json').then(function(r){return r.json();}),
-  fetch('data/peers.json').then(function(r){return r.json();})
+  fetch('data/peers.json').then(function(r){return r.json();}),
+  fetch('data/universe.json').then(function(r){return r.json();})
 ]).then(function(a){
-  Q=a[0];F=a[1];M=a[2];P=a[3];
+  Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];
   var s=Q.series;
   document.getElementById('mUpdated').textContent=M.updated_at;
   document.getElementById('mMakers').textContent=(M.market_makers||[]).map(function(m){return m.dealer_name;}).join('、');
@@ -588,7 +649,7 @@ Promise.all([
   });
   renderPeerMeta();
 
-  renderOv();renderChip('1');renderCap(120);renderPeer(120);
+  renderOv();renderChip('1');renderCap(120);renderPeer(120);renderUniverse();
 
 }).catch(function(e){
   document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
