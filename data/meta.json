@@ -2,19 +2,19 @@
  "stock_id": "7729",
  "stock_name": "仲恩生醫",
  "market": "興櫃",
- "updated_at": "2026-07-23",
+ "updated_at": "2026-07-27",
  "today": {
-  "date": "2026-07-22",
-  "latest_price": 73.9,
-  "avg_price": 71.97,
-  "prev_avg_price": 70.84,
-  "high": 74.7,
-  "low": 71.1,
-  "volume": 126232
+  "date": "2026-07-24",
+  "latest_price": 77.6,
+  "avg_price": 78.65,
+  "prev_avg_price": 75.17,
+  "high": 84.2,
+  "low": 73.6,
+  "volume": 588687
  },
  "capital": {
   "capital_musd": 848.36,
-  "rank": 52
+  "rank": 51
  },
  "market_makers": [
   {
@@ -37,12 +37,13 @@
   "quote_history": "TPEx 興櫃個股歷史行情（無最後成交價，僅最高/最低/均價）",
   "today": "TPEx OpenAPI 興櫃股票當日行情表",
   "market_makers": "TPEx OpenAPI 興櫃推薦證券商",
-  "broker_daily": "⚠️ 尚未接入 — 官方無興櫃分點資料，待公司現行系統提供"
+  "broker_daily": "TPEx 興櫃買賣日報表 EMdss004（每日明細，見 fetch_broker_daily.py）",
+  "broker_lut": "TWSE 證券商總公司／分公司基本資料 ＋ 公司自行彙整之對照表"
  },
  "data_status": {
   "quote": "live",
   "marketcap": "live",
   "market_makers": "live",
-  "broker": "fixture"
+  "broker": "live"
  }
 }

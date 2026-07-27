@@ -1,0 +1,64 @@
+# 每個交易日盤後自動更新資料並重新發佈。
+#
+# 為什麼可以跑在 GitHub Actions：本站所有資料源都是公開 API，沒有任何憑證要保管。
+# 也因此**不要**把需要帳密或內部資料的東西加進這個 workflow。
+#
+# 排程時間：UTC 09:30 = 台北 17:30。TPEx 的買賣日報表約 16:35 出檔，留一小時緩衝。
+# GitHub 的 cron 在尖峰時會延遲十幾二十分鐘，盤後資料不受影響。
+#
+# ⚠️ repo 連續 60 天沒有活動時，GitHub 會自動停用排程工作流程。
+#    機器人自己推的 commit 算不算活動並不明確，所以請每月看一眼網頁上的「最後更新」日期。
+
+name: 每日資料更新
+
+on:
+  schedule:
+    - cron: "30 9 * * 1-5"
+  workflow_dispatch: # 也可以在 Actions 頁面手動觸發
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+        # 腳本只用標準函式庫，不需要 pip install
+
+      - name: 抓分點資料
+        run: |
+          python scripts/fetch_broker_lut.py
+          python scripts/fetch_broker_daily.py --days 7
+
+      - name: 抓價量與市值
+        run: |
+          python scripts/fetch_tpex.py
+          python scripts/fetch_peers.py
+          python scripts/fetch_universe.py
+
+      # 對 2026-07-21 黃金樣本回歸測試。沒過就讓整個工作失敗、不要發佈 ——
+      # 寧可網頁停在昨天的資料，也不要把錯的數字推上去。
+      - name: 回歸測試
+        run: python scripts/verify_broker.py
+
+      - name: 提交更新
+        run: |
+          git config user.name "chip-iq bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data cache
+          if git diff --staged --quiet; then
+            echo "資料無變化（可能是國定假日），不提交"
+          else
+            git commit -m "資料更新 $(TZ=Asia/Taipei date +%Y-%m-%d)"
+            git push
+          fi

@@ -24,7 +24,8 @@
   nav button.on{color:#ff6b5a;border-bottom-color:#ff6b5a}
   .panel{display:none;padding-top:22px}
   .panel.on{display:block}
-  .card{background:#141f2c;border:1px solid #243748;border-radius:10px;padding:18px 20px;margin-bottom:18px}
+  /* 欄位多的表在窄螢幕會超出卡片；讓卡片自己橫向捲動，右邊幾欄才不會被切掉看不到 */
+  .card{background:#141f2c;border:1px solid #243748;border-radius:10px;padding:18px 20px;margin-bottom:18px;overflow-x:auto}
   .card h2{font-size:13px;color:#ff6b5a;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
   .card h2 small{color:#6a7c92;text-transform:none;letter-spacing:0;font-weight:400;margin-left:8px}
   /* 台股慣例：紅漲綠跌 */
@@ -79,6 +80,12 @@
   .srcpill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin-left:6px;vertical-align:middle}
   .s-live{background:#123020;color:#6ee7a0;border:1px solid #1e5a3a}
   .s-fix{background:#3a2f14;color:#ffce7a;border:1px solid #6a5a2e}
+  .filters select{background:#182533;border:1px solid #2b3a4d;color:#e6edf3;font-size:12.5px;
+    font-family:inherit;padding:6px 12px;border-radius:20px;max-width:100%;cursor:pointer}
+  .filters label{font-size:11.5px;color:#8b9bb0}
+  tr.pick{cursor:pointer}
+  tr.sel td{background:#221a1a}
+  tr.sel td:first-child{box-shadow:inset 3px 0 0 #ff6b5a}
   @media(max-width:860px){.grid2{grid-template-columns:1fr}.meta{text-align:left}}
 </style>
 </head>
@@ -87,7 +94,7 @@
   <div class="wrap">
     <div class="brand">
       <div>
-        <div class="logo">7729 <b>仲恩生醫</b> <span class="v">籌碼與市值監測 · v0.2 prototype</span></div>
+        <div class="logo">7729 <b>仲恩生醫</b> <span class="v">籌碼與市值監測 · v0.3</span></div>
         <div class="tag"><span class="live"></span>興櫃 · 資料源 TPEx 公開資訊 · <span id="rangeTag">—</span></div>
       </div>
       <div class="meta">
@@ -116,11 +123,11 @@
   </div>
   <div class="grid2">
     <div class="card">
-      <h2>◎ 當日買超前五 <span class="srcpill s-fix">範例資料</span></h2>
+      <h2>◎ 當日買超前五 <span class="srcpill s-live" id="ovBuyTag">—</span></h2>
       <table><tbody id="top5buy"></tbody></table>
     </div>
     <div class="card">
-      <h2>◎ 當日賣超前五 <span class="srcpill s-fix">範例資料</span></h2>
+      <h2>◎ 當日賣超前五 <span class="srcpill s-live" id="ovSellTag">—</span></h2>
       <table><tbody id="top5sell"></tbody></table>
     </div>
   </div>
@@ -128,8 +135,9 @@
 
 <!-- 籌碼分析 -->
 <section id="chip" class="panel">
-  <div class="warn" id="chipWarn"></div>
+  <div class="info" id="chipNote"></div>
   <div class="filters" id="winSel"></div>
+  <div class="kpi" id="chipKpi"></div>
   <div class="grid2">
     <div class="card">
       <h2>◎ 買超分點</h2>
@@ -146,25 +154,54 @@
       </table>
     </div>
   </div>
+  <div class="warn" id="chipUnk" style="display:none"></div>
+  <div class="card">
+    <h2>◎ 資料驗證 <small>對現行《生技籌碼與市值綜合日報》2026-07-21 當日窗格逐筆對帳</small></h2>
+    <table>
+      <thead><tr><th>分點</th><th class="num">本站淨額</th><th class="num">報表</th>
+      <th class="num">本站均價</th><th class="num">報表</th><th class="num">本站佔比</th><th class="num">報表</th></tr></thead>
+      <tbody id="chipVal"></tbody>
+    </table>
+    <div class="tip" id="chipValNote"></div>
+  </div>
 </section>
 
 <!-- 分點追蹤 -->
 <section id="trace" class="panel">
-  <div class="card">
-    <h2>◎ 個別分點時間序列</h2>
-    <div class="empty">
-      <div class="big">📈</div>
-      <b style="color:#cfe0f2;font-size:15px">這是本產品最關鍵、也是 email 做不到的功能</b><br><br>
-      選定任一分點（例如近 10 日賣超 34 萬股的「統一」），看它<b style="color:#cfe0f2">每日淨額的完整走勢</b>——<br>
-      判斷是持續調節、單日出貨，還是已經停手。<br><br>
-      <span style="color:#ff8a7a">需要「一天一列一分點」的每日明細才能繪製。</span><br>
-      現行報表只提供已加總的 1／5／10 日窗格，無法還原每日變化。
-    </div>
-  </div>
   <div class="info">
-    <b>為什麼值得做：</b>單日排名只看得到「今天誰買賣」，<b>持續性</b>才是籌碼分析的訊號。
-    同一份每日明細也正好是股務端（Connie）追蹤「大股東是否已出清、是否換券商規避追蹤」所需的資料——
-    兩個需求共用同一個資料層，不必各做各的。
+    <b>單日排名只看得到「今天誰在買賣」，持續性才是籌碼分析的訊號。</b>
+    選定任一分點看它每日淨額的完整走勢——判斷是持續調節、單日出貨，還是已經停手。
+    這是固定區間的 email 表格做不到的。
+  </div>
+  <div class="card">
+    <h2>◎ 個別分點每日淨額 <small>長條＝當日淨額（紅買綠賣），折線＝區間累計</small></h2>
+    <div class="filters">
+      <label for="traceSel">分點</label>
+      <select id="traceSel"></select>
+      <span id="traceRange"></span>
+    </div>
+    <div class="kpi" id="traceKpi"></div>
+    <div class="chartbox"><svg class="chart" id="traceChart" style="height:320px"></svg></div>
+    <div class="tip" id="traceTip"></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h2>◎ 區間累計排行 <small>點任一列即可切換</small></h2>
+      <table>
+        <thead><tr><th>分點</th><th class="num">累計淨額</th><th class="num">進出天數</th><th class="num">佔比</th></tr></thead>
+        <tbody id="traceRank"></tbody>
+      </table>
+      <div class="tip" id="traceRankTip"></div>
+    </div>
+    <div class="card">
+      <h2>◎ 每日明細 <small>只列有進出的交易日</small></h2>
+      <table>
+        <thead><tr><th>日期</th><th class="num">買進</th><th class="num">賣出</th>
+        <th class="num">淨額</th><th class="num">均價</th><th class="num">累計</th></tr></thead>
+        <tbody id="traceBody"></tbody>
+      </table>
+      <div class="tip" id="traceBodyTip"></div>
+    </div>
   </div>
 </section>
 
@@ -236,14 +273,15 @@
 </section>
 
 <div class="foot">
-  <b>7729 籌碼與市值監測 v0.2（prototype）</b>　|　價量與市值：TWSE／TPEx／公開資訊觀測站，程式化每日更新　|　分點進出：<b style="color:#ffce7a">範例資料，待接入</b><br>
+  <b>7729 籌碼與市值監測 v0.3</b>　|　價量與市值：TWSE／TPEx／公開資訊觀測站　|　分點進出：TPEx 興櫃買賣日報表（EMdss004）＋ TWSE 證券商基本資料，皆程式化每日更新<br>
   興櫃採議價交易、由推薦證券商造市，<b>造市商成交均價顯示 0.00 屬正常結構性現象</b>，非資料缺漏。<br>
   本頁僅呈現公開市場資料，不含任何非公開資訊，亦不構成投資建議。
 </div>
 </div>
 
 <script>
-var Q=null, F=null, M=null, P=null, U=null;
+var Q=null, F=null, M=null, P=null, U=null, BD=null;
+var traceCode=null, traceDays=120;
 
 function tab(e,id){
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));
@@ -311,25 +349,242 @@ function barChart(el,rows,pick){
   el.innerHTML=g+b;
 }
 
-/* ---------- 分點表 ---------- */
+/* ---------- 分點：任意區間聚合 ----------
+   資料是「一天一列一分點」的每日明細，任何區間都是即時算出來的，
+   不是預先加總的窗格——這就是固定 5／10 日的 email 報表做不到的地方。
+   佔比分母＝區間單邊總成交量（買進合計恆等於賣出合計），與現行報表定義一致。 */
+function aggregate(days,endDate){
+  var ds=BD.dates.filter(function(d){return !endDate||d<=endDate;}).slice(-days);
+  var agg={},total=0;
+  ds.forEach(function(d){
+    (BD.daily[d]||[]).forEach(function(r){
+      var a=agg[r[0]]||(agg[r[0]]=[0,0,0,0]);
+      a[0]+=r[1];a[1]+=r[2];a[2]+=r[3];a[3]++;
+      total+=r[1];
+    });
+  });
+  var rows=Object.keys(agg).map(function(c){
+    var a=agg[c],qty=a[0]+a[1],b=BD.brokers[c]||{n:c,mm:false};
+    return {code:c,name:b.n,mm:b.mm,unk:!!b.unk,net:a[0]-a[1],buy:a[0],sell:a[1],
+            avg_price:qty?a[2]/qty:0,days:a[3],
+            pct:total?Math.abs(a[0]-a[1])/total*100:0};
+  });
+  rows.sort(function(x,y){return y.net-x.net;});
+  return {rows:rows,dates:ds,total:total};
+}
+
+/* 前 N 名照列，其餘併成一列「其他分點」——與現行報表同樣的呈現方式 */
+function side(rows,dir,topN){
+  var hit=rows.filter(function(r){return dir>0?r.net>0:r.net<0;});
+  if(dir<0) hit=hit.slice().reverse();
+  var top=hit.slice(0,topN),rest=hit.slice(topN);
+  var out=top.map(function(r){return r;});
+  if(rest.length){
+    var b=0,s=0,amt=0;
+    rest.forEach(function(r){b+=r.buy;s+=r.sell;amt+=r.avg_price*(r.buy+r.sell);});
+    var qty=b+s;
+    out.push({name:'其他 '+rest.length+' 家分點',other:true,net:b-s,
+              avg_price:qty?amt/qty:0,
+              pct:rest.reduce(function(a,r){return a+r.pct;},0)});
+  }
+  return {rows:out,total:hit.reduce(function(a,r){return a+r.net;},0)};
+}
+
+/* 一年份資料裡有兩組券商代號中途換掉了（用本站資料反推的停用／啟用日）：
+     592x  最後出現 2026-01-30，9B2x 自 2026-02-02 起接手
+     815x  最後出現 2026-04-02，9B1x 自 2026-04-07 起接手
+   影響：區間若跨過換碼日，同一家分點會被拆成新舊兩列，長區間的累計會被低估。
+   這不是我們算錯，是券商代號本身變了；現行報表用 5／10 日窗格看不到，
+   拉長區間就會遇到，所以照實標示出來。 */
+function unkNote(rows,dates){
+  if(!rows.some(function(r){return r.unk;})) return '';
+  return '<b>⚠️ 本區間含已停用的舊券商代號。</b>'
+    +'592x 於 2026-01-30 後改編為 9B2x、815x 於 2026-04-02 後改編為 9B1x，'
+    +'TWSE 現行券商清單查不到舊碼的名稱，因此以代號顯示。'
+    +'<b>區間若跨過換碼日，同一家分點會分裂成新舊兩列</b>，解讀長區間累計時請留意。';
+}
+
+/* 查無名稱的代號多為已停業／併購的券商，只會出現在較早的歷史資料。
+   照實顯示代號並標記，不要假裝它是一家沒名字的分點。 */
+function bname(r){
+  if(!r.unk) return esc(r.name);
+  return '<span title="TWSE 現行券商清單查無此代號，多為已停業或併購之券商">'
+    +esc(r.name)+' <span class="flat">·代號</span></span>';
+}
+
 function brokerRows(list){
   return list.map(function(r){
-    var mm=r.is_market_maker?'<span class="mm">造市商</span>':'';
-    var price=r.is_market_maker?'<span class="flat" title="造市結構所致，非缺漏">造市</span>':(r.avg_price==null?'—':nf(r.avg_price,2));
-    return '<tr class="'+(r.is_other?'other':'')+'"><td>'+esc(r.broker_name)+mm+'</td>'
-      +'<td class="num '+cls(r.net_shares)+'">'+nf(r.net_shares)+'</td>'
+    var mm=r.mm?'<span class="mm">造市商</span>':'';
+    var price=r.mm?'<span class="flat" title="造市結構所致，非缺漏">造市</span>':nf(r.avg_price,2);
+    return '<tr class="'+(r.other?'other':'')+'"><td>'+bname(r)+mm+'</td>'
+      +'<td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
       +'<td class="num">'+price+'</td>'
-      +'<td class="num">'+(r.share_pct==null?'—':r.share_pct.toFixed(2)+'%')+'</td></tr>';
+      +'<td class="num">'+r.pct.toFixed(2)+'%</td></tr>';
   }).join('');
 }
 
 function renderChip(win){
-  var w=F.windows[win];
-  document.querySelectorAll('#winSel button').forEach(function(b){b.classList.toggle('on',b.dataset.w===win);});
-  document.getElementById('buyBody').innerHTML=brokerRows(w.buy)
-    +'<tr class="tot"><td>買超合計</td><td class="num up">'+nf(w.total_buy)+'</td><td></td><td></td></tr>';
-  document.getElementById('sellBody').innerHTML=brokerRows(w.sell)
-    +'<tr class="tot"><td>賣超合計</td><td class="num down">'+nf(w.total_sell)+'</td><td></td><td></td></tr>';
+  document.querySelectorAll('#winSel button').forEach(function(b){b.classList.toggle('on',+b.dataset.w===win);});
+  var a=aggregate(win),b=side(a.rows,1,10),s=side(a.rows,-1,10);
+  document.getElementById('buyBody').innerHTML=brokerRows(b.rows)
+    +'<tr class="tot"><td>買超合計</td><td class="num up">'+nf(b.total)+'</td><td></td><td></td></tr>';
+  document.getElementById('sellBody').innerHTML=brokerRows(s.rows)
+    +'<tr class="tot"><td>賣超合計</td><td class="num down">'+nf(s.total)+'</td><td></td><td></td></tr>';
+
+  var note=unkNote(b.rows.concat(s.rows),a.dates),box=document.getElementById('chipUnk');
+  box.style.display=note?'block':'none';
+  box.innerHTML=note;
+
+  var nBuy=a.rows.filter(function(r){return r.net>0;}).length;
+  var nSell=a.rows.filter(function(r){return r.net<0;}).length;
+  document.getElementById('chipKpi').innerHTML=[
+    ['區間',a.dates.length+' 個交易日',a.dates[0]+' ～ '+a.dates[a.dates.length-1]],
+    ['單邊總成交量',nf(a.total),'買進合計＝賣出合計'],
+    ['買超家數','<span class="up">'+nBuy+'</span>','合計 '+nf(b.total)+' 股'],
+    ['賣超家數','<span class="down">'+nSell+'</span>','合計 '+nf(s.total)+' 股'],
+    ['參與分點',a.rows.length+' 家','區間內有進出者']
+  ].map(function(x){
+    return '<div class="box"><div class="n">'+x[1]+'</div><div class="l">'+x[0]+'</div><div class="d">'+x[2]+'</div></div>';
+  }).join('');
+}
+
+/* ---------- 分點追蹤 ---------- */
+function traceRows(code,days){
+  var ds=BD.dates.slice(-days),cum=0,out=[];
+  ds.forEach(function(d){
+    var buy=0,sell=0,amt=0,hit=false;
+    (BD.daily[d]||[]).forEach(function(r){
+      if(r[0]===code){buy+=r[1];sell+=r[2];amt+=r[3];hit=true;}
+    });
+    cum+=buy-sell;
+    out.push({date:d,buy:buy,sell:sell,net:buy-sell,active:hit,
+              avg_price:(buy+sell)?amt/(buy+sell):null,cum:cum});
+  });
+  return out;
+}
+
+/* 長條（單日淨額）＋折線（累計淨額）。兩者量級差很多，各給一套 y 軸——
+   共用一套的話單日的柱子會被累計壓成貼地的一條線，等於看不到。 */
+function netChart(el,rows){
+  var W=1000,H=320,L=66,R=78,T=18,B=30;
+  if(!rows.length){el.innerHTML='';return;}
+  var n=rows.length;
+  var nmx=Math.max(1,Math.max.apply(null,rows.map(function(r){return Math.abs(r.net);})));
+  var cs=rows.map(function(r){return r.cum;});
+  var cmn=Math.min(0,Math.min.apply(null,cs)),cmx=Math.max(0,Math.max.apply(null,cs));
+  if(cmn===cmx)cmx=cmn+1;
+  var cpad=(cmx-cmn)*0.1;cmn-=cpad;cmx+=cpad;
+  var mid=T+(H-T-B)/2;
+  var x=function(i){return L+(W-L-R)*(n===1?0.5:i/(n-1));};
+  var yn=function(v){return mid-(H-T-B)/2*0.92*(v/nmx);};
+  var yc=function(v){return T+(H-T-B)*(1-(v-cmn)/(cmx-cmn));};
+  var k=function(v){return Math.abs(v)>=1000?(v/1000).toFixed(0)+'K':v.toFixed(0);};
+
+  var g='';
+  [nmx,nmx/2,0,-nmx/2,-nmx].forEach(function(v){
+    g+='<line x1="'+L+'" y1="'+yn(v).toFixed(1)+'" x2="'+(W-R)+'" y2="'+yn(v).toFixed(1)+'" stroke="'
+      +(v===0?'#33465c':'#1c2a39')+'"/>'
+      +'<text x="'+(L-8)+'" y="'+(yn(v)+4).toFixed(1)+'" fill="#6a7c92" font-size="10.5" text-anchor="end">'+k(v)+'</text>';
+  });
+  for(var j=0;j<=4;j++){
+    var cv=cmn+(cmx-cmn)*j/4;
+    g+='<text x="'+(W-R+8)+'" y="'+(yc(cv)+4).toFixed(1)+'" fill="#4da3ff" font-size="10.5">'+k(cv)+'</text>';
+  }
+
+  var bw=Math.max(1.2,(W-L-R)/n*0.7),bars='';
+  rows.forEach(function(r,i){
+    if(!r.net)return;
+    var y1=yn(r.net),h=Math.abs(y1-yn(0));
+    bars+='<rect x="'+(x(i)-bw/2).toFixed(1)+'" y="'+Math.min(y1,yn(0)).toFixed(1)
+      +'" width="'+bw.toFixed(1)+'" height="'+Math.max(1,h).toFixed(1)+'" fill="'
+      +(r.net>0?'#ff6b5a':'#3dd68c')+'" opacity=".82"/>';
+  });
+  var line=rows.map(function(r,i){return (i?'L':'M')+x(i).toFixed(1)+' '+yc(r.cum).toFixed(1);}).join(' ');
+
+  var step=Math.max(1,Math.floor(n/6)),lab='';
+  for(var i2=0;i2<n;i2+=step){
+    lab+='<text x="'+x(i2).toFixed(1)+'" y="'+(H-8)+'" fill="#6a7c92" font-size="10.5" text-anchor="middle">'
+      +rows[i2].date.slice(5)+'</text>';
+  }
+  el.setAttribute('viewBox','0 0 '+W+' '+H);
+  el.setAttribute('preserveAspectRatio','none');
+  el.innerHTML=g+bars
+    +'<path d="'+line+'" fill="none" stroke="#4da3ff" stroke-width="2" stroke-linejoin="round"/>'
+    +lab
+    +'<text x="'+L+'" y="12" fill="#8b9bb0" font-size="10.5">單日淨額(股)</text>'
+    +'<text x="'+(W-R+8)+'" y="12" fill="#4da3ff" font-size="10.5">累計</text>';
+}
+
+function renderTrace(){
+  var a=aggregate(traceDays),rank=a.rows.slice().sort(function(x,y){
+    return Math.abs(y.net)-Math.abs(x.net);
+  });
+  if(!traceCode||!a.rows.some(function(r){return r.code===traceCode;})){
+    traceCode=rank.length?rank[0].code:null;
+  }
+  document.querySelectorAll('#traceRange button').forEach(function(b){
+    b.classList.toggle('on',+b.dataset.d===traceDays);
+  });
+  var sel=document.getElementById('traceSel');
+  sel.innerHTML=rank.map(function(r){
+    return '<option value="'+r.code+'"'+(r.code===traceCode?' selected':'')+'>'
+      +esc(r.name)+'（'+(r.net>0?'+':'')+nf(r.net)+'）</option>';
+  }).join('');
+
+  document.getElementById('traceRank').innerHTML=rank.slice(0,20).map(function(r){
+    return '<tr class="pick'+(r.code===traceCode?' sel':'')+'" data-c="'+r.code+'">'
+      +'<td>'+bname(r)+(r.mm?'<span class="mm">造市商</span>':'')+'</td>'
+      +'<td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+r.days+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+r.pct.toFixed(2)+'%</td></tr>';
+  }).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('#traceRank tr'),function(tr){
+    tr.onclick=function(){traceCode=tr.dataset.c;renderTrace();};
+  });
+  var top20=rank.slice(0,20);
+  document.getElementById('traceRankTip').innerHTML=
+    '區間共 '+a.rows.length+' 家分點有進出，此處列累計淨額絕對值前 20 名'
+    +(unkNote(top20,a.dates)?'<br>'+unkNote(top20,a.dates):'');
+
+  if(!traceCode){document.getElementById('traceChart').innerHTML='';return;}
+  var rows=traceRows(traceCode,traceDays),act=rows.filter(function(r){return r.active;});
+  var me=a.rows.filter(function(r){return r.code===traceCode;})[0];
+  netChart(document.getElementById('traceChart'),rows);
+
+  var last=act.length?act[act.length-1]:null;
+  var mxBuy=act.reduce(function(p,c){return c.net>(p?p.net:-Infinity)?c:p;},null);
+  var mxSell=act.reduce(function(p,c){return c.net<(p?p.net:Infinity)?c:p;},null);
+  document.getElementById('traceKpi').innerHTML=[
+    ['區間淨額','<span class="'+cls(me.net)+'">'+nf(me.net)+'</span>','股'],
+    ['買進／賣出',nf(me.buy)+' / '+nf(me.sell),'股'],
+    ['進出天數',act.length+' / '+rows.length,'佔區間 '+(act.length/rows.length*100).toFixed(0)+'%'],
+    ['最近一次進出',last?last.date.slice(5):'—',
+      last?'<span class="'+cls(last.net)+'">'+sign(last.net,0)+'</span>':'—'],
+    ['單日最大買超',mxBuy&&mxBuy.net>0?'<span class="up">'+nf(mxBuy.net)+'</span>':'—',
+      mxBuy&&mxBuy.net>0?mxBuy.date.slice(5):'—'],
+    ['單日最大賣超',mxSell&&mxSell.net<0?'<span class="down">'+nf(mxSell.net)+'</span>':'—',
+      mxSell&&mxSell.net<0?mxSell.date.slice(5):'—']
+  ].map(function(x){
+    return '<div class="box"><div class="n">'+x[1]+'</div><div class="l">'+x[0]+'</div><div class="d">'+x[2]+'</div></div>';
+  }).join('');
+
+  document.getElementById('traceTip').innerHTML=
+    '<b style="color:#cfe0f2">'+esc(me.name)+'</b>　區間 '+rows[0].date+' ～ '+rows[rows.length-1].date
+    +'（'+rows.length+' 個交易日，其中 '+act.length+' 天有進出）'
+    +(me.mm?'　|　造市商，均價 0.00 屬正常結構性現象':'');
+
+  var show=act.slice().reverse().slice(0,40);
+  document.getElementById('traceBody').innerHTML=show.map(function(r){
+    return '<tr><td>'+r.date+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+(r.buy?nf(r.buy):'—')+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+(r.sell?nf(r.sell):'—')+'</td>'
+      +'<td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
+      +'<td class="num">'+(me.mm?'<span class="flat">造市</span>':nf(r.avg_price,2))+'</td>'
+      +'<td class="num '+cls(r.cum)+'">'+nf(r.cum)+'</td></tr>';
+  }).join('');
+  document.getElementById('traceBodyTip').textContent=
+    act.length>40?('由近而遠列出最近 40 個有進出的交易日，區間內共 '+act.length+' 天'):
+      ('區間內共 '+act.length+' 天有進出');
 }
 
 /* ---------- 市值 ---------- */
@@ -589,46 +844,113 @@ function renderOv(){
   }).join('');
   lineChart(document.getElementById('ovChart'),s.slice(-60),function(r){return r.avg_price;},{color:'#ff6b5a'});
 
-  var w=F.windows['1'];
-  function mini(list){
-    return list.filter(function(r){return !r.is_other;}).slice(0,5).map(function(r){
-      var mm=r.is_market_maker?'<span class="mm">造市商</span>':'';
-      return '<tr><td>'+esc(r.broker_name)+mm+'</td><td class="num '+cls(r.net_shares)+'">'+nf(r.net_shares)+'</td>'
-        +'<td class="num" style="color:#8b9bb0">'+(r.share_pct.toFixed(2))+'%</td></tr>';
+  var a=aggregate(1);
+  function mini(dir){
+    var hit=a.rows.filter(function(r){return dir>0?r.net>0:r.net<0;});
+    if(dir<0) hit=hit.slice().reverse();
+    return hit.slice(0,5).map(function(r){
+      var mm=r.mm?'<span class="mm">造市商</span>':'';
+      return '<tr><td>'+esc(r.name)+mm+'</td><td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
+        +'<td class="num" style="color:#8b9bb0">'+r.pct.toFixed(2)+'%</td></tr>';
     }).join('');
   }
-  document.getElementById('top5buy').innerHTML=mini(w.buy);
-  document.getElementById('top5sell').innerHTML=mini(w.sell);
+  document.getElementById('top5buy').innerHTML=mini(1);
+  document.getElementById('top5sell').innerHTML=mini(-1);
+  document.getElementById('ovBuyTag').textContent=a.dates[0];
+  document.getElementById('ovSellTag').textContent=a.dates[0];
 }
 
 /* ---------- 載入 ---------- */
+/* 對現行報表 2026-07-21 那期逐筆對帳。
+   同一份對帳 scripts/verify_broker.py 也會跑一次，接資料時就擋在 CI 前面；
+   這裡再顯示一次，是為了讓看報表的人自己隨時檢查，不必相信我們的說法。 */
+function renderChipVal(){
+  var gd=F.date;
+  if(BD.dates.indexOf(gd)<0){
+    document.getElementById('chipValNote').textContent='本站資料未涵蓋 '+gd+'，無法對帳';
+    return;
+  }
+  var a=aggregate(1,gd),got={},byCode={};
+  a.rows.forEach(function(r){got[r.name]=r;byCode[r.code]=r;});
+  // 報表沿用的舊分點名 → 代號（與 scripts/verify_broker.py 的 ALIAS 同一份）
+  var alias={'永豐金-苓雅':'9A9a','台中銀證券':'611T'};
+  Object.keys(alias).forEach(function(old){
+    if(!got[old]&&byCode[alias[old]]) got[old]=byCode[alias[old]];
+  });
+  var checks=F.windows['1'].buy.concat(F.windows['1'].sell)
+    .filter(function(r){return !r.is_other;});
+  var bad=0;
+  document.getElementById('chipVal').innerHTML=checks.map(function(e){
+    var g=got[e.broker_name];
+    var okNet=g&&g.net===e.net_shares;
+    var okPx=g&&Math.abs(g.avg_price-(e.avg_price||0))<0.005;
+    var okPct=g&&Math.abs(g.pct-e.share_pct)<0.011;
+    if(!okNet||!okPx||!okPct)bad++;
+    var c=function(ok){return ok?'#3dd68c':'#ffce7a';};
+    var renamed=g&&g.name!==e.broker_name
+      ? '<span class="mm" title="報表沿用舊名，本站以 TWSE 現行名稱顯示，靠券商代號對回來">現名 '
+        +esc(g.name)+'</span>' : '';
+    return '<tr><td>'+esc(e.broker_name)+renamed+'</td>'
+      +'<td class="num" style="color:'+c(okNet)+'">'+(g?nf(g.net):'查無')+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+nf(e.net_shares)+'</td>'
+      +'<td class="num" style="color:'+c(okPx)+'">'+(g?nf(g.avg_price,2):'—')+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+nf(e.avg_price||0,2)+'</td>'
+      +'<td class="num" style="color:'+c(okPct)+'">'+(g?g.pct.toFixed(2)+'%':'—')+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+e.share_pct.toFixed(2)+'%</td></tr>';
+  }).join('');
+  var mine=a.rows.reduce(function(s,r){return s+(r.net>0?r.net:0);},0);
+  var rep=F.windows['1'].total_buy;
+  document.getElementById('chipValNote').innerHTML=
+    (bad?('<b style="color:#ffce7a">'+bad+'/'+checks.length+' 檔有落差。</b>')
+        :('<b style="color:#3dd68c">前十大買賣超分點 '+checks.length
+          +' 檔的淨額、均價、佔比全部一致。</b>'))
+    +'　當日買超合計 <b>'+nf(mine)+'</b> 股，報表 <b>'+nf(rep)+'</b> 股'
+    +(mine===rep?' <span style="color:#3dd68c">✓</span>':' <span style="color:#ffce7a">✗</span>')
+    +'<br>基準是 Marvin 現行 Google Apps Script 產出的《生技籌碼與市值綜合日報》'
+    +gd+' 那期。本站改用 TPEx 官方每日明細自行計算，兩邊獨立算出同一組數字。';
+}
+
 Promise.all([
   fetch('data/quote_daily.json').then(function(r){return r.json();}),
   fetch('data/broker_fixture.json').then(function(r){return r.json();}),
   fetch('data/meta.json').then(function(r){return r.json();}),
   fetch('data/peers.json').then(function(r){return r.json();}),
-  fetch('data/universe.json').then(function(r){return r.json();})
+  fetch('data/universe.json').then(function(r){return r.json();}),
+  fetch('data/broker_daily.json').then(function(r){return r.json();})
 ]).then(function(a){
-  Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];
+  Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];BD=a[5];
   var s=Q.series;
   document.getElementById('mUpdated').textContent=M.updated_at;
   document.getElementById('mMakers').textContent=(M.market_makers||[]).map(function(m){return m.dealer_name;}).join('、');
   document.getElementById('rangeTag').textContent='歷史 '+s[0].date+' ～ '+s[s.length-1].date+'（'+s.length+' 個交易日）';
 
-  document.getElementById('chipWarn').innerHTML=
-    '<b>⚠️ 本頁分點資料為 '+F.date+' 的範例資料，尚未接入實際資料源。</b><br>'
-    +'原因：官方（TPEx／TWSE）的券商買賣日報表<b>僅涵蓋上市與上櫃，不含興櫃</b>，且需通過非機器人驗證，'
-    +'因此 7729 的分點資料無法從公開 API 取得，需改由公司現行的每日報表系統提供。<br>'
-    +'資料接上後，此處將改為每日明細並支援任意區間；本頁數字同時作為接入後的<b>驗收對帳基準</b>。';
+  document.getElementById('chipNote').innerHTML=
+    '<b>資料源：'+esc(BD.source)+'</b>，'+BD.date_from+' ～ '+BD.date_to
+    +' 共 '+BD.trading_days+' 個交易日的每日明細（一列＝一天×一分點）。<br>'
+    +'因為存的是明細而非加總後的窗格，<b>任何區間都能即時算出來</b>——'
+    +'現行 email 報表固定在 5／10 日，是資料形態造成的限制，不是選擇。'
+    +'券商代號對照併用 TWSE 證券商總公司／分公司基本資料與公司自行彙整的對照表。';
 
-  var wins=[['1','當日'],['5','近 5 日'],['10','近 10 日'],['20','近 20 日'],['60','近 60 日']];
+  var wins=[[1,'當日'],[5,'近 5 日'],[10,'近 10 日'],[20,'近 20 日'],[60,'近 60 日'],
+            [120,'近 120 日'],[BD.trading_days,'全部']];
   document.getElementById('winSel').innerHTML=wins.map(function(w){
-    var has=!!F.windows[w[0]];
-    return '<button data-w="'+w[0]+'"'+(has?'':' disabled title="需每日明細才能計算"')+'>'+w[1]+'</button>';
-  }).join('')+'<span style="font-size:11px;color:#6a7c92;margin-left:6px">灰色區間需每日明細，接上資料後開啟</span>';
+    var over=w[0]>BD.trading_days;
+    return '<button data-w="'+w[0]+'"'+(over?' disabled title="歷史長度不足"':'')+'>'+w[1]+'</button>';
+  }).join('');
   Array.prototype.forEach.call(document.querySelectorAll('#winSel button'),function(b){
-    if(!b.disabled) b.onclick=function(){renderChip(b.dataset.w);};
+    if(!b.disabled) b.onclick=function(){renderChip(+b.dataset.w);};
   });
+
+  var trs=[[20,'近 20 日'],[60,'近 60 日'],[120,'近 120 日'],[BD.trading_days,'全部']];
+  document.getElementById('traceRange').innerHTML=trs.map(function(r){
+    return '<button data-d="'+r[0]+'">'+r[1]+'</button>';
+  }).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('#traceRange button'),function(b){
+    b.onclick=function(){traceDays=+b.dataset.d;renderTrace();};
+  });
+  document.getElementById('traceSel').onchange=function(){
+    traceCode=this.value;renderTrace();
+  };
 
   var ranges=[[20,'近 20 日'],[60,'近 60 日'],[120,'近 120 日'],[250,'近一年'],[s.length,'全部']];
   document.getElementById('capSel').innerHTML=ranges.map(function(r){
@@ -649,7 +971,9 @@ Promise.all([
   });
   renderPeerMeta();
 
-  renderOv();renderChip('1');renderCap(120);renderPeer(120);renderUniverse();
+  traceDays=Math.min(traceDays,BD.trading_days);
+  renderOv();renderChip(1);renderChipVal();renderTrace();
+  renderCap(120);renderPeer(120);renderUniverse();
 
 }).catch(function(e){
   document.querySelector('.wrap').insertAdjacentHTML('afterbegin',

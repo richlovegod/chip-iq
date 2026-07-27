@@ -180,10 +180,11 @@ def main():
                 "quote_history": "TPEx 興櫃個股歷史行情（無最後成交價，僅最高/最低/均價）",
                 "today": "TPEx OpenAPI 興櫃股票當日行情表",
                 "market_makers": "TPEx OpenAPI 興櫃推薦證券商",
-                "broker_daily": "⚠️ 尚未接入 — 官方無興櫃分點資料，待公司現行系統提供",
+                "broker_daily": "TPEx 興櫃買賣日報表 EMdss004（每日明細，見 fetch_broker_daily.py）",
+                "broker_lut": "TWSE 證券商總公司／分公司基本資料 ＋ 公司自行彙整之對照表",
             },
             "data_status": {"quote": "live", "marketcap": "live",
-                            "market_makers": "live", "broker": "fixture"},
+                            "market_makers": "live", "broker": "live"},
         }, f, ensure_ascii=False, indent=1)
 
     print(f"\n交易日 {len(series)} 天：{series[0]['date']} ~ {series[-1]['date']}")
