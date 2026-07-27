@@ -5,12 +5,12 @@
  "updated_at": "2026-07-27",
  "today": {
   "date": "2026-07-27",
-  "latest_price": 79.7,
-  "avg_price": 79.06,
+  "latest_price": 79.8,
+  "avg_price": 79.08,
   "prev_avg_price": 78.65,
   "high": 80.0,
   "low": 75.1,
-  "volume": 331669
+  "volume": 350140
  },
  "capital": {
   "capital_musd": 848.36,
