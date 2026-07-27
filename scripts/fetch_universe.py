@@ -15,7 +15,7 @@
 
 用法：python fetch_universe.py [YYYY-MM-DD]   預設抓最近交易日
 """
-import json, os, sys, time, re, urllib.request
+import json, os, sys, time, re, urllib.error, urllib.request
 from datetime import date, timedelta
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -39,8 +39,16 @@ GOLD_TOP30 = ["6949", "6696", "6446", "6919", "7799", "6472", "1795", "4169",
 
 
 def get(url, referer):
+    """TWSE／TPEx 偶爾會回傳一次性的 Cloudflare 5xx（同一份資料重打就過），
+    重試 3 次、間隔遞增，避免排程單純因為運氣不好就整天不更新。"""
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": referer})
-    return json.load(urllib.request.urlopen(req, timeout=60))
+    for attempt in range(3):
+        try:
+            return json.load(urllib.request.urlopen(req, timeout=60))
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or attempt == 2:
+                raise
+            time.sleep(2 * (attempt + 1))
 
 
 def num(s):
