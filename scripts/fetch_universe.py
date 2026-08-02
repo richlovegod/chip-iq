@@ -15,8 +15,10 @@
 
 用法：python fetch_universe.py [YYYY-MM-DD]   預設抓最近交易日
 """
-import http.client, json, os, sys, time, re, urllib.error, urllib.request
+import json, os, sys, time, re
 from datetime import date, timedelta
+
+from _http import fetch_json
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATA = os.path.join(ROOT, "data")
@@ -39,26 +41,7 @@ GOLD_TOP30 = ["6949", "6696", "6446", "6919", "7799", "6472", "1795", "4169",
 
 
 def get(url, referer):
-    """TWSE／TPEx 偶爾會回傳一次性的 Cloudflare 5xx，或在資料量大的端點
-    （興櫃全市場清單約 900KB）中途斷線只傳一半——2026-07-28 排程就是
-    後者：IncompleteRead(147064 bytes read, 924771 more expected)，
-    HTTPError 專屬的重試接不住這種連線層錯誤。同一份資料重打通常就過，
-    重試 3 次、間隔遞增，避免排程單純因為運氣不好就整天不更新。"""
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": referer})
-    last_err = None
-    for attempt in range(3):
-        try:
-            return json.load(urllib.request.urlopen(req, timeout=60))
-        except urllib.error.HTTPError as e:
-            if e.code < 500:
-                raise
-            last_err = e
-        except (urllib.error.URLError, http.client.HTTPException,
-                json.JSONDecodeError) as e:
-            last_err = e
-        if attempt < 2:
-            time.sleep(2 * (attempt + 1))
-    raise last_err
+    return fetch_json(url, {"User-Agent": UA, "Referer": referer})
 
 
 def num(s):

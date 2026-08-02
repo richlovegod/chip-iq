@@ -31,8 +31,10 @@
   python fetch_broker_daily.py --days 30
   python fetch_broker_daily.py 2026-07-01 2026-07-25
 """
-import csv, io, json, os, sys, time, urllib.error, urllib.request
+import csv, io, json, os, sys, time, urllib.error
 from datetime import date, timedelta
+
+from _http import fetch_bytes
 
 STOCK = "7729"
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -88,10 +90,8 @@ def fetch_day(d, nodata):
     if ymd in nodata:
         return None
 
-    req = urllib.request.Request(URL.format(ymd=ymd), headers=HEADERS)
     try:
-        with urllib.request.urlopen(req, timeout=90) as r:
-            raw = r.read()
+        raw = fetch_bytes(URL.format(ymd=ymd), HEADERS, timeout=90)
     except urllib.error.HTTPError as e:
         raw = b"" if e.code in (302, 404) else None
         if raw is None:

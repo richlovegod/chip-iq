@@ -18,8 +18,10 @@
 
 用法：python fetch_broker_lut.py
 """
-import json, os, urllib.request
+import json, os
 from datetime import date
+
+from _http import fetch_json
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATA = os.path.join(ROOT, "data")
@@ -69,10 +71,9 @@ EXTRA = {
 
 
 def _get(url):
-    req = urllib.request.Request(url, headers={
+    return fetch_json(url, {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126.0 Safari/537.36",
-    })
-    return json.load(urllib.request.urlopen(req, timeout=40))
+    }, timeout=40)
 
 
 def main():

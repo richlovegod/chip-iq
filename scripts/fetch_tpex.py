@@ -13,8 +13,10 @@
 
 用法：python fetch_tpex.py [YYYY/MM ...]   (預設抓最近 6 個月)
 """
-import json, os, sys, time, urllib.request
+import json, os, sys, time
 from datetime import date
+
+from _http import fetch_json
 
 STOCK = "7729"
 STOCK_NAME = "仲恩生醫"
@@ -36,8 +38,7 @@ HEADERS = {
 
 
 def _get(url):
-    req = urllib.request.Request(url, headers=HEADERS)
-    return json.load(urllib.request.urlopen(req, timeout=40))
+    return fetch_json(url, HEADERS, timeout=40)
 
 
 def roc_to_iso(s):

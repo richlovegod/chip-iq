@@ -22,8 +22,10 @@
 
 用法：python fetch_peers.py [月數，預設 12]
 """
-import json, os, sys, time, re, urllib.request
+import json, os, sys, time, re
 from datetime import date
+
+from _http import fetch_json
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATA = os.path.join(ROOT, "data")
@@ -47,8 +49,7 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 
 
 def get(url, referer):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": referer})
-    return json.load(urllib.request.urlopen(req, timeout=60))
+    return fetch_json(url, {"User-Agent": UA, "Referer": referer})
 
 
 def num(s):
