@@ -86,7 +86,67 @@
   tr.pick{cursor:pointer}
   tr.sel td{background:#221a1a}
   tr.sel td:first-child{box-shadow:inset 3px 0 0 #ff6b5a}
-  @media(max-width:860px){.grid2{grid-template-columns:1fr}.meta{text-align:left}}
+  /* ── 合作夥伴 ──
+     刻意與「同業比較」長得不一樣：那頁是競品相對表現，這頁是授權夥伴的進度追蹤。
+     主色從品牌紅換成青色系，並在最上方掛一條夥伴框，避免被讀成競品名單。 */
+  #ptn .card h2{color:#5ed3f3}
+  #ptn .filters button.on{background:#10303b;border-color:#5ed3f3;color:#fff}
+  .ptnbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+    background:linear-gradient(90deg,rgba(94,211,243,.10),rgba(94,211,243,.01));
+    border:1px solid #2b5566;border-left:3px solid #5ed3f3;border-radius:8px;
+    padding:12px 16px;margin-bottom:16px;font-size:12.5px;line-height:1.7;color:#bfe4f2}
+  .ptnbar b{color:#e6edf3}
+  .ptnbar .st{font-size:11.5px;color:#8b9bb0;text-align:right;line-height:1.95;white-space:normal}
+  .psec{font-size:12.5px;font-weight:700;letter-spacing:1.2px;color:#5ed3f3;
+    margin:28px 0 13px;padding-bottom:7px;border-bottom:1px solid #24384f}
+  .psec small{color:#6a7c92;font-weight:400;letter-spacing:0;font-size:11.5px;margin-left:9px}
+  .phead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .pname{font-size:16.5px;font-weight:800;color:#e6edf3;line-height:1.5}
+  .pname .sub{display:block;font-size:11.5px;color:#8b9bb0;font-weight:400;margin-top:5px;line-height:1.75}
+  .prole{font-size:12px;color:#9fb4cc;line-height:1.75;margin-top:7px;max-width:720px}
+  .pstat{text-align:right;font-size:11.5px;color:#8b9bb0;line-height:2}
+  .chip{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;margin:0 6px 3px 0;
+    background:#1b2b3d;color:#8fb0d0;border:1px solid #2b3a4d;vertical-align:middle;white-space:nowrap}
+  .chip.jp{background:#1d2233;color:#c2c6f0;border-color:#3a3f63}
+  .chip.kr{background:#2a1e26;color:#f0b4c6;border-color:#5c3a48}
+  .chip.dir{background:#3a1f1c;color:#ffb0a4;border-color:#7a3a30}
+  .bdg{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:4px;
+    margin-right:6px;vertical-align:middle;white-space:nowrap}
+  .b-fact{background:#12301f;color:#6ee7a0;border:1px solid #1e5a3a}
+  .b-inf{background:#3a2f14;color:#ffce7a;border:1px solid #6a5a2e}
+  .b-est{background:#16283c;color:#8fc4f5;border:1px solid #24567f}
+  .src{font-size:10.5px;color:#5ed3f3;text-decoration:none;border-bottom:1px dotted #2b5566;
+    margin:4px 9px 0 0;white-space:nowrap;display:inline-block}
+  .src:hover{color:#9de8ff;border-bottom-style:solid}
+  .nosrc{font-size:10.5px;color:#6a7c92}
+  .plist{list-style:none;font-size:12.5px;line-height:1.8;color:#c9d6e3}
+  .plist li{padding:10px 0;border-bottom:1px solid #1c2a39}
+  .plist li:last-child{border-bottom:none}
+  .kv{font-size:12.5px;line-height:1.9;color:#c9d6e3}
+  .kv b{color:#9fb4cc;font-weight:600}
+  .kv .q{color:#8b9bb0}
+  .ptip{position:absolute;display:none;pointer-events:none;z-index:6;background:#0b1520;
+    border:1px solid #35506b;border-radius:7px;padding:8px 11px;font-size:11.5px;line-height:1.75;
+    color:#cfe0f2;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.55);font-variant-numeric:tabular-nums}
+  .ptip b{color:#fff}
+  .ptip .r{color:#ffce7a}
+  .nw{padding:13px 0 13px 15px;border-left:3px solid #2b3a4d;border-bottom:1px solid #1c2a39}
+  .nw:last-child{border-bottom:none}
+  .nw.win{border-left-color:#3dd68c}
+  .nw.hot{border-left-color:#ffce7a}
+  .nw.info{border-left-color:#4da3ff}
+  .nw.ctx{opacity:.62}
+  .nw .hd{font-size:11px;color:#8b9bb0;font-variant-numeric:tabular-nums;margin-bottom:7px}
+  .nw .bd{font-size:12.5px;color:#dbe7f3;line-height:1.85;word-break:break-word}
+  .nw .nt{font-size:11.5px;color:#9fb4cc;line-height:1.85;margin-top:8px;
+    background:#182533;border:1px solid #223243;border-radius:6px;padding:8px 11px;word-break:break-word}
+  .lvl{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 7px;border-radius:20px;margin-right:6px}
+  .l-win{background:#123020;color:#6ee7a0;border:1px solid #1e5a3a}
+  .l-hot{background:#3a2f14;color:#ffce7a;border:1px solid #6a5a2e}
+  .l-info{background:#16283c;color:#8fc4f5;border:1px solid #24567f}
+  .s-off{background:#331a1a;color:#ff9b8c;border:1px solid #6a2e2e}
+  @media(max-width:860px){.grid2{grid-template-columns:1fr}.meta{text-align:left}
+    .ptnbar .st{text-align:left}.pstat{text-align:left}}
 </style>
 </head>
 <body>
@@ -108,6 +168,7 @@
       <button onclick="tab(event,'trace')">分點追蹤</button>
       <button onclick="tab(event,'cap')">市值戰報</button>
       <button onclick="tab(event,'peer')">同業比較</button>
+      <button onclick="tab(event,'ptn')">合作夥伴</button>
     </nav>
   </div>
 </header>
@@ -272,10 +333,38 @@
   </div>
 </section>
 
+<!-- 合作夥伴（海外授權夥伴：REPROCELL 4978.T／풍전약품 298060.KQ） -->
+<section id="ptn" class="panel">
+  <div class="ptnbar" id="ptnFrame"></div>
+  <div class="warn" id="ptnAlert" style="display:none"></div>
+  <!-- 四個區塊在同一頁，手機上整頁很長，給一排跳點 -->
+  <div class="filters"><label>快速跳至</label>
+    <button onclick="ptnGo('ptnS1')">① 股價追蹤</button>
+    <button onclick="ptnGo('ptnS2')">② 市值追蹤</button>
+    <button onclick="ptnGo('ptnS3')">③ Pipeline</button>
+    <button onclick="ptnGo('ptnS4')">④ 最新消息</button>
+  </div>
+
+  <div class="psec" id="ptnS1">① 股價追蹤 <small>Yahoo Finance v8 chart 日線；價格為還原後基準，可切換看當時實際成交價</small></div>
+  <div class="filters" id="ptnSel"></div>
+  <div id="ptnPrice"></div>
+
+  <div class="psec" id="ptnS2">② 市值追蹤 <small>各以原幣顯示，不換算新台幣</small></div>
+  <div id="ptnCap"></div>
+
+  <div class="psec" id="ptnS3">③ PIPELINE 彙整 <small>每條敘述皆可點到來源；推論與推估另行標示</small></div>
+  <div id="ptnPipe"></div>
+
+  <div class="psec" id="ptnS4">④ 最新消息 <small id="ptnCurated">—</small></div>
+  <div class="filters" id="ptnNewsSel"></div>
+  <div id="ptnNews"></div>
+</section>
+
 <div class="foot">
   <b>7729 籌碼與市值監測 v0.3</b>　|　價量與市值：TWSE／TPEx／公開資訊觀測站　|　分點進出：TPEx 興櫃買賣日報表（EMdss004）＋ TWSE 證券商基本資料，皆程式化每日更新<br>
+  海外授權夥伴：價量取自 Yahoo Finance v8 chart（免憑證公開端點），發行股數與公司事件取自各國官方揭露（日本決算短信／韓國 DART、KIND），人工覆核後落地為資料，每筆附來源與基準日<br>
   興櫃採議價交易、由推薦證券商造市，<b>造市商成交均價顯示 0.00 屬正常結構性現象</b>，非資料缺漏。<br>
-  本頁僅呈現公開市場資料，不含任何非公開資訊，亦不構成投資建議。
+  本頁所有內容均來自公開資料，不含任何非公開資訊，亦不構成投資建議。<br>  股價與市值為程式自動抓取；授權關係、進度與消息為人工整理，各條均附來源連結與整理日期。
 </div>
 </div>
 
@@ -906,8 +995,648 @@ function renderChipVal(){
           +' 檔的淨額、均價、佔比全部一致。</b>'))
     +'　當日買超合計 <b>'+nf(mine)+'</b> 股，報表 <b>'+nf(rep)+'</b> 股'
     +(mine===rep?' <span style="color:#3dd68c">✓</span>':' <span style="color:#ffce7a">✗</span>')
-    +'<br>基準是 Marvin 現行 Google Apps Script 產出的《生技籌碼與市值綜合日報》'
+    +'<br>基準是仲恩現行以 Google Apps Script 產出的《生技籌碼與市值綜合日報》'
     +gd+' 那期。本站改用 TPEx 官方每日明細自行計算，兩邊獨立算出同一組數字。';
+}
+
+/* ================= 合作夥伴 =================
+   兩支資料檔的分工（本頁的取用規則，避免同一句話在同一頁出現兩次）：
+     data/partners.json          → 圖表與數字：價量序列、資本行動、停牌、市值、股數、價格判讀註記
+                                   （每交易日由 scripts/fetch_partners.py 自動更新）
+     data/partners_profile.json  → 敘事與時間軸：授權關係、Pipeline、觀察事項、新聞、推論、留白
+                                   （人工策展，畫面上顯示最後整理日）
+   兩檔以 partners.json 的 symbol ↔ partners_profile 的 yahooSymbol 對接，不靠 id（兩邊命名不同）。
+   唯一刻意重複的是「額面併合」：看圖時需要旁註，時間軸上也需要該事件。 */
+var PT=null,PP=null,ptnDays=250,ptnRaw={},ptnCo='all';
+var PTCOLOR={'4978.T':'#5ed3f3','298060.KQ':'#c792ea'};
+
+/* 顏色是呈現設定不是資料：兩家先指名，日後若加第三家會自動配到不同色，不會撞色 */
+function ptnAssignColors(){
+  var pal=['#5ed3f3','#c792ea','#ffce7a','#9ccc65','#f78fb3','#4da3ff'];
+  (PT.partners||[]).forEach(function(p,i){
+    if(!PTCOLOR[p.symbol]) PTCOLOR[p.symbol]=pal[i%pal.length];
+  });
+}
+function ptnColor(p){return PTCOLOR[p.symbol]||'#5ed3f3';}
+/* 跳到指定區塊。刻意不用 behavior:'smooth'：實測在不合成畫面的環境
+   （自動化預覽、prefers-reduced-motion）平滑捲動會整個不動作，按了沒反應。 */
+function ptnGo(id){
+  var el=document.getElementById(id);
+  if(!el) return;
+  window.scrollTo(0,el.getBoundingClientRect().top+(window.pageYOffset||document.documentElement.scrollTop||0)-8);
+}
+/* 價格：日圓與韓元都以整數報價，但不寫死小數位，非整數時才顯示到小數第二位 */
+function pxf(v){return v==null?'—':(Math.abs(v-Math.round(v))<1e-9?nf(v,0):nf(v,2));}
+function ptnProf(sym){
+  if(!PP||!PP.partners) return null;
+  var h=PP.partners.filter(function(x){return x.yahooSymbol===sym;});
+  return h.length?h[0]:null;
+}
+/* 推論與推估一定要看得出來（verify_partners.py 的 C12 只擋沒有來源的 fact，標示是前端的責任） */
+function bdg(t){
+  if(t==='inference') return '<span class="bdg b-inf">推論</span>';
+  if(t==='estimate')  return '<span class="bdg b-est">推估</span>';
+  if(t==='fact')      return '<span class="bdg b-fact">事實</span>';
+  return '';
+}
+function srcOne(url,label){
+  if(!url) return '';
+  return '<a class="src" href="'+esc(url)+'" target="_blank" rel="noopener">'+esc(label||'來源')+' ↗</a>';
+}
+function srcMany(list){
+  var s=(list||[]).map(function(x){return srcOne(x.url,x.label);}).join('');
+  return s||'<span class="nosrc">— 無單一來源</span>';
+}
+function statPill(p){
+  if(p.data_status==='live')  return '<span class="srcpill s-live">最新</span>';
+  if(p.data_status==='stale') return '<span class="srcpill s-fix">沿用舊資料</span>';
+  return '<span class="srcpill s-off">無資料</span>';
+}
+function ptnWin(p){
+  var s=p.series||[];
+  return ptnDays>=99999?s.slice():s.slice(-ptnDays);
+}
+
+/* ---------- 頁首狀態列：資料最後成功更新於 X，抓不到時要看得出來 ---------- */
+function renderPtnHead(){
+  var m=PT.meta||{}, ls=m.last_success||{};
+  var bad=PT.partners.filter(function(p){return p.data_status!=='live';});
+  var frame=(PP&&PP.framing)||'REPROCELL 與 풍전약품（原 SCM Lifescience）皆為 Stemchymal® 的授權夥伴。';
+  document.getElementById('ptnFrame').innerHTML=
+    '<div style="flex:1 1 360px"><b>授權夥伴，非競爭對手。</b><br>'+esc(frame)+'</div>'
+    +'<div class="st">'
+      +(bad.length||m.stale?'<span class="mm">資料未更新</span>':'<span class="live"></span>')
+      +'價量資料最後成功更新於 <b style="color:#e6edf3">'+esc(ls.data_date||m.data_date||'—')+'</b>'
+      +'<br><span style="color:#6a7c92">抓取時間 '+esc(ls.at||m.generated_at||'—')+'</span>'
+      +'<br>'+PT.partners.map(function(p){
+          return esc(p.ticker)+' '+statPill(p);
+        }).join('　')
+    +'</div>';
+
+  var msgs=[];
+  if(m.stale){
+    msgs.push('<b>⚠️ 價量資料已 '+esc(String(m.stale_days))+' 天未更新</b>（門檻 '
+      +esc(String(m.stale_after_days))+' 天），畫面顯示的是 '+esc(m.data_date||'—')+' 的資料。');
+  }
+  PT.partners.forEach(function(p){
+    if(p.data_status!=='live'&&p.stale_note){
+      msgs.push('<b>'+esc(p.name_zh)+'（'+esc(p.ticker)+'）：</b>'+esc(p.stale_note));
+    }
+  });
+  (((m.run||{}).failures)||[]).forEach(function(f){
+    msgs.push('抓取失敗：'+esc(f.symbol)+' — '+esc(f.error)+'（'+esc(f.at)+'）');
+  });
+  var al=document.getElementById('ptnAlert');
+  al.style.display=msgs.length?'block':'none';
+  al.innerHTML=msgs.join('<br>');
+}
+
+/* ---------- 夥伴股價圖 ----------
+   另寫一支而不改 lineChart，是因為這裡多了三件既有圖表沒有的事，
+   而 lineChart 還被總覽／市值兩個頁籤用著：
+     ① 資本行動的垂直標記（滑過標記可看到還原倍數）
+     ② 停牌區間的色塊（那段是資料上的斷點，不標的話看起來像漏資料）
+     ③ 逐點提示：同時顯示還原後與當時實際成交價 —— 使用者去 Yahoo 查會看到後者 */
+function ptnChart(el,box,rows,key,opts){
+  opts=opts||{};
+  var W=1000,H=opts.h||300,L=64,R=20,T=28,B=30;
+  var n=rows.length;
+  if(!n){el.innerHTML='';return;}
+  var vals=rows.map(function(r){return r[key];});
+  var mn=Math.min.apply(null,vals),mx=Math.max.apply(null,vals);
+  if(mn===mx){mn-=1;mx+=1;}
+  var pad=(mx-mn)*0.1;mn-=pad;mx+=pad;
+  var x=function(i){return L+(W-L-R)*(n===1?0.5:i/(n-1));};
+  var y=function(v){return T+(H-T-B)*(1-(v-mn)/(mx-mn));};
+  var c=opts.color||'#5ed3f3';
+
+  var g='';
+  for(var k=0;k<=4;k++){
+    var v=mn+(mx-mn)*k/4,yy=y(v);
+    g+='<line x1="'+L+'" y1="'+yy.toFixed(1)+'" x2="'+(W-R)+'" y2="'+yy.toFixed(1)+'" stroke="#1c2a39"/>'
+      +'<text x="'+(L-8)+'" y="'+(yy+4).toFixed(1)+'" fill="#6a7c92" font-size="11" text-anchor="end">'
+      +nf(Math.round(v))+'</text>';
+  }
+
+  /* 停牌：那幾列已在資料層被剔除，所以圖上是相鄰兩點之間的一段缺口，寬度給下限免得看不見 */
+  var bands='';
+  (opts.bands||[]).forEach(function(bd){
+    var i0=-1,i1=-1,i;
+    for(i=0;i<n;i++){ if(rows[i].d<bd.from) i0=i; else break; }
+    for(i=0;i<n;i++){ if(rows[i].d>bd.to){ i1=i; break; } }
+    if(i0<0||i1<0) return;
+    /* 停牌列已被剔除，缺口在長區間只有 2 個單位寬（看不見），給下限並置中於缺口，
+       置中是為了不要往恢復交易那側多蓋住真實資料 */
+    var x0=x(i0),w=x(i1)-x0;
+    if(w<5){x0-=(5-w)/2;w=5;}
+    bands+='<rect x="'+x0.toFixed(1)+'" y="'+T+'" width="'+w.toFixed(1)+'" height="'+(H-T-B)
+      +'" fill="#ffce7a" opacity=".10"/>'
+      +'<rect x="'+x0.toFixed(1)+'" y="'+T+'" width="'+w.toFixed(1)+'" height="'+(H-T-B)
+      +'" fill="none" stroke="#6a5a2e" stroke-dasharray="3 3"><title>'+esc(bd.tip||'')+'</title></rect>';
+  });
+
+  var marks='';
+  (opts.marks||[]).forEach(function(mk){
+    /* 事件早於區間起點時整段都在事件之後，不能把標記硬畫在最左邊當成「事件在這裡」 */
+    if(rows[0].d>mk.d) return;
+    var i=-1;
+    for(var j=0;j<n;j++){ if(rows[j].d>=mk.d){i=j;break;} }
+    if(i<0) return;
+    var xx=x(i),right=(i>n*0.72);
+    marks+='<line x1="'+xx.toFixed(1)+'" y1="'+T+'" x2="'+xx.toFixed(1)+'" y2="'+(H-B)
+      +'" stroke="#ffce7a" stroke-width="1.4" stroke-dasharray="5 4" opacity=".9">'
+      +'<title>'+esc(mk.tip||'')+'</title></line>'
+      +'<text x="'+(xx+(right?-7:7)).toFixed(1)+'" y="'+(T-10)+'" fill="#ffce7a" font-size="11" text-anchor="'
+      +(right?'end':'start')+'">'+esc(mk.label)+'<title>'+esc(mk.tip||'')+'</title></text>';
+  });
+
+  var dLine=rows.map(function(r,i){return (i?'L':'M')+x(i).toFixed(1)+' '+y(r[key]).toFixed(1);}).join(' ');
+  var dArea=dLine+' L'+x(n-1).toFixed(1)+' '+(H-B)+' L'+x(0).toFixed(1)+' '+(H-B)+' Z';
+  var step=Math.max(1,Math.floor(n/6)),lab='';
+  for(var i2=0;i2<n;i2+=step){
+    lab+='<text x="'+x(i2).toFixed(1)+'" y="'+(H-8)+'" fill="#6a7c92" font-size="10.5" text-anchor="middle">'
+      +esc(rows[i2].d.slice(2))+'</text>';
+  }
+
+  el.setAttribute('viewBox','0 0 '+W+' '+H);
+  el.setAttribute('preserveAspectRatio','none');
+  el.innerHTML='<defs><linearGradient id="g_'+el.id+'" x1="0" x2="0" y1="0" y2="1">'
+    +'<stop offset="0%" stop-color="'+c+'" stop-opacity=".26"/><stop offset="100%" stop-color="'+c+'" stop-opacity="0"/>'
+    +'</linearGradient></defs>'
+    +'<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#141f2c" fill-opacity=".01"/>'
+    +g+bands
+    +'<path d="'+dArea+'" fill="url(#g_'+el.id+')"/>'
+    +'<path d="'+dLine+'" fill="none" stroke="'+c+'" stroke-width="2" stroke-linejoin="round"/>'
+    +marks+lab
+    +'<g class="hov" style="display:none">'
+    +'<line class="hl" y1="'+T+'" y2="'+(H-B)+'" stroke="#8b9bb0" stroke-width="1" stroke-dasharray="3 3"/>'
+    +'<circle class="hc" r="3.6" fill="'+c+'" stroke="#0d141c" stroke-width="1.6"/></g>';
+
+  if(opts.tip) bindPtnHover(el,box,rows,{W:W,H:H,L:L,R:R,x:x,y:y,key:key},opts.tip);
+}
+
+/* 提示框放在 .chartbox（position:relative）裡，座標用內容座標算，
+   所以圖橫向捲動時提示框跟著內容走，不會飄掉 */
+function bindPtnHover(el,box,rows,G,fmt){
+  var tip=box.querySelector('.ptip');
+  if(!tip){tip=document.createElement('div');tip.className='ptip';box.appendChild(tip);}
+  var hov=el.querySelector('.hov'),hl=el.querySelector('.hl'),hc=el.querySelector('.hc');
+  function at(cx){
+    var rect=el.getBoundingClientRect();
+    if(!rect.width||!rows.length) return;
+    var vx=(cx-rect.left)/rect.width*G.W;
+    var i=Math.round((vx-G.L)/(G.W-G.L-G.R)*(rows.length-1));
+    i=Math.max(0,Math.min(rows.length-1,i));
+    var r=rows[i];
+    tip.innerHTML=fmt(r,i);
+    tip.style.display='block';
+    var px=G.x(i)/G.W*rect.width, py=G.y(r[G.key])/G.H*rect.height;
+    var lft=px+14; if(lft+tip.offsetWidth>rect.width) lft=px-tip.offsetWidth-14;
+    if(lft<0) lft=0;
+    var top=py-tip.offsetHeight-12; if(top<0) top=py+16;
+    tip.style.left=lft.toFixed(0)+'px'; tip.style.top=top.toFixed(0)+'px';
+    hov.style.display='';
+    hl.setAttribute('x1',G.x(i).toFixed(1)); hl.setAttribute('x2',G.x(i).toFixed(1));
+    hc.setAttribute('cx',G.x(i).toFixed(1)); hc.setAttribute('cy',G.y(r[G.key]).toFixed(1));
+  }
+  function off(){tip.style.display='none';hov.style.display='none';}
+  el.onmousemove=function(e){at(e.clientX);};
+  el.onmouseleave=off;
+  /* 手機沒有滑鼠：點一下顯示該點，不攔 touchmove 以免擋住頁面捲動 */
+  el.ontouchstart=function(e){if(e.touches&&e.touches.length) at(e.touches[0].clientX);};
+  el.ontouchend=function(){setTimeout(off,2500);};
+}
+
+/* 逐點提示：還原後與當時實際成交價一起給。
+   使用者去 Yahoo／Naver 查到的是「當時實際成交價」，兩邊對不起來會不信任本站，
+   所以兩個數字都攤開，並直接寫出還原倍數。 */
+function ptnTipFmt(p,key){
+  var s=p.currency_symbol;
+  return function(r){
+    var o='<b>'+esc(r.d)+'</b>';
+    if(key==='c'){
+      o+='<br>收盤（還原後）<b>'+s+pxf(r.c)+'</b>';
+      if(r.rc!=null&&r.rc!==r.c){
+        o+='<br><span class="r">當時實際成交 '+s+pxf(r.rc)+'</span>';
+        if(r.rc){
+          var f=r.c/r.rc;
+          o+='<br><span class="r">此列已依 ×'+(Math.abs(f-Math.round(f))<0.005?Math.round(f):f.toFixed(2))+' 還原</span>';
+        }
+      }
+    }else{
+      o+='<br>當時實際成交 <b>'+s+pxf(r.rc)+'</b>';
+      if(r.rc!==r.c) o+='<br><span class="r">還原後 '+s+pxf(r.c)+'</span>';
+    }
+    o+='<br>高／低 '+s+pxf(r.h)+' / '+s+pxf(r.l)+'<br>成交量 '+nf(r.v);
+    return o;
+  };
+}
+
+/* 資本行動的短標籤與說明：倍數一律由 shares_before/shares_after 算出來，不寫死 */
+function splitInfo(sp){
+  var t=sp.timeline||{};
+  var k=(sp.shares_before&&sp.shares_after)?sp.shares_before/sp.shares_after:null;
+  var kx=k?(Math.abs(k-Math.round(k))<0.005?String(Math.round(k)):k.toFixed(2)):null;
+  var d=sp.price_series_breakpoint||t.relisting_date||t.effective_date;
+  var kind=sp.kind==='reverse'?'額面併合':'股票分割';
+  return {
+    d:d, factor:k, factorText:kx,
+    label:(kx?kx+':1 ':'')+kind,
+    tip:d+' 起發行股數變動'
+       +(sp.shares_before&&sp.shares_after
+          ? '（'+nf(sp.shares_before)+' 股 → '+nf(sp.shares_after)+' 股）':'')
+       +(t.effective_date?'，效力發生日 '+t.effective_date:'')
+       +(kx?'；此日之前的價格已依 '+kx+' 倍還原至變動後基準':'')
+       +(sp.not_a_capital_reduction?'。這是額面併合，不是減資':'')
+  };
+}
+
+/* 還原前後對照表：三列全部從序列本身取，不另外寫死任何數字 */
+function ptnAdjTable(p){
+  var sp=((p.corporate_actions||{}).splits||[])[0];
+  var s=p.series||[];
+  if(!sp||!s.length) return '';
+  var info=splitInfo(sp), i=-1;
+  for(var j=0;j<s.length;j++){ if(s[j].d>=info.d){i=j;break;} }
+  if(i<=0) return '';
+  var pick=[[s[0].d,'本站序列起點',s[0]],
+            [s[i-1].d,'變動前最後交易日',s[i-1]],
+            [s[i].d,'恢復交易首日',s[i]]];
+  return '<table style="margin-top:12px"><thead><tr><th>日期</th><th></th>'
+    +'<th class="num">本站顯示（還原後）</th><th class="num">當時實際成交</th><th class="num">倍數</th></tr></thead><tbody>'
+    +pick.map(function(r){
+      var row=r[2],f=(row.rc?row.c/row.rc:null);
+      return '<tr><td>'+esc(r[0])+'</td><td style="color:#8b9bb0">'+esc(r[1])+'</td>'
+        +'<td class="num"><b>'+p.currency_symbol+pxf(row.c)+'</b></td>'
+        +'<td class="num" style="color:#ffce7a">'+p.currency_symbol+pxf(row.rc)+'</td>'
+        +'<td class="num" style="color:#8b9bb0">'+(f==null?'—':'×'+(Math.abs(f-Math.round(f))<0.005?Math.round(f):f.toFixed(2)))+'</td></tr>';
+    }).join('')+'</tbody></table>';
+}
+
+function ptnHeadBlock(p){
+  var pf=ptnProf(p.symbol);
+  return '<div class="phead"><div>'
+    +'<div class="pname"><span style="color:'+ptnColor(p)+'">■</span> '+esc(p.name_zh)
+    +'<span class="chip '+(p.country==='日本'?'jp':'kr')+'">'+esc(p.country)+' · '
+    +esc(p.exchange_short)+' '+esc(p.ticker)+'</span>'
+    +'<span class="sub">'+esc(p.name_local)
+    +(p.former_name?'　·　舊名 '+esc(p.former_name):'')+'</span></div>'
+    +'<div class="prole">'+esc((pf&&pf.roleShort)||p.relationship||'')+'</div></div>'
+    +'<div class="pstat">'+statPill(p)+'<br>資料日 <b style="color:#c9d6e3">'+esc(p.as_of||'—')+'</b></div></div>';
+}
+
+/* ---------- ① 股價追蹤 ---------- */
+function ptnPriceCard(p,idx){
+  var head=ptnHeadBlock(p);
+  var rows=ptnWin(p), raw=!!ptnRaw[p.id], key=raw?'rc':'c';
+  if(!rows.length){
+    return '<div class="card">'+head+'<div class="empty"><div class="big">—</div>無價量資料<br>'
+      +'<span style="font-size:11.5px">'+esc(p.stale_note||'本站未取得此檔的價量序列，不以 0 或估算值填補。')+'</span></div></div>';
+  }
+  var sps=((p.corporate_actions||{}).splits||[]);
+  var info=sps.length?splitInfo(sps[0]):null;
+  var first=rows[0],last=rows[rows.length-1];
+  /* 未還原模式下若區間橫跨資本行動，期間報酬不可計算 —— 寧可寫「不適用」也不要給錯的數字 */
+  var crossed=info&&first.d<info.d&&last.d>=info.d;
+  var wret=(raw&&crossed)?null:((first[key]?(last[key]/first[key]-1)*100:null));
+  var perf=p.performance||{};
+  var lat=p.latest||last;
+
+  var kpi=[
+    ['最新收盤',p.currency_symbol+pxf(raw?lat.rc:lat.c),
+      (p.day_change_pct==null?esc(lat.d):'<span class="'+cls(p.day_change_pct)+'">'+sign(p.day_change_pct,2)+'%</span>　'+esc(lat.d))],
+    ['本區間報酬',wret==null?'<span class="flat">不適用</span>':'<span class="'+cls(wret)+'">'+sign(wret,1)+'%</span>',
+      wret==null?'區間橫跨資本行動，原價不可直接比較':esc(first.d)+' → '+esc(last.d)],
+    ['2 年報酬',perf.return_pct==null?'—':'<span class="'+cls(perf.return_pct)+'">'+sign(perf.return_pct,2)+'%</span>',
+      perf.first&&perf.last?esc(perf.first.d)+' → '+esc(perf.last.d)+'（還原後）':'—'],
+    ['52 週高／低',perf.high_52w==null?'—':(p.currency_symbol+pxf(perf.high_52w)+' / '+p.currency_symbol+pxf(perf.low_52w)),'還原後基準'],
+    ['最新成交量',nf(lat.v),esc(lat.d)+'　'+esc(p.symbol)]
+  ].map(function(b){
+    return '<div class="box"><div class="n" style="font-size:21px">'+b[1]+'</div><div class="l">'+b[0]+'</div><div class="d">'+b[2]+'</div></div>';
+  }).join('');
+
+  var toggle='';
+  if(info){
+    toggle='<div class="filters" data-ptnraw="'+esc(p.id)+'"><label>價格基準</label>'
+      +'<button data-r="0"'+(raw?'':' class="on"')+'>還原後（本站預設）</button>'
+      +'<button data-r="1"'+(raw?' class="on"':'')+'>當時實際成交價</button>'
+      +'<span class="tip" style="margin:0">'+(raw
+        ? '目前顯示<b style="color:#ffce7a">未還原</b>的原始成交價，與 Yahoo／Naver 的歷史報價一致；此模式下跨越資本行動的漲跌幅不可直接比較。'
+        : '目前顯示<b style="color:#5ed3f3">還原後</b>價格，整段序列基準一致，期間報酬以此為準。')+'</span></div>';
+  }
+
+  var notes=(p.notes||[]).map(function(nt){
+    return '<li>'+bdg(nt.type)+esc(nt.text)+'<div>'
+      +(nt.source_url?srcOne(nt.source_url,'來源'):'<span class="nosrc">— 推論，無單一來源</span>')+'</div></li>';
+  }).join('');
+
+  var halts=((p.corporate_actions||{}).trading_halts||[]);
+  var dr=p.dropped_rows||{};
+  var haltCnt=halts.length?(dr.rows||[]).filter(function(r){
+    return halts.some(function(h){return r.d>=h.from&&r.d<=h.to;});
+  }).length:0;
+
+  /* 資本行動可能落在目前選取的區間之外——那時圖上不會有虛線，措辭必須跟著改，
+     不然旁註會叫使用者去看一條根本不存在的線 */
+  var inWin=info&&first.d<=info.d&&last.d>=info.d;
+  var warn='';
+  if(info){
+    warn='<div class="warn" style="margin-top:14px">'
+      +'<b>⚠️ 為什麼本站的價格和你在 Yahoo 查到的不一樣。</b><br>'
+      +esc(info.tip)+'。'
+      +(inWin
+        ? '走勢圖上的<b>黃色虛線</b>即為該日；'
+          +(halts.length?'<b>黃色區塊</b>為 '+esc(halts[0].from)+' ~ '+esc(halts[0].to)+' 停牌期間（'+esc(halts[0].reason)+'），'
+            +'該區間共 '+haltCnt+' 筆零成交量的前值填補列已剔除，不列入報酬與波動計算。':'')
+          +'<br>滑鼠移到走勢圖任一點（手機點一下），提示框會同時顯示還原後與當時實際成交價。'
+        : '<b>此事件落在目前選取的區間之外</b>，圖上不會出現標記——切到「近一年」或「全部（2 年）」即可看到。'
+          +(halts.length?'（停牌 '+esc(halts[0].from)+' ~ '+esc(halts[0].to)+'，共 '+haltCnt+' 筆零成交量列已剔除。）':''))
+      +ptnAdjTable(p)
+      +'<div class="tip">對照表三列取自完整 2 年序列，不隨區間選擇改變。<br>'+esc(p.series_note||'')+'</div></div>';
+  }
+
+  return '<div class="card">'+head
+    +'<div class="kpi">'+kpi+'</div>'
+    +toggle
+    +'<div class="chartbox" id="ptnBox'+idx+'"><svg class="chart" id="ptnChart'+idx+'" style="height:300px"></svg></div>'
+    +'<div class="tip">區間 '+esc(first.d)+' ～ '+esc(last.d)+'（'+rows.length+' 個交易日）'
+      +'　|　資料源 '+esc(p.symbol)+'　|　'+esc((PT.meta.method||{}).price||'')+'</div>'
+    +warn
+    +(notes?'<h2 style="margin-top:20px">◎ 價格判讀註記 <small>推論已標示，不與事實混列</small></h2><ul class="plist">'+notes+'</ul>':'')
+    +'</div>';
+}
+
+function renderPtnPrice(){
+  document.getElementById('ptnPrice').innerHTML=
+    PT.partners.map(function(p,i){return ptnPriceCard(p,i);}).join('');
+
+  PT.partners.forEach(function(p,i){
+    var el=document.getElementById('ptnChart'+i),box=document.getElementById('ptnBox'+i);
+    if(!el||!box) return;
+    var rows=ptnWin(p),key=ptnRaw[p.id]?'rc':'c';
+    var ca=p.corporate_actions||{};
+    ptnChart(el,box,rows,key,{
+      color:ptnColor(p),
+      marks:(ca.splits||[]).map(function(sp){
+        var info=splitInfo(sp);
+        return {d:info.d,label:info.label,tip:info.tip};
+      }),
+      bands:(ca.trading_halts||[]).map(function(h){
+        return {from:h.from,to:h.to,tip:'停牌 '+h.from+' ~ '+h.to+'：'+(h.reason||'')};
+      }),
+      tip:ptnTipFmt(p,key)
+    });
+  });
+
+  document.querySelectorAll('#ptnPrice .filters[data-ptnraw] button').forEach(function(b){
+    b.onclick=function(){
+      ptnRaw[b.parentNode.dataset.ptnraw]=(b.dataset.r==='1');
+      renderPtnPrice();
+    };
+  });
+}
+
+/* ---------- ② 市值追蹤 ---------- */
+function renderPtnCap(){
+  var body=PT.partners.map(function(p){
+    var mc=p.market_cap;
+    var nm='<td><span style="color:'+ptnColor(p)+'">■</span> '+esc(p.name_zh)
+      +'<br><span style="color:#6a7c92;font-size:11px">'+esc(p.exchange_short)+' '+esc(p.ticker)+'</span></td>';
+    if(!mc) return '<tr>'+nm+'<td colspan="5" style="color:#8b9bb0">無資料（未取得行情，不以估算值填補）</td></tr>';
+    return '<tr>'+nm
+      +'<td>'+esc(mc.currency)+'</td>'
+      +'<td class="num">'+esc(p.currency_symbol)+pxf(mc.price)
+        +'<br><span style="color:#6a7c92;font-size:11px">'+esc(mc.price_date)+'</span></td>'
+      +'<td class="num">'+nf(mc.shares_used)
+        +'<br><span style="color:#6a7c92;font-size:11px">'+esc(mc.shares_basis)+'／基準日 '+esc(mc.shares_basis_date)+'</span></td>'
+      // 主數字用帶幣別符號的 display（¥／₩），當地單位（億円／억원）降為副標。
+      // 理由：兩家幣別不同，「251 억원」與「149 億円」並排會讓人以為韓國那家比較大，
+      // 實際上差 5 倍以上、方向相反。幣別符號比當地單位更難誤讀。
+      +'<td class="num"><b style="font-size:15px;color:#e6edf3">'+esc(mc.display)+'</b>'
+        +'<br><span style="color:#6a7c92;font-size:11px">'+esc(mc.display_local)+'</span></td>'
+      +'<td style="font-size:11px;color:#8b9bb0">'+esc(mc.formula)+'</td></tr>';
+  }).join('');
+
+  var hist=null;
+  PT.partners.forEach(function(p){ if(p.market_cap&&p.market_cap.history) hist=p.market_cap.history; });
+
+  var detail=PT.partners.map(function(p){
+    var sh=p.shares||{};
+    return '<div class="card"><h2>◎ 股數組成與基準日 <small>'+esc(p.ticker)+'</small></h2>'
+      +'<div class="kv">'
+      +'<b>發行股數</b> '+nf(sh.issued)+'　<b>自己股份</b> '+nf(sh.treasury)+'　<b>流通在外</b> '+nf(sh.outstanding)+'<br>'
+      +'<b>市值採用</b> '+esc(p.cap_basis||'—')+'　<b>基準日</b> '+esc(sh.basis_date||'—')
+      +'　<b>人工覆核日</b> '+esc(sh.verified_on||'—')+'<br>'
+      +'<span class="q">'+esc(p.cap_basis_note||'')+'</span></div>'
+      +'<ul class="plist">'
+      +(sh.components||[]).map(function(cp){
+        return '<li>'+bdg('fact')+'<b>'+esc(cp.as_of)+'</b>　'
+          +(cp.issued!=null?'發行 '+nf(cp.issued):'')
+          +(cp.issued_delta!=null?'新增 '+nf(cp.issued_delta)+' 股':'')
+          +(cp.treasury!=null?'（自己股份 '+nf(cp.treasury)+'）':'')
+          +'<br><span style="color:#9fb4cc">'+esc(cp.label)+'</span><div>'+srcOne(cp.source_url,'來源')+'</div></li>';
+      }).join('')
+      +(sh.pending_dilution||[]).map(function(d){
+        return '<li>'+bdg('fact')+'<b style="color:#ffce7a">已簽約、尚未執行完畢的稀釋</b>　'+esc(d.label)
+          +'<br><span style="color:#9fb4cc">'+esc(d.detail||'')+'</span><div>'+srcOne(d.source_url,'來源')+'</div></li>';
+      }).join('')
+      +'</ul>'
+      +((sh.unverified||[]).length
+        ? '<div class="warn" style="margin:12px 0 0"><b>未查證（不列為事實）：</b><br>'
+          +(sh.unverified||[]).map(function(u){return '· '+esc(u);}).join('<br>')+'</div>'
+        : '')
+      +'</div>';
+  }).join('');
+
+  document.getElementById('ptnCap').innerHTML=
+    '<div class="card"><h2>◎ 現行市值 <small>股數 × 最新收盤，股數為人工覆核後落地的資料</small></h2>'
+    +'<table><thead><tr><th>公司</th><th>幣別</th><th class="num">最新收盤</th>'
+    +'<th class="num">股數（基準）</th><th class="num">市值（原幣）</th><th>計算式</th></tr></thead>'
+    +'<tbody>'+body+'</tbody></table>'
+    +'<div class="info" style="margin:14px 0 0"><b>兩家幣別不同（JPY／KRW），本站不換算為新台幣。</b>'
+    +'本站沒有免憑證且可追溯的匯率來源，換算後的數字無法對帳，故一律以原幣顯示並標明幣別；'
+    +'兩家的市值不相加、不並列比較大小。</div>'
+    +(hist?'<div class="warn" style="margin:12px 0 0"><b>歷史市值序列：不可得。</b><br>'
+        +esc(hist.reason)+'<br><b>替代做法：</b>'+esc(hist.alternative)
+        +'　本頁上方的歷史圖表因此標題為「股價走勢」，市值只給單一最新值。</div>':'')
+    +'</div>'
+    +'<div class="grid2">'+detail+'</div>';
+}
+
+/* ---------- ③ Pipeline 彙整 ---------- */
+function ptnPipeCard(p){
+  var pf=ptnProf(p.symbol);
+  if(!pf) return '';
+  var rel=pf.relationship||{};
+  var head='<div class="phead"><div>'
+    +'<div class="pname"><span style="color:'+ptnColor(p)+'">■</span> '+esc(pf.displayName||pf.name)
+    +'<span class="chip '+(p.country==='日本'?'jp':'kr')+'">'+esc(pf.exchange||'')+' '+esc(pf.ticker||'')+'</span>'
+    +'<span class="sub">'+esc(pf.nameLocal||'')
+    +(pf.alsoKnownAs?'　·　亦稱 '+esc(pf.alsoKnownAs):'')+'</span></div>'
+    +'<div class="prole">'+esc(pf.roleShort||'')+'</div></div>'
+    +'<div class="pstat">'+srcOne(pf.url,'官網')+srcOne(pf.ir,'IR')+'</div></div>';
+
+  var nn=pf.nameNote
+    ? '<div class="info">'+bdg(pf.nameNote.type)+esc(pf.nameNote.text)
+      +'<div>'+srcMany(pf.nameNote.sources)+'</div></div>' : '';
+
+  var pos=pf.positioning
+    ? '<h2>◎ 公司定位</h2><div class="kv">'+bdg(pf.positioning.type)+esc(pf.positioning.text)
+      +'<div>'+srcMany(pf.positioning.sources)+'</div></div>' : '';
+
+  var relBlock='<h2 style="margin-top:20px">◎ 與仲恩的授權關係</h2><div class="kv">'
+    +bdg(rel.type)+'<b>性質</b> '+esc(rel.nature||'—')+'<br>'
+    +'<b>簽署</b> '+esc(rel.signedDateDisplay||rel.signedDate||'—')+'<br>'
+    +'<b>範圍</b> '+esc(rel.scope||'—')+'<br>'
+    +(rel.division?'<b>分工</b> '+esc(rel.division)+'<br>':'')
+    +'<b>對價</b> '+((rel.consideration||[]).map(esc).join('、')||'—')
+    +(rel.considerationNote?'<br><span class="q">'+esc(rel.considerationNote)+'</span>':'')
+    +'<div>'+srcMany(rel.sources)+'</div></div>';
+
+  var ms='<h2 style="margin-top:20px">◎ Stemchymal® 里程碑 <small>依日期排序</small></h2>'
+    +'<ul class="plist">'+(pf.stemchymalMilestones||[]).map(function(m){
+      return '<li>'+bdg(m.type)+'<b style="color:#cfe0f2">'+esc(m.dateDisplay||m.date)+'</b>　'+esc(m.event)
+        +'<br><span style="color:#9fb4cc">'+esc(m.detail||'')+'</span>'
+        +'<div>'+((m.sources||[]).length?srcMany(m.sources):'<span class="nosrc">— 本次整理未在公開來源找到相關資料</span>')+'</div></li>';
+    }).join('')+'</ul>';
+
+  var pipe='<h2 style="margin-top:20px">◎ 自有與授權管線</h2>'
+    +'<table><thead><tr><th>資產</th><th>適應症</th><th>階段</th><th>來源</th><th>依據</th></tr></thead><tbody>'
+    +(pf.ownPipeline||[]).map(function(a){
+      return '<tr><td><b>'+esc(a.asset)+'</b></td><td>'+esc(a.indication||'—')+'</td>'
+        +'<td>'+esc(a.stage||'—')+'</td><td style="color:#8b9bb0">'+esc(a.origin||'—')+'</td>'
+        +'<td>'+bdg(a.type)+(a.note?'<span style="color:#8b9bb0">'+esc(a.note)+'</span><br>':'')
+        +srcMany(a.sources)+'</td></tr>';
+    }).join('')+'</tbody></table>';
+
+  var watch=(pf.watchItems||[]).length
+    ? '<h2 style="margin-top:20px">◎ 觀察事項</h2><ul class="plist">'
+      +(pf.watchItems||[]).map(function(w){
+        return '<li>'+bdg(w.type)+esc(w.text)+'<div>'+srcMany(w.sources)+'</div></li>';
+      }).join('')+'</ul>' : '';
+
+  var unv=(pf.unverified||[]).length
+    ? '<div class="warn" style="margin-top:16px"><b>未查證（不列為事實）：</b><br>'
+      +(pf.unverified||[]).map(function(u){return '· '+esc(u);}).join('<br>')+'</div>' : '';
+
+  return '<div class="card">'+head+nn+pos+relBlock+ms+pipe+watch+unv+'</div>';
+}
+
+function renderPtnPipe(){
+  var host=document.getElementById('ptnPipe');
+  if(!PP){
+    host.innerHTML='<div class="card"><div class="empty"><div class="big">—</div>'
+      +'尚未取得 data/partners_profile.json，本區無資料</div></div>';
+    return;
+  }
+  var infer=(PP.inferencesOnly||[]).length
+    ? '<div class="card"><h2>◎ 推論（非事實） <small>與上方事實刻意分開陳列，僅供參考</small></h2>'
+      +'<ul class="plist">'+(PP.inferencesOnly||[]).map(function(x){
+        return '<li>'+bdg('inference')+esc(x.text)
+          +'<br><span style="color:#ffce7a">狀態：'+esc(x.status||'推論')+'</span>'
+          +'<br><span style="color:#9fb4cc">理由：'+esc(x.why||'')+'</span></li>';
+      }).join('')+'</ul></div>' : '';
+  var gaps=(PP.gaps||[]).length
+    ? '<div class="card"><h2>◎ 資料留白 <small>查不到就寫查不到，不補、不猜</small></h2>'
+      +'<ul class="plist">'+(PP.gaps||[]).map(function(g){
+        return '<li>'+esc(g.text)+'</li>';
+      }).join('')+'</ul></div>' : '';
+  host.innerHTML=PT.partners.map(ptnPipeCard).join('')+infer+gaps;
+}
+
+/* ---------- ④ 最新消息 ---------- */
+function lvlName(l){return l==='win'?'進度':(l==='hot'?'注意':'一般');}
+function ptnCoName(id){
+  if(!PP) return id;
+  var h=(PP.partners||[]).filter(function(x){return x.id===id;});
+  return h.length?(h[0].name||h[0].displayName||id):id;
+}
+function renderPtnNews(){
+  var host=document.getElementById('ptnNews');
+  document.getElementById('ptnCurated').textContent=(PP&&PP.curatedAtLabel)||'';
+  if(!PP||!PP.news){
+    host.innerHTML='<div class="card"><div class="empty"><div class="big">—</div>'
+      +'尚未取得 data/partners_profile.json，本區無資料</div></div>';
+    return;
+  }
+  var cos=[['all','全部']].concat((PP.partners||[]).map(function(x){return [x.id,x.name];}));
+  document.getElementById('ptnNewsSel').innerHTML='<label>公司</label>'+cos.map(function(c){
+    return '<button data-co="'+esc(c[0])+'"'+(ptnCo===c[0]?' class="on"':'')+'>'+esc(c[1])+'</button>';
+  }).join('');
+  document.querySelectorAll('#ptnNewsSel button').forEach(function(b){
+    b.onclick=function(){ptnCo=b.dataset.co;renderPtnNews();};
+  });
+
+  var list=(PP.news||[]).slice().sort(function(a,b){return a.date<b.date?1:(a.date>b.date?-1:0);});
+  if(ptnCo!=='all') list=list.filter(function(n){return n.companyId===ptnCo;});
+
+  /* body 與 note 內含 <b> 標籤，是本 repo 自己產出的策展資料（partners_profile.json 的
+     ingest.sharedFields 有明載），故以 innerHTML 呈現；其餘欄位一律 esc()。 */
+  var items=list.map(function(n){
+    return '<div class="nw '+esc(n.level)+(n.context?' ctx':'')+'">'
+      +'<div class="hd"><b style="color:#cfe0f2">'+esc(n.dateDisplay||n.date)+'</b>　'
+      +'<span class="lvl l-'+esc(n.level)+'">'+esc(lvlName(n.level))+'</span>'
+      +'<span class="chip">'+esc(ptnCoName(n.companyId))+'</span>'
+      +'<span class="chip">'+esc(n.tag||'')+'</span>'
+      +(n.relation==='direct'?'<span class="chip dir">與仲恩直接相關</span>':'')
+      +(n.context?'<span class="chip">背景</span>':'')
+      +bdg(n.type)+'</div>'
+      +'<div class="bd">'+(n.body||'')+'</div>'
+      +(n.note?'<div class="nt">'+n.note+'</div>':'')
+      +'<div>'+(n.links||[]).map(function(l){return srcOne(l.url,l.label);}).join('')+'</div>'
+      +'</div>';
+  }).join('');
+
+  var lg=PP.legend||{};
+  var legend='<div class="tip">'
+    +'<b>圖例</b>　'
+    +Object.keys(lg.level||{}).map(function(k){
+      return '<span class="lvl l-'+esc(k)+'">'+esc(lvlName(k))+'</span>'+esc(lg.level[k]);
+    }).join('　')
+    +'<br>'+Object.keys(lg.type||{}).map(function(k){
+      return bdg(k)+esc(lg.type[k]);
+    }).join('　')
+    +'<br>'+esc(PP.curationNote||'')
+    +(PP.newsWindow?'<br><b>收錄區間</b> '+esc(PP.newsWindow.from)+' ～ '+esc(PP.newsWindow.to)
+      +'：'+esc(PP.newsWindow.label):'')
+    +'</div>';
+
+  host.innerHTML='<div class="card"><h2>◎ 夥伴動態 <small>'
+    +esc((PP.curatedAtLabel||''))+'　共 '+list.length+' 則</small></h2>'
+    +(items||'<div class="empty">此篩選條件下無消息</div>')+legend+'</div>';
+}
+
+function setPtnDays(d){
+  ptnDays=d;
+  document.querySelectorAll('#ptnSel button').forEach(function(b){
+    b.classList.toggle('on',+b.dataset.d===ptnDays);
+  });
+  renderPtnPrice();
+}
+
+function renderPtn(){
+  if(!PT||!PT.partners||!PT.partners.length){
+    document.getElementById('ptnFrame').innerHTML=
+      '<div>尚未取得 <b>data/partners.json</b>，合作夥伴資料無法顯示。'
+      +'此頁不以估算值填補，請確認每日排程是否已執行 scripts/fetch_partners.py。</div>';
+    document.getElementById('ptnPrice').innerHTML=
+      '<div class="card"><div class="empty"><div class="big">—</div>無資料</div></div>';
+    renderPtnPipe();renderPtnNews();
+    return;
+  }
+  ptnAssignColors();
+  renderPtnHead();
+  var maxLen=Math.max.apply(null,PT.partners.map(function(p){return (p.series||[]).length;}));
+  var rs=[[60,'近 60 日'],[120,'近 120 日'],[250,'近一年'],[99999,'全部（2 年）']];
+  document.getElementById('ptnSel').innerHTML='<label>區間</label>'+rs.map(function(r){
+    var over=(r[0]!==99999&&r[0]>maxLen);
+    return '<button data-d="'+r[0]+'"'+(over?' disabled title="歷史長度不足"':'')
+      +(r[0]===ptnDays?' class="on"':'')+'>'+r[1]+'</button>';
+  }).join('');
+  document.querySelectorAll('#ptnSel button').forEach(function(b){
+    if(!b.disabled) b.onclick=function(){setPtnDays(+b.dataset.d);};
+  });
+  renderPtnPrice();renderPtnCap();renderPtnPipe();renderPtnNews();
 }
 
 Promise.all([
@@ -916,9 +1645,13 @@ Promise.all([
   fetch('data/meta.json').then(function(r){return r.json();}),
   fetch('data/peers.json').then(function(r){return r.json();}),
   fetch('data/universe.json').then(function(r){return r.json();}),
-  fetch('data/broker_daily.json').then(function(r){return r.json();})
+  fetch('data/broker_daily.json').then(function(r){return r.json();}),
+  /* 合作夥伴的兩支檔案是後加的，抓不到時只讓該頁籤顯示「無資料」，
+     不要讓既有五個頁籤跟著陣亡，所以各自吞掉錯誤回 null */
+  fetch('data/partners.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+  fetch('data/partners_profile.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
 ]).then(function(a){
-  Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];BD=a[5];
+  Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];BD=a[5];PT=a[6];PP=a[7];
   var s=Q.series;
   document.getElementById('mUpdated').textContent=M.updated_at;
   document.getElementById('mMakers').textContent=(M.market_makers||[]).map(function(m){return m.dealer_name;}).join('、');
@@ -973,7 +1706,7 @@ Promise.all([
 
   traceDays=Math.min(traceDays,BD.trading_days);
   renderOv();renderChip(1);renderChipVal();renderTrace();
-  renderCap(120);renderPeer(120);renderUniverse();
+  renderCap(120);renderPeer(120);renderUniverse();renderPtn();
 
 }).catch(function(e){
   document.querySelector('.wrap').insertAdjacentHTML('afterbegin',

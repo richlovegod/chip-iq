@@ -46,10 +46,26 @@ jobs:
           python scripts/fetch_peers.py
           python scripts/fetch_universe.py
 
+      # 海外授權夥伴（REPROCELL 4978.T／풍전약품 298060.KQ）。
+      # 資料源是 Yahoo v8 chart —— 非官方端點，本 runner 的 IP 有可能被擋。
+      # fetch_partners.py 抓不到時會沿用上一次的良好資料並在 meta 記錄原因，
+      # 自身不會 exit 1，所以這一步不需要 continue-on-error；真的 crash 才該讓工作失敗。
+      - name: 抓海外夥伴行情
+        run: python scripts/fetch_partners.py
+
       # 對 2026-07-21 黃金樣本回歸測試。沒過就讓整個工作失敗、不要發佈 ——
       # 寧可網頁停在昨天的資料，也不要把錯的數字推上去。
-      - name: 回歸測試
+      - name: 回歸測試（分點）
         run: python scripts/verify_broker.py
+
+      # 夥伴面板同一套原則，但分兩級：資料「錯」才擋發佈（exit 1），
+      # 資料「舊或缺」只警告（exit 0）—— 後者 JSON 裡有標記，前端會顯示
+      # 「資料最後成功更新於 X」或「無資料」，不該讓整站停止更新。
+      # --self-test 是突變測試，確保有人放寬檢查時會被發現。
+      - name: 回歸測試（海外夥伴）
+        run: |
+          python scripts/verify_partners.py
+          python scripts/verify_partners.py --self-test
 
       - name: 提交更新
         run: |

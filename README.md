@@ -77,6 +77,8 @@ https://www.tpex.org.tw/www/zh-tw/emerging/dailyDl?name=EMdss004.YYYYMMDD-C.csv
 | 興櫃 推薦證券商 | TPEx OpenAPI `tpex_esb_recommended_dealer` |
 | 生技全市場範圍 | 三個市場基本資料的產業別代碼 `22`（共 252 家） |
 | 已發行普通股數 | MOPS `t187ap03_L`（上市）／`mopsfin_t187ap03_O`（上櫃）／`_R`（興櫃） |
+| 海外夥伴 價量 | Yahoo Finance `v8/finance/chart/<SYM>?range=2y&interval=1d&events=split` |
+| 海外夥伴 股數 | 人工維護於 `data/partners_ref.json`（日本決算短信／韓國 DART，每筆附來源與基準日） |
 
 ### 計價規則
 
@@ -103,6 +105,43 @@ https://www.tpex.org.tw/www/zh-tw/emerging/dailyDl?name=EMdss004.YYYYMMDD-C.csv
 
 `data/peers.json` 內含完整對帳結果，網頁「同業比較」分頁底部也直接呈現。
 
+## 海外授權夥伴
+
+2026-08-14 交付會議新增的追蹤對象，兩家都是 Stemchymal 的授權夥伴：
+
+| | REPROCELL | 풍전약품（原 SCM Lifescience） |
+|---|---|---|
+| 代號 | 東證 4978 | KOSDAQ 298060 |
+| 關係 | 日本 MAH 與獨家開發／商業化授權方，同時是仲恩股東 | 2020-10-13 南韓獨家授權（polyQ 型 SCA） |
+| 2 年報酬 | +15.62% | −78.29% |
+| 市值 | ¥14.93B（149.32 億円） | ₩25.11B（251.06 억원） |
+
+> **公司名稱方向不要寫反**：풍전약품（POONGJEON PHARMACY）是**新名**，SCM Lifescience 是舊名。
+> 2025-07 SCM 買下製藥流通商 풍전약품 並吸收合併，存續公司改用被併公司的名字（2026-03-24 決議、04-24 變更上市）。一般提及時的「SCM(POONGJEON)」確實是同一個代號。
+
+### ⚠️ 三個會算錯夥伴數字的坑
+
+1. **Yahoo v8 的 `close` 已經還原分割，不要再乘任何因子。** `adjclose` 是在 close 之上再還原**股利**；兩家都不配息，所以 `close == adjclose` 逐筆相同——那只證明沒有配息，**不能拿來推論「沒還原分割」**。初版簡報就是這樣推錯，把 298060 的 2 年報酬寫成 −95.7%（正確是 −78.3%），誇大 17 個百分點。
+2. **不要回推歷史市值。** 兩家在 2 年窗格內股數變動劇烈（298060 光 2026-03 的 17 天就 +12.0%、07-21 再 +9.0%；4978 三個半月 +6.2%），用現行股數 × 當時股價會系統性失真。`partners.json` 的 `market_cap.history.available` 固定為 `false` 並附原因，走勢圖只畫**股價**。
+3. **停牌列要剔除。** 298060 因 2026-04-25 的 5:1 額面併合停牌 2026-04-23 ~ 05-18，Yahoo 該區間用前值填補（價格凍結在 4,635、volume 0）。保留會污染波動度與最大回撤，恢復首日 3,705 相對 4,635 的 −20.1% 也不是單日跌幅。
+
+> 額面併合（액면병합）**不是減資**。DART 半期報告書「주식의 총수 등」中『감자』一列為零，資本金前後皆為 ₩22,101,588,000 完全未變。措辭不可寫成「減資」。
+
+### 回歸測試
+
+`scripts/verify_partners.py` 分兩級：資料**錯**才擋發佈（exit 1），資料**舊或缺**只警告（exit 0，前端顯示「資料最後成功更新於 X」或「無資料」）。Yahoo 是非官方端點、Actions 的 IP 有可能被擋，不該讓整站因此停止更新。
+
+最關鍵的一組檢查是**對外部主要來源的錨點**——純內部一致性檢查抓不到上面第 1 個坑，只有比對外部真值才抓得到：
+
+| 錨點 | 外部來源 |
+|---|---|
+| 2026-03-17 還原後 3,865／當時實際 773、當日 −5.73% | 뉴스워커報導 |
+| 2026-04-22 還原後 4,635／當時實際 927 | 併合前最後成交日 |
+| 52 週高 6,900／低 2,300 | Naver 금융 수정주가 |
+| 市值 251.06 억원 = 9,637,447 × 2,605 | Naver 금융 시총 251 억 |
+
+`python scripts/verify_partners.py --self-test` 是**突變測試**：對資料植入 14 種錯誤（把還原因子改成 1、重複套用 5 倍、塞回停牌列、市值乘 1.1、日期倒退……），每一種都必須被對應的檢查抓到，否則自己先失敗。排程每天會跑，有人放寬檢查時會被發現。
+
 ## 更新資料
 
 ```bash
@@ -112,6 +151,8 @@ python scripts/fetch_universe.py      # 生技全市場排名與 Top 30（約 10
 python scripts/fetch_broker_lut.py    # 券商代號對照表（三來源合併）
 python scripts/fetch_broker_daily.py  # 券商分點每日明細（預設回補 365 天）
 python scripts/verify_broker.py       # 分點回歸測試（對 2026-07-21 黃金樣本）
+python scripts/fetch_partners.py      # 海外授權夥伴 4978.T／298060.KQ（近 2 年）
+python scripts/verify_partners.py     # 夥伴回歸測試（--self-test 跑突變測試）
 ```
 
 每日更新只要跑 `fetch_broker_daily.py --days 7`——抓過的日子存在 `cache/`（一天一檔約 6KB，**進版控**），不會重複下載，換一台機器跑排程也不必重新回補。回補一整年約 250 個請求、每天 2MB，跑一次十分鐘左右。
@@ -154,6 +195,8 @@ data/meta.json              最後更新日、造市商、股數、各資料源�
 data/broker_daily.json      券商分點每日明細（一列＝一天×一分點）
 data/broker_lut.json        券商代號 → 分點名稱對照表 ＋ 造市商代號
 data/broker_fixture.json    2026-07-21 黃金樣本，僅供對帳
+data/partners.json          海外授權夥伴價量、市值、公司事件（fetch_partners.py 產出）
+data/partners_ref.json      夥伴股數與公司事件的人工維護正本（fetch_partners.py 的輸入）
 cache/7729/YYYYMMDD.json    分點每日快取（一天一檔，進版控，換機器跑免重新回補）
 scripts/*.py                資料抓取腳本（僅用 Python 標準函式庫，無需 pip install）
 ```

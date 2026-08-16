@@ -1,0 +1,753 @@
+{
+  "schemaVersion": 1,
+  "title": "海外合作夥伴 — 管線彙整與最新消息",
+  "curatedAt": "2026-08-16",
+  "curatedAtLabel": "最後人工整理：2026-08-16",
+  "curationMode": "manual",
+  "curationNote": "本區為人工策展，非自動爬取。股價與市值由每日 pipeline 自動更新，本區內容需人工覆核後才會變動；顯示日期即為最後覆核日。",
+  "newsWindow": {
+    "from": "2025-07-01",
+    "to": "2026-08-16",
+    "label": "近 12 個月（2025-08 起）為主，另納入 2025-07 的併購案作為背景 —— 該案是後續商號變更與營收結構轉變的起點"
+  },
+  "framing": "REPROCELL 與 풍전약품（原 SCM Lifescience）皆為仲恩 Stemchymal® 的授權夥伴，非競爭對手。本頁為夥伴進度追蹤，不作競品評比。",
+  "legend": {
+    "type": {
+      "fact": "事實 — 可追溯至下列來源",
+      "inference": "推論 — 由事實推導，非來源直述",
+      "estimate": "推估 — 依已公開規則（如審查天數）換算之時點"
+    },
+    "level": {
+      "win": "與仲恩直接相關的正向進度",
+      "hot": "需注意、會影響判讀的重大事項",
+      "info": "一般公司／資本事項"
+    },
+    "relation": {
+      "direct": "與仲恩直接相關",
+      "company": "公司自身消息，與仲恩無直接關聯"
+    }
+  },
+  "provenance": {
+    "reusedFrom": [
+      "本專案既有查證資料（公司基本資料）",
+      "本專案既有查證資料（合作關係盤點）",
+      "本專案既有查證資料（里程碑）",
+      "本專案既有查證資料（新聞）"
+    ],
+    "note": "既有事實陳述沿用先前查證原文，未改寫；2025-08 以後的資本與公司變動為本次另行查證新增。"
+  },
+  "ingest": {
+    "compatibleWith": "本專案新聞資料格式",
+    "sharedFields": [
+      "id",
+      "date",
+      "dateDisplay",
+      "level",
+      "tag",
+      "body",
+      "note",
+      "links"
+    ],
+    "extraFields": [
+      "companyId",
+      "relation",
+      "type"
+    ],
+    "note": "news[] 的欄位為既有新聞資料格式的超集合，日後每日掃描可直接把新條目附加進來；companyId 為本檔 partners[].id。"
+  },
+  "partners": [
+    {
+      "id": "reprocell",
+      "name": "REPROCELL",
+      "displayName": "REPROCELL（リプロセル）",
+      "nameLocal": "株式会社リプロセル",
+      "country": "日本",
+      "exchange": "東京證券交易所",
+      "ticker": "4978",
+      "yahooSymbol": "4978.T",
+      "currency": "JPY",
+      "url": "https://www.reprocell.com/",
+      "ir": "https://reprocell.co.jp/ir/news/",
+      "roleShort": "Stemchymal® 日本 MAH 與獨家開發／商業化授權方；同時是仲恩股東（出資先）",
+      "positioning": {
+        "text": "日本製造販賣業者（MAH）。本業為 iPSC／3D 細胞培養等研究支援服務與臨床幹細胞服務，並持有西班牙 CDMO Histocell 的投資部位，該廠為其 GMP iPSC 與 MSC 製造夥伴。",
+        "type": "fact",
+        "sources": [
+          {
+            "label": "REPROCELL 官網",
+            "url": "https://www.reprocell.com/"
+          },
+          {
+            "label": "Histocell 為其 GMP 細胞製造夥伴",
+            "url": "https://www.reprocell.com/clinical-stem-cell-services/histocell-our-gmp-cell-manufacturing-partner"
+          },
+          {
+            "label": "REPROCELL 投資 Histocell",
+            "url": "https://www.reprocell.com/news/reprocell-invests-in-histocell-s.l.-a-spain-based-cdmo"
+          }
+        ]
+      },
+      "mechanism": "異體 MSC（日本 MAH）",
+      "relationship": {
+        "nature": "獨家授權（日本開發＋商業化）＋ 股東",
+        "signedDate": "2016-11-11",
+        "signedDateDisplay": "2016/11/11",
+        "scope": "Stemchymal® 於日本的開發與商業化獨家權，另含其他適應症的優先談判權。",
+        "division": "製造由台灣的仲恩負責；銷售與配銷由 REPROCELL 負責日本所有活動。",
+        "consideration": [
+          "投資仲恩約 US$1M（認新股）",
+          "里程碑金約 US$4M",
+          "商業化後之權利金"
+        ],
+        "considerationNote": "對價結構沿用先前查證，數字為公開協議公告所載。",
+        "type": "fact",
+        "sources": [
+          {
+            "label": "REPROCELL × Steminent 合作暨商業化協議公告（2016-11-11）",
+            "url": "https://www.reprocell.com/news/announcement-on-the-initiation-of-a-new-business-from-the-collaboration-and-commercialization-agreement-with-steminent-biotherapeutics-inc-for-cell-therapy"
+          }
+        ]
+      },
+      "ownPipeline": [
+        {
+          "asset": "Stemchymal®（日本）",
+          "indication": "SCA3、SCA6",
+          "stage": "PMDA 製造販売承認審查中（優先審查）",
+          "origin": "授權自仲恩",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "承認申請新聞稿（2026-06-24）",
+              "url": "https://www.prnewswire.com/news-releases/reprocell-submits-application-for-manufacturing-and-marketing-approval-in-japan-for-stem-cell-therapy-stemchymal-for-spinocerebellar-ataxia-sca3-and-sca6-302806662.html"
+            }
+          ]
+        },
+        {
+          "asset": "TIL 療法",
+          "indication": "（公開揭露未載明明確適應症）",
+          "stage": "治驗與承認申請準備",
+          "origin": "自有",
+          "note": "階段敘述來自 2026-05-27 Equity Program 之資金用途揭露（分配 ¥300M），非獨立的管線公告。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "REPROCELL IR ニュース",
+              "url": "https://reprocell.co.jp/ir/news/"
+            }
+          ]
+        },
+        {
+          "asset": "GPC-1 CAR-T",
+          "indication": "（公開揭露未載明明確適應症）",
+          "stage": "開發中",
+          "origin": "自有",
+          "note": "同上，來自 Equity Program 資金用途揭露（分配 ¥295M）。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "REPROCELL IR ニュース",
+              "url": "https://reprocell.co.jp/ir/news/"
+            }
+          ]
+        },
+        {
+          "asset": "研究支援事業／臨床幹細胞服務",
+          "indication": "—",
+          "stage": "營運中",
+          "origin": "自有本業",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "REPROCELL 官網",
+              "url": "https://www.reprocell.com/"
+            }
+          ]
+        }
+      ],
+      "stemchymalMilestones": [
+        {
+          "date": "2016-11-11",
+          "dateDisplay": "2016/11",
+          "event": "簽署合作暨商業化協議",
+          "detail": "取得 Stemchymal® 日本開發與商業化獨家權；分工為仲恩製造、REPROCELL 銷售配銷；並取得其他適應症優先談判權。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "協議公告",
+              "url": "https://www.reprocell.com/news/announcement-on-the-initiation-of-a-new-business-from-the-collaboration-and-commercialization-agreement-with-steminent-biotherapeutics-inc-for-cell-therapy"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-18",
+          "dateDisplay": "2026/06/18",
+          "event": "MAH「業許可」申請送神奈川縣",
+          "detail": "製造販売業許可之申請，與產品承認申請為兩張不同執照。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "報導（udn）",
+              "url": "https://udn.com/news/story/7241/9579117"
+            }
+          ]
+        },
+        {
+          "date": "2026-06-24",
+          "dateDisplay": "2026/06/24",
+          "event": "向 PMDA 遞交製造販売承認申請",
+          "detail": "由 REPROCELL 具名送出，適應症為 SCA3 與 SCA6，走優先審查、目標審查期約 9 個月。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "承認申請新聞稿",
+              "url": "https://www.prnewswire.com/news-releases/reprocell-submits-application-for-manufacturing-and-marketing-approval-in-japan-for-stem-cell-therapy-stemchymal-for-spinocerebellar-ataxia-sca3-and-sca6-302806662.html"
+            }
+          ]
+        },
+        {
+          "date": "2027-03",
+          "dateDisplay": "約 2027/03",
+          "event": "預估審查結果時點",
+          "detail": "依「受理起約 9 個月優先審查」換算。實際受理日與審查期間未公開逐日揭露，此為推估而非公司承諾。",
+          "type": "estimate",
+          "sources": [
+            {
+              "label": "承認申請新聞稿（載明約 9 個月優先審查）",
+              "url": "https://www.prnewswire.com/news-releases/reprocell-submits-application-for-manufacturing-and-marketing-approval-in-japan-for-stem-cell-therapy-stemchymal-for-spinocerebellar-ataxia-sca3-and-sca6-302806662.html"
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "text": "已簽約、尚未執行完畢的股權稀釋：2026-05-27 與 Heights Capital Management 旗下 CVI Investments 簽訂 Equity Program Agreement，第18回新株予約権 29,320 個（潛在 2,932,000 股）行使價 ¥149、行使期間 2026-07-17 ~ 2030-07-16。發行股數仍在移動中。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "REPROCELL IR ニュース",
+              "url": "https://reprocell.co.jp/ir/news/"
+            }
+          ]
+        },
+        {
+          "text": "不配息（決算短信載明配当 0.00 円），故價格序列的 close 與 adjclose 相同屬正常。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "2027年3月期 第1四半期決算短信",
+              "url": "https://reprocell.co.jp/wp-content/uploads/2026/08/f3d23611358d5bd95bd0a48153bdccec.pdf"
+            }
+          ]
+        }
+      ],
+      "unverified": [
+        "第17回新株予約権是否已部分行使（若已行使，實際發行股數會高於 101,011,891）"
+      ]
+    },
+    {
+      "id": "scm-lifescience",
+      "name": "풍전약품 POONGJEON PHARMACY",
+      "displayName": "풍전약품（POONGJEON PHARMACY，原 SCM Lifescience）",
+      "nameLocal": "풍전약품 주식회사",
+      "nameFormer": "에스씨엠생명과학 / SCM Lifescience",
+      "alsoKnownAs": "SCM Lifescience（2026-04 前之公司名）",
+      "nameNote": {
+        "text": "「풍전약품（POONGJEON PHARMACY）」是新名不是舊名。SCM Lifescience 於 2025-07-01 買下製藥流通商 풍전약품(주) 100% 股權，2026-01-14 公告吸收合併（SCM 存續、풍전약품 消滅），存續公司改用被併公司的名字；2026-03-24 股東會決議變更商號，2026-04-24 完成變更上市。代號 298060 未變，與「SCM Lifescience」「풍전약품（POONGJEON PHARMACY）」為同一家。",
+        "type": "fact",
+        "sources": [
+          {
+            "label": "디지털투데이 — 상호 변경",
+            "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=645070"
+          },
+          {
+            "label": "톱스타뉴스 — 풍전약품 상호변경",
+            "url": "https://www.topstarnews.net/news/articleView.html?idxno=16040978"
+          },
+          {
+            "label": "edaily — 풍전약품 흡수합병",
+            "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04280406645317720"
+          }
+        ]
+      },
+      "country": "南韓",
+      "exchange": "KOSDAQ",
+      "ticker": "298060",
+      "yahooSymbol": "298060.KQ",
+      "currency": "KRW",
+      "url": "http://scmlifescience.com/en/m14.php",
+      "ir": "https://dart.fss.or.kr/",
+      "roleShort": "Stemchymal® 南韓獨家授權方（polyQ 型 SCA）",
+      "positioning": {
+        "text": "原為細胞治療公司，自有平台為純系分離（clonal isolation）異體 MSC（cMSC）。2025–2026 年併入製藥流通商 풍전약품後，主要營收已轉為學名藥流通：2026 上半年營收 ₩27.23B（2025 上半年僅 ₩1.21B），絕大部分來自併入的流通業務。",
+        "type": "fact",
+        "sources": [
+          {
+            "label": "先前查證：cMSC 平台",
+            "url": "http://scmlifescience.com/en/m14.php"
+          },
+          {
+            "label": "DART 반기보고서 rcpNo 20260814001708",
+            "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+          }
+        ]
+      },
+      "mechanism": "純系分離異體 MSC（cMSC）",
+      "relationship": {
+        "nature": "獨家授權（南韓臨床開發＋商業化）",
+        "signedDate": "2020-10-13",
+        "signedDateDisplay": "2020/10/13",
+        "scope": "Stemchymal® 於 polyQ 型脊髓小腦萎縮症（polyQ SCA）在南韓的臨床開發與商業化權利。",
+        "division": "",
+        "consideration": [
+          "預付金",
+          "法規里程碑金",
+          "兩位數銷售權利金"
+        ],
+        "considerationNote": "公開來源僅載明對價種類，未揭露具體金額。",
+        "type": "fact",
+        "sources": [
+          {
+            "label": "授權公告報導",
+            "url": "https://bioinformant.com/steminent-biotherapeutics-scm-lifescience-stemchymal/"
+          },
+          {
+            "label": "公司官網（授權管線頁）",
+            "url": "http://scmlifescience.com/en/m14.php"
+          }
+        ]
+      },
+      "ownPipeline": [
+        {
+          "asset": "Stemchymal®（韓國）",
+          "indication": "polyQ 型 SCA",
+          "stage": "公開來源未見實質臨床推進",
+          "origin": "授權自仲恩",
+          "note": "公開資料仍將南韓列為 Stemchymal 全球開發的地區之一；但本次整理未在公開來源找到近 12 個月與該授權案相關的新消息。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "授權公告報導",
+              "url": "https://bioinformant.com/steminent-biotherapeutics-scm-lifescience-stemchymal/"
+            }
+          ]
+        },
+        {
+          "asset": "cMSC 平台（純系分離異體 MSC）",
+          "indication": "—",
+          "stage": "自有技術平台",
+          "origin": "自有",
+          "note": "批次一致性是異體 MSC 最被監管機關追問的一點，clonal 分離為其差異化主張。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "公司官網",
+              "url": "http://scmlifescience.com/en/m14.php"
+            }
+          ]
+        },
+        {
+          "asset": "學名藥流通事業（併入之 풍전약품 業務）",
+          "indication": "—",
+          "stage": "營運中，為目前主要營收來源",
+          "origin": "併購取得",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "DART 반기보고서 rcpNo 20260814001708",
+              "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+            }
+          ]
+        }
+      ],
+      "stemchymalMilestones": [
+        {
+          "date": "2020-10-13",
+          "dateDisplay": "2020/10/13",
+          "event": "簽署南韓獨家授權",
+          "detail": "取得 Stemchymal® 於 polyQ 型 SCA 在南韓的臨床開發與商業化權利；對價含預付金、法規里程碑金與兩位數銷售權利金。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "授權公告報導",
+              "url": "https://bioinformant.com/steminent-biotherapeutics-scm-lifescience-stemchymal/"
+            }
+          ]
+        },
+        {
+          "date": "2026-08-16",
+          "dateDisplay": "截至 2026/08/16",
+          "event": "授權案現況：公開來源無新進度",
+          "detail": "本次整理未在公開來源找到 2025-08 以後與該南韓授權案相關的臨床或法規消息。此為「查不到」而非「已終止」——授權的實際存續與里程碑達成狀況須由仲恩自合約端確認。",
+          "type": "fact",
+          "sources": []
+        }
+      ],
+      "watchItems": [
+        {
+          "text": "2026-04-25 實施 5:1 額面併合（액면병합，額面 ₩500→₩2,500，44,203,176 股 → 8,840,635 股）。DART 半期報告書載明減資項為零、資本金前後皆為 ₩22,101,588,000 —— 這是額面併合，不是減資，股東持股比例與淨值不變。面板措辭不可寫成「減資」。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "DART 반기보고서 rcpNo 20260814001708",
+              "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+            }
+          ]
+        },
+        {
+          "text": "2026-04-23 ~ 2026-05-18 因併合作業停牌，Yahoo 序列該區間 16 筆 volume=0、價格為前值填補（4,635），非真實成交，計算報酬率／波動度時應剔除。2026-05-19 恢復交易。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "DART 반기보고서 rcpNo 20260814001708",
+              "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+            }
+          ]
+        },
+        {
+          "text": "目前仍為 KRX 管理종목（指定日 2025-03-24，事由：最近 3 個事業年度中 2 個年度稅前繼續事業損失超過自有資本 50%）。2026-06-30 資本總計 ₩32.29B 大於資本金 ₩22.10B，未處於資本蠶食狀態，但累積結損金達 −₩182.92B。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "KIND 관리종목 현황",
+              "url": "https://kind.krx.co.kr/investwarn/adminissue.do"
+            },
+            {
+              "label": "DART 반기보고서 rcpNo 20260814001708",
+              "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+            }
+          ]
+        },
+        {
+          "text": "持續稀釋來源：제1·2·3회차 CB 仍在外流通，轉換價格反覆下修（調整公告 2026-04-02、04-15、04-27、08-04）；2026-06-30 資產負債表列轉換社債 ₩3.78B、衍生商品負債 ₩2.43B。發行股數為高速移動的目標。",
+          "type": "fact",
+          "sources": [
+            {
+              "label": "DART 반기보고서 rcpNo 20260814001708",
+              "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+            }
+          ]
+        }
+      ],
+      "unverified": [
+        "2025 年度審計意見類型、審計人對「繼續企業存續能力」是否有強調事項或不確定性註記",
+        "目前最大股東身分與持股比例（僅查到 2024-10-04 송기령 16.89% 的舊報導）"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "scm-half-report-2026-08",
+      "companyId": "scm-lifescience",
+      "date": "2026-08-14",
+      "dateDisplay": "2026/08/14",
+      "level": "info",
+      "tag": "財報",
+      "relation": "company",
+      "type": "fact",
+      "body": "풍전약품提交 <b>2026 上半年반기보고서</b>（DART rcpNo 20260814001708）：別途基準營收 ₩27.23B（2025 上半年 ₩1.21B）、營業損失 −₩2.47B、本期淨損 −₩5.78B、每股損失 −₩654；2026-06-30 發行株式總數 8,840,635 股（自己株式 6,203 股）。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。營收結構顯示公司主要營收已來自併入的學名藥流通業務，細胞治療營收占比極小（事實）。",
+      "links": [
+        {
+          "label": "DART 반기보고서 ↗",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        }
+      ]
+    },
+    {
+      "id": "reprocell-q1-tanshin-2026-08",
+      "companyId": "reprocell",
+      "date": "2026-08-13",
+      "dateDisplay": "2026/08/13",
+      "level": "info",
+      "tag": "財報",
+      "relation": "company",
+      "type": "fact",
+      "body": "REPROCELL 揭露 <b>2027年3月期 第1四半期決算短信</b>：2026-06-30 期末發行済株式數 98,079,891 股（自己株式 117,256 股，流通在外 97,962,635 股），前期末（2026-03-31）為 95,147,891 股；配当 0.00 円。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。但此為市值計算的股數基準來源；本面板的市值不採用第三方彙整站的過期股數。",
+      "links": [
+        {
+          "label": "決算短信 PDF ↗",
+          "url": "https://reprocell.co.jp/wp-content/uploads/2026/08/f3d23611358d5bd95bd0a48153bdccec.pdf"
+        }
+      ]
+    },
+    {
+      "id": "scm-rights-issue-listing-2026-07",
+      "companyId": "scm-lifescience",
+      "date": "2026-07-21",
+      "dateDisplay": "2026/07/21",
+      "level": "hot",
+      "tag": "資本變動",
+      "relation": "company",
+      "type": "fact",
+      "body": "第三者配額有償增資新股 <b>796,812 股</b>上市（理事會決議 2026-06-10、每股 ₩2,510、總額 ₩1,999,998,120、繳款日 2026-06-30、變更登記 2026-07-01，附 1 年韓國預託結算院保護預受）。發行股數自 8,840,635 增至 <b>9,637,447 股</b>。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。此為本面板市值計算的股數基準：9,637,447 股。第三方彙整站仍用 6/30 的 8,840,635 股，會低估市值約 9%。",
+      "links": [
+        {
+          "label": "DART 반기보고서 ↗",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        }
+      ]
+    },
+    {
+      "id": "reprocell-cvi-2nd-2026-07",
+      "companyId": "reprocell",
+      "date": "2026-07-16",
+      "dateDisplay": "2026/07/16",
+      "level": "info",
+      "tag": "資本變動",
+      "relation": "company",
+      "type": "fact",
+      "body": "第2回第三者配額增資（對象 CVI Investments, Inc.）<b>繳款完成</b>：新股 <b>2,932,000 股</b>＠¥112。連同 6/30 的 98,079,891 股，發行済股數增至 <b>101,011,891 股</b>（扣除自己株式 117,256 股後 100,894,635 股）。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。本面板市值以 100,894,635 股為基準；第三方彙整站仍用 6/30 的 97,962,635 股，會低估市值約 3%。",
+      "links": [
+        {
+          "label": "REPROCELL IR ニュース ↗",
+          "url": "https://reprocell.co.jp/ir/news/"
+        }
+      ]
+    },
+    {
+      "id": "scm-delisting-rule-2026-07",
+      "companyId": "scm-lifescience",
+      "date": "2026-07-01",
+      "dateDisplay": "2026/07/01",
+      "level": "hot",
+      "tag": "市場制度",
+      "relation": "company",
+      "type": "fact",
+      "body": "KRX 上市規程新退場基準自 <b>2026-07-01</b> 施行：時價總額低於 <b>200 億원</b>、或收盤價連續 <b>30 個交易日低於 1,000원</b>，即指定管理종목；之後 90 個交易日內若無法連續 45 個交易日回到基準之上即下市。",
+      "note": "→ 與仲恩的關聯：<b>市場制度，非公司消息</b>。풍전약품目前時價總額約 251 億원，高於 200 億門檻約 25%，且未出現在 2026-08-13 該批名單中（事實）。<b>【推論】</b>額面併合的時點與這條新規吻合（併合前股價約 500–930원、併合後約 2,600–4,600원），但公司對外揭露的目的寫的是「適正流通股數維持與股價安定化」，未提及退場基準——因果連結為推論，非事實。",
+      "links": [
+        {
+          "label": "뉴스핌 — 동전주 상폐 기준 첫 적용 ↗",
+          "url": "https://www.newspim.com/news/view/20260812001246"
+        },
+        {
+          "label": "KIND 관리종목 현황 ↗",
+          "url": "https://kind.krx.co.kr/investwarn/adminissue.do"
+        }
+      ]
+    },
+    {
+      "id": "steminent-japan-submit-2026-06",
+      "companyId": "reprocell",
+      "date": "2026-06-24",
+      "dateDisplay": "2026/06/24",
+      "level": "win",
+      "tag": "日本監管",
+      "relation": "direct",
+      "type": "fact",
+      "body": "REPROCELL 具名向 PMDA 遞交 Stemchymal® <b>製造販売承認申請</b>（適應症 SCA3、SCA6），走<b>優先審查、目標審查期約 9 個月</b>；6/18 另向神奈川縣送出 MAH「業許可」申請。",
+      "note": "→ 與仲恩的關聯：<b>直接相關，且是兩家夥伴中唯一已在監管機關手上的案子</b>。依 9 個月換算約 2027/03 見分曉（推估）。",
+      "links": [
+        {
+          "label": "承認申請新聞稿 ↗",
+          "url": "https://www.prnewswire.com/news-releases/reprocell-submits-application-for-manufacturing-and-marketing-approval-in-japan-for-stem-cell-therapy-stemchymal-for-spinocerebellar-ataxia-sca3-and-sca6-302806662.html"
+        },
+        {
+          "label": "業許可報導 ↗",
+          "url": "https://udn.com/news/story/7241/9579117"
+        }
+      ]
+    },
+    {
+      "id": "scm-cb3-2026-06",
+      "companyId": "scm-lifescience",
+      "date": "2026-06-18",
+      "dateDisplay": "2026/06/18",
+      "level": "info",
+      "tag": "資本變動",
+      "relation": "company",
+      "type": "fact",
+      "body": "제3회차 轉換社債（CB）發行結果公告。제1·2회차 CB 仍在外流通，轉換價格於 2026-04-02、04-15、04-27、08-04 反覆下修。2026-06-30 資產負債表列轉換社債 ₩3.78B、衍生商品負債 ₩2.43B。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。意涵為發行股數持續變動，故本面板<b>不以現行股數回推歷史市值</b>，歷史走勢只畫股價。",
+      "links": [
+        {
+          "label": "DART 반기보고서 ↗",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        }
+      ]
+    },
+    {
+      "id": "reprocell-cvi-program-2026-05",
+      "companyId": "reprocell",
+      "date": "2026-05-27",
+      "dateDisplay": "2026/05/27",
+      "level": "info",
+      "tag": "資本變動",
+      "relation": "company",
+      "type": "fact",
+      "body": "董事會決議與 Heights Capital Management 旗下 <b>CVI Investments</b> 簽訂 Equity Program Agreement，設定「株式及び新株予約権発行プログラム」。第18回新株予約権 29,320 個（潛在 <b>2,932,000 股</b>），行使價 ¥149、行使期間 2026-07-17 ~ 2030-07-16。資金用途：TIL 療法治驗與承認申請準備 ¥300M、GPC-1 CAR-T ¥295M、營運資金 ¥165M。第1回已於 2026-06-11 執行、第2回於 2026-07-16 執行。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。募資用途揭露的是 REPROCELL 自有管線（TIL、GPC-1 CAR-T），未列 Stemchymal。",
+      "links": [
+        {
+          "label": "REPROCELL IR ニュース ↗",
+          "url": "https://reprocell.co.jp/ir/news/"
+        }
+      ]
+    },
+    {
+      "id": "scm-split-effective-2026-05",
+      "companyId": "scm-lifescience",
+      "date": "2026-05-19",
+      "dateDisplay": "2026/04–05",
+      "level": "hot",
+      "tag": "資本變動",
+      "relation": "company",
+      "type": "fact",
+      "body": "<b>5:1 額面併合（액면병합）</b>完成：額面 ₩500 → ₩2,500，44,203,176 股 → 8,840,635 股。效力發生日 2026-04-25，賣買交易停止 2026-04-23 ~ 05-18，新股上市／恢復交易 2026-05-19。DART 半期報告書載明<b>減資項為零</b>、資本金前後皆為 ₩22,101,588,000。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。三點必須說清楚：①這是<b>額面併合不是減資</b>，股東持股比例與淨值不變；②走勢圖已還原至併合後基準，<b>不得再乘任何還原因子</b>；③停牌 21 個交易日的價格為前值填補、已剔除，恢復首日的價格落差不是單日跌幅。",
+      "links": [
+        {
+          "label": "DART 반기보고서 ↗",
+          "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        },
+        {
+          "label": "디지털투데이 — 주식병합 결정 ↗",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=638065"
+        },
+        {
+          "label": "네이트뉴스 — 발행주식총수 정정 ↗",
+          "url": "https://news.nate.com/view/20260323n22320"
+        }
+      ]
+    },
+    {
+      "id": "scm-rename-2026-04",
+      "companyId": "scm-lifescience",
+      "date": "2026-04-24",
+      "dateDisplay": "2026/04/24",
+      "level": "hot",
+      "tag": "商號變更",
+      "relation": "direct",
+      "type": "fact",
+      "body": "商號自 <b>에스씨엠생명과학（SCM Lifescience）</b> 變更為 <b>풍전약품 주식회사（POONGJEON PHARMACY CO., LTD.）</b>，2026-03-24 股東會決議、2026-04-24 完成變更上市。公司說法為「品牌競爭力強化以確保持續成長基礎」。代號 298060 未變。",
+      "note": "→ 與仲恩的關聯：<b>直接相關</b>。仲恩的南韓被授權方名稱已改；文件、簡報與對外資料若仍寫「SCM Lifescience」會與韓國市場現況脫節，建議標示為「풍전약품（POONGJEON PHARMACY，原 SCM Lifescience）」。",
+      "links": [
+        {
+          "label": "디지털투데이 — 상호 변경 ↗",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=645070"
+        },
+        {
+          "label": "톱스타뉴스 — 풍전약품 상호변경 ↗",
+          "url": "https://www.topstarnews.net/news/articleView.html?idxno=16040978"
+        }
+      ]
+    },
+    {
+      "id": "scm-admin-issue-reversal-2026-03",
+      "companyId": "scm-lifescience",
+      "date": "2026-03-17",
+      "dateDisplay": "2026/03/16–17",
+      "level": "info",
+      "tag": "公司治理",
+      "relation": "company",
+      "type": "fact",
+      "body": "KRX 於 2026-03-16 19:02 公告解除管理종목指定，隔日 2026-03-17 14:28 <b>翻案撤回</b>，理由為檢視 2025 年審計報告時誤判解除要件（只看到損失縮小與轉盈，漏了「3 年內 2 次超過自有資本 50%」）。當日收盤 773원、跌 5.73%。目前仍為管理종목（指定日 2025-03-24）。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。此則同時是價格序列的交叉驗證點——Yahoo 還原後值 3,865 = 773 × 5，證明分割已還原。",
+      "links": [
+        {
+          "label": "뉴스워커 — 관리종목 해제 번복 ↗",
+          "url": "http://www.newsworker.co.kr/news/articleView.html?idxno=417950"
+        },
+        {
+          "label": "팜이데일리 — 관리종목 지정 위기 ↗",
+          "url": "https://pharm.edaily.co.kr/news/read?newsId=01899126642102664"
+        },
+        {
+          "label": "KIND 관리종목 현황 ↗",
+          "url": "https://kind.krx.co.kr/investwarn/adminissue.do"
+        }
+      ]
+    },
+    {
+      "id": "scm-merger-2026-01",
+      "companyId": "scm-lifescience",
+      "date": "2026-01-14",
+      "dateDisplay": "2026/01/14",
+      "level": "info",
+      "tag": "企業重組",
+      "relation": "company",
+      "type": "fact",
+      "body": "公告<b>吸收合併 풍전약품(주)</b>：SCM Lifescience 為存續公司、풍전약품消滅。2026-04-01 提交合併等終了報告書；存續公司隨後改用被併公司的名字。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>，但這是後續商號變更與營收結構轉變的起點。",
+      "links": [
+        {
+          "label": "edaily — 풍전약품 흡수합병 ↗",
+          "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04280406645317720"
+        }
+      ]
+    },
+    {
+      "id": "scm-acquire-poongjeon-2025-07",
+      "companyId": "scm-lifescience",
+      "date": "2025-07-01",
+      "dateDisplay": "2025/07/01",
+      "level": "info",
+      "tag": "企業重組",
+      "relation": "company",
+      "type": "fact",
+      "body": "以 <b>₩8.2B</b> 向 금호에이치티（Kumho H.T.）買下製藥流通商 <b>풍전약품(주)</b> 100% 股權（公告 2025-06-17，當時相當於自有資本的 <b>57.91%</b>）。",
+      "note": "→ 與仲恩的關聯：<b>公司自身消息</b>。這筆交易是公司從純細胞治療公司轉為以學名藥流通為主要營收的分水嶺（事實：2026 上半年營收 ₩27.23B vs 2025 上半年 ₩1.21B）。",
+      "links": [
+        {
+          "label": "edaily — 82억 지분 100% 양수 ↗",
+          "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04221366642202704"
+        },
+        {
+          "label": "뉴스톱 — 위기의 코스닥社 ↗",
+          "url": "https://www.newstopkorea.com/news/articleView.html?idxno=26831"
+        }
+      ],
+      "context": true
+    }
+  ],
+  "gaps": [
+    {
+      "text": "近 12 個月公開來源未見與 Stemchymal® 南韓授權案（2020-10-13 簽署）相關的臨床或法規新消息。此處誠實留白：是「查不到」而非「已終止」。",
+      "affects": [
+        "scm-lifescience"
+      ]
+    },
+    {
+      "text": "REPROCELL 方面，近 12 個月與 Stemchymal 直接相關的公開消息集中在 2026-06 的兩件送件；其餘為公司自身的資本與財報事項。",
+      "affects": [
+        "reprocell"
+      ]
+    },
+    {
+      "text": "本區為人工策展，不做自動新聞爬取。若需即時性，應由每日掃描產生條目後併入 news[]（欄位已對齊）。",
+      "affects": [
+        "reprocell",
+        "scm-lifescience"
+      ]
+    }
+  ],
+  "inferencesOnly": [
+    {
+      "text": "額面併合的時點是為了因應 2026-07-01 施行的 1,000원 退場新規。",
+      "status": "推論",
+      "why": "併合前股價約 500–930원位於門檻之下、併合後約 2,600–4,600원，時點吻合；但公司揭露的目的未提及退場基準。",
+      "affects": [
+        "scm-lifescience"
+      ]
+    },
+    {
+      "text": "南韓授權案停滯是股價下跌的原因。",
+      "status": "推論，本面板不採用",
+      "why": "股價變動與資本變動是事實，兩者的因果關係無公開來源支持。授權案的實際狀態亦未經公開來源確認。",
+      "affects": [
+        "scm-lifescience"
+      ]
+    },
+    {
+      "text": "2026-06-25 REPROCELL 成交量由 687,100 股暴增至 4,316,000 股（平日約 25–80 萬股）、股價 ¥120 → ¥132，係反應 6/24 的 PMDA 送件消息。",
+      "status": "量價變動為事實，歸因為推論",
+      "why": "量價數據來自 Yahoo v8 chart；公司未公告兩者的關聯。",
+      "affects": [
+        "reprocell"
+      ]
+    }
+  ]
+}

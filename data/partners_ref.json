@@ -1,0 +1,231 @@
+{
+  "_readme": [
+    "海外授權夥伴的『人工維護參考資料』—— fetch_partners.py 的輸入，不是它的輸出。",
+    "為什麼要有這一檔：股數（發行股數／自己股數）沒有免憑證的公開 API 可抓。",
+    "  日本要解析 TDnet／公司 IR 的決算短信 PDF，韓國要解析 DART 揭露文件，兩者都不適合放進排程。",
+    "  所以股數在這裡落地成資料，每筆都附來源 URL 與基準日；fetch_partners.py 只負責原封不動帶進輸出。",
+    "維護規則：",
+    "  1. 改動股數時，components[] 一定要同時補上該筆變動的來源 URL 與基準日，並更新 shares.verified_on。",
+    "  2. next_review 到期就人工回查一次（兩家都有已簽約、尚未執行完的稀釋，股數是移動中的目標）。",
+    "  3. notes[] 的 type 只有兩種：fact（有主要來源可查證）與 inference（推論）。前端必須把 inference 標示出來。",
+    "  4. 不確定的東西寧可放進 unverified[] 也不要寫進 fact。畫面上的每個數字都要能追到來源。"
+  ],
+  "schema_version": 1,
+  "verified_on": "2026-08-16",
+  "next_review": "2026-11-14",
+  "partners": [
+    {
+      "id": "reprocell",
+      "symbol": "4978.T",
+      "ticker": "4978",
+      "country": "日本",
+      "exchange": "東京證券交易所",
+      "exchange_short": "東證",
+      "currency": "JPY",
+      "currency_symbol": "¥",
+      "local_unit": { "name": "億円", "divisor": 100000000 },
+      "name_zh": "REPROCELL",
+      "name_local": "株式会社リプロセル",
+      "name_en": "ReproCELL Incorporated",
+      "relationship": "Stemchymal 日本 MAH（製造販売業者）與獨家開發／商業化授權方；同時為仲恩生醫之出資先（股東）。",
+      "cap_basis": "issued",
+      "cap_basis_note": "採發行済株式総数（含自己株式），與本頁另一家韓國公司的基準一致，兩家可用同一種方式理解。日本各報價站對是否扣除自己株式的處理並不一致，故自己株式另行揭露於 shares.treasury，需要另一種口徑時可自行扣除（本檔自己株式僅佔 0.12%）。",
+      "shares": {
+        "issued": 101011891,
+        "treasury": 117256,
+        "outstanding": 100894635,
+        "basis_date": "2026-07-16",
+        "verified_on": "2026-08-16",
+        "components": [
+          {
+            "as_of": "2026-06-30",
+            "issued": 98079891,
+            "treasury": 117256,
+            "label": "2027年3月期 第1四半期決算短信 p.2「(4) 発行済株式数（普通株式）」",
+            "source_url": "https://reprocell.co.jp/wp-content/uploads/2026/08/f3d23611358d5bd95bd0a48153bdccec.pdf"
+          },
+          {
+            "as_of": "2026-07-16",
+            "issued_delta": 2932000,
+            "label": "第2回第三者割当（CVI Investments, Inc.）＠¥112 払込完了",
+            "source_url": "https://reprocell.co.jp/ir/news/"
+          }
+        ],
+        "pending_dilution": [
+          {
+            "label": "第18回新株予約権 29,320 個（潛在 2,932,000 股）",
+            "detail": "行使価額 ¥149、行使期間 2026-07-17 ~ 2030-07-16。Heights Capital Management 旗下 CVI Investments 之 Equity Program Agreement（2026-05-27 董事會決議）下發行。",
+            "source_url": "https://reprocell.co.jp/ir/news/"
+          }
+        ],
+        "unverified": [
+          "第17回新株予約権是否已部分行使未查證。若已行使，實際發行済株式数會高於 101,011,891，本站市值即為低估。"
+        ]
+      },
+      "corporate_actions": {
+        "splits": [],
+        "trading_halts": [],
+        "note": "2 年窗格內無分割、無停牌，價格序列乾淨。"
+      },
+      "notes": [
+        {
+          "type": "fact",
+          "text": "2026-06-24 由 REPROCELL 具名向 PMDA 送出 Stemchymal 製造販売承認申請（適應症 SCA3、SCA6），適用優先審查（約 9 個月）。",
+          "source_url": "https://reprocell.co.jp/ir/news/"
+        },
+        {
+          "type": "fact",
+          "text": "2026-06-25 成交量 4,316,000 股，為前一日 687,100 股的 6.3 倍（平日約 25–80 萬股），收盤自 ¥120 漲至 ¥132。",
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/4978.T"
+        },
+        {
+          "type": "inference",
+          "text": "上述 6/25 的量價異動時點與 6/24 的 PMDA 申請公告相鄰，市場反應可能與該事件有關 —— 此為推論，公司未就股價變動作過歸因說明。",
+          "source_url": null
+        },
+        {
+          "type": "fact",
+          "text": "不配息（2027年3月期第1四半期決算短信載明配当 0.00 円），故 Yahoo 的 close 與 adjclose 逐筆相同。",
+          "source_url": "https://reprocell.co.jp/wp-content/uploads/2026/08/f3d23611358d5bd95bd0a48153bdccec.pdf"
+        }
+      ]
+    },
+    {
+      "id": "poongjeon",
+      "symbol": "298060.KQ",
+      "ticker": "298060",
+      "country": "南韓",
+      "exchange": "KOSDAQ",
+      "exchange_short": "KOSDAQ",
+      "currency": "KRW",
+      "currency_symbol": "₩",
+      "local_unit": { "name": "억원", "divisor": 100000000 },
+      "name_zh": "풍전약품（POONGJEON PHARMACY，原 SCM Lifescience）",
+      "name_local": "풍전약품 주식회사",
+      "name_en": "Poongjeon Pharmacy CO., LTD.",
+      "former_name": "에스씨엠생명과학 / SCM Lifescience",
+      "name_change": {
+        "resolved_on": "2026-03-24",
+        "listed_under_new_name_on": "2026-04-24",
+        "direction": "SCM Lifescience（舊）→ 풍전약품 POONGJEON PHARMACY（新）",
+        "reason_disclosed": "브랜드 경쟁력 강화를 통한 지속성장 기반 확보",
+        "source_url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=645070"
+      },
+      "relationship": "2020-10-13 簽署 Stemchymal 南韓獨家授權（polyQ 型 SCA）。「SCM Lifescience」與「풍전약품（POONGJEON PHARMACY）」為同一家公司之新舊名，代號同為 298060。",
+      "cap_basis": "issued",
+      "cap_basis_note": "韓國 시가총액 慣例＝상장주식수 × 주가（含自己株式），故採 issued。以此算出的 251.06 억원 與 Naver 금융顯示的 251 억 吻合。",
+      "shares": {
+        "issued": 9637447,
+        "treasury": 6203,
+        "outstanding": 9631244,
+        "basis_date": "2026-07-21",
+        "verified_on": "2026-08-16",
+        "components": [
+          {
+            "as_of": "2026-06-30",
+            "issued": 8840635,
+            "treasury": 6203,
+            "label": "DART 반기보고서「4. 주식의 총수 등」發行株式總數（普通股，無特別股）",
+            "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+          },
+          {
+            "as_of": "2026-07-21",
+            "issued_delta": 796812,
+            "label": "제3자배정 유상증자 796,812 株＠₩2,510（繳款 2026-06-30、變更登記 07-01、上市 07-21，附 1 年 예탁결제원 保護預受）",
+            "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+          }
+        ],
+        "pending_dilution": [
+          {
+            "label": "제1·2회차 전환사채（CB）仍在外流通，轉換價格反覆下修",
+            "detail": "조정 공시日：2026-04-02、04-15、04-27、08-04。2026-06-30 資產負債表列轉換社債 ₩3.78B ＋ 파생상품부채 ₩2.43B。",
+            "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+          },
+          {
+            "label": "제3회차 CB 發行（發行結果公告 2026-06-18）",
+            "detail": "發行後尚未轉換部分將構成後續稀釋。",
+            "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+          }
+        ],
+        "unverified": [
+          "目前最大股東身分與持股比例未查證（僅查到 2024-10-04 송기령 16.89% 的舊報導）。",
+          "2025 年度審計意見類型、審計人對繼續企業存續能力是否有強調事項或不確定性註記，未查證。"
+        ]
+      },
+      "corporate_actions": {
+        "splits": [
+          {
+            "kind": "reverse",
+            "label": "액면병합（額面併合）5:1，額面 ₩500 → ₩2,500",
+            "ratio": "1:5",
+            "not_a_capital_reduction": true,
+            "timeline": {
+              "board_resolution": "2026-03-06",
+              "share_count_correction": "2026-03-23",
+              "shareholder_approval": "2026-03-24",
+              "halt_start": "2026-04-23",
+              "effective_date": "2026-04-25",
+              "halt_end": "2026-05-18",
+              "relisting_date": "2026-05-19"
+            },
+            "shares_before": 44203176,
+            "shares_after": 8840635,
+            "price_series_breakpoint": "2026-05-19",
+            "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708",
+            "note": "DART 반기보고서「4. 주식의 총수 등」中『감자』一列明確為零，減少的 35,362,541 股備註為「보통주 전환, 액면병합(5:1)」；資本金 2025-12-31 與 2026-06-30 皆為 ₩22,101,588,000 完全未變。故為額面併合，措辭不可寫成『減資』。"
+          }
+        ],
+        "trading_halts": [
+          {
+            "from": "2026-04-23",
+            "to": "2026-05-18",
+            "reason": "주식의 병합에 따른 전자등록 변경·말소（額面併合作業）",
+            "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+          }
+        ]
+      },
+      "notes": [
+        {
+          "type": "fact",
+          "text": "2026-04-25 實施 5:1 額面併合（非減資）。走勢圖已還原至併合後基準；2026-04-23 ~ 05-18 因併合作業停牌。",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        },
+        {
+          "type": "fact",
+          "text": "2025-07-01 以 ₩8.2B 向 금호에이치티 買下製藥流通商 풍전약품 100% 股權（相當於當時自有資本 57.91%），2026-01-14 公告吸收合併（SCM 存續、풍전약품 消滅），存續公司改用被併公司名稱。",
+          "source_url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04280406645317720"
+        },
+        {
+          "type": "fact",
+          "text": "2026 上半年營收 ₩27.23B（2025 上半年僅 ₩1.21B），絕大部分來自併入的風傳藥品學名藥流通業務；營業損失 −₩2.47B、本期淨損 −₩5.78B、每股損失 −₩654（別途）。",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        },
+        {
+          "type": "fact",
+          "text": "目前仍為 관리종목（管理股票），指定日 2025-03-24，事由：最近 3 個事業年度中 2 個年度稅前繼續事業損失超過自有資本 50%（2023 −117%、2024 −92%、2025 −1%）。지정유예 已於 2022-12-31 到期。",
+          "source_url": "https://kind.krx.co.kr/investwarn/adminissue.do"
+        },
+        {
+          "type": "fact",
+          "text": "2026-06-30 未處於자본잠식狀態：資本總計 ₩32.29B ＞ 資本金 ₩22.10B（比率 146%），但累積結損金達 −₩182.92B。",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814001708"
+        },
+        {
+          "type": "fact",
+          "text": "KRX 上市規程自 2026-07-01 起施行新退場基準：時價總額低於 200 억원、或收盤價連續 30 個交易日低於 1,000원 即指定 관리종목。本公司目前時價總額約 251 억원，高於門檻約 25%，且未出現在 2026-08-13 該批名單中。",
+          "source_url": "https://www.newspim.com/news/view/20260812001246"
+        },
+        {
+          "type": "inference",
+          "text": "額面併合的時點與上述 1,000원 退場新規高度吻合（併合前股價約 500–930원、併合後約 2,600–4,600원，同期韓國市場單月有 98 家公司實施額面併合）—— 但公司對外揭露的目的寫的是「적정 유통주식수 유지를 통한 주가 안정화 및 기업가치 제고」，未提及退場基準。此連結為推論，非公司說法。",
+          "source_url": "https://www.newspim.com/news/view/20260812001246"
+        },
+        {
+          "type": "fact",
+          "text": "不配息，故 Yahoo 的 close 與 adjclose 逐筆相同。",
+          "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/298060.KQ"
+        }
+      ]
+    }
+  ]
+}
