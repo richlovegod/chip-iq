@@ -74,6 +74,8 @@ GOLDEN = {
 # 市值的外部交叉驗證。
 # 鐵則：value 必須是「外部網站實際顯示的數字」，不能是本專案自己的推導結果——
 # 否則這條檢查就是拿自己的答案對自己的答案，改壞了也不會 fail。
+# value 是「as_of 那天」的市值，不是今天的：檢查會用序列裡 as_of 當天的收盤價
+# 重算來比對。不要拿它去對最新市值——股價每天在動，那樣會天天 fail。
 # 韓國：Naver 금융 시총（外部真值）。
 # 日本：發行済株式総数 101,011,891（＝決算短信 98,079,891 ＋ 2026-07-16 第三者割當増資 2,932,000）
 #       × 終値 148（2026-08-14）＝ 14,949,759,868，與日本各報價站顯示的時価総額 149.5 億円同級。
@@ -286,13 +288,23 @@ def check_partner(p, R):
                          f"不是序列最新值（{series[-1]['c']} @ {days[-1]}）")
         g = GOLDEN_CAP.get(sym)
         if g:
+            # 錨點是「基準日當天」的外部市值，不是今天的：股價每天在動，拿今天的
+            # 市值去對一個固定數字必然天天失敗（2026-08-17 就是這樣掛的）。
+            # 正確作法是用我們自己序列裡「基準日」的收盤價重算，等於同時驗了
+            # 股數與那天的收盤價都跟外部網站對得上。
             # 股數一旦改變就靜默跳過的話，等於把這條防線整條拔掉——改成明確警告。
+            anchor = next((r for r in series if r["d"] == g["as_of"]), None)
             if mc.get("shares_used") != g["shares"]:
                 R.warn("C7", f"{sym} 股數已從外部錨點的 {g['shares']:,} 改為 "
                              f"{mc.get('shares_used'):,}，外部市值交叉驗證這次沒有執行。"
                              f"請同步更新 GOLDEN_CAP（錨點基準日 {g.get('as_of')}）。")
-            elif abs(mc["value"] - g["value"]) > CAP_TOL:
-                R.fail("C7", f"{sym} 市值 {mc['value']:,.0f} 與外部交叉驗證值 "
+            elif anchor is None:
+                R.warn("C7", f"{sym} 外部市值錨點基準日 {g['as_of']} 不在序列內"
+                             f"（已滾出窗格或當天無交易），交叉驗證這次沒有執行。"
+                             f"請更新 GOLDEN_CAP 到較近的基準日。")
+            elif abs(g["shares"] * anchor["c"] - g["value"]) > CAP_TOL:
+                R.fail("C7", f"{sym} {g['as_of']} 市值 {g['shares'] * anchor['c']:,.0f}"
+                             f"（{g['shares']:,} × {anchor['c']:,.2f}）與外部交叉驗證值 "
                              f"{g['value']:,.0f} 不符（{g['src']}）")
         if not [f for f in R.fails if f.startswith("[C7]")]:
             R.ok("C7", f"{sym} 市值 {mc['display']}（{mc['display_local']}）"
