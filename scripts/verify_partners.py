@@ -519,12 +519,13 @@ MUTATIONS = [
 ]
 
 
-def self_test(doc, ref_doc, prev):
+def self_test(doc, ref_doc):
     print("═══ 突變測試：每個突變都必須被對應的檢查抓到 ═══\n")
-    if not prev:
-        # git 裡還沒有上一版時，拿本次的乾淨資料當基準，C9 才有東西可比
-        prev = copy.deepcopy(doc)
-        print("  （git 中無上一版，突變測試以本次資料作為 C9 的比較基準）\n")
+    # C9 的突變是「相對於上一版倒退」，基準固定用本次的乾淨資料，不讀 git。
+    # 拿 git 裡的上一版當基準並不可靠：中間只要有幾天沒成功發佈，上一版就會
+    # 落後本次好幾天，退一天的突變仍然比上一版新，C9 就抓不到，測試假性失敗
+    # ——反而擋住整站發佈（2026-08-18、08-19 兩次排程就是這樣掛的）。
+    prev = copy.deepcopy(doc)
     bad = 0
     for name, fn, expect in MUTATIONS:
         R = run_checks(fn(copy.deepcopy(doc)), ref_doc, prev)
@@ -552,7 +553,7 @@ def main():
     prev = git_prev(OUT_REL)
 
     if "--self-test" in sys.argv:
-        sys.exit(self_test(doc, ref_doc, prev))
+        sys.exit(self_test(doc, ref_doc))
 
     m = doc.get("meta") or {}
     print(f"═══ 海外授權夥伴回歸測試 ═══")
