@@ -2,19 +2,19 @@
  "stock_id": "7729",
  "stock_name": "仲恩生醫",
  "market": "興櫃",
- "updated_at": "2026-08-21",
+ "updated_at": "2026-08-24",
  "today": {
-  "date": "2026-08-21",
-  "latest_price": 78.9,
-  "avg_price": 78.69,
-  "prev_avg_price": 78.93,
-  "high": 79.9,
-  "low": 77.2,
-  "volume": 235469
+  "date": "2026-08-24",
+  "latest_price": 78.0,
+  "avg_price": 77.65,
+  "prev_avg_price": 78.69,
+  "high": 80.0,
+  "low": 76.1,
+  "volume": 487197
  },
  "capital": {
   "capital_musd": 805.79,
-  "rank": 54
+  "rank": 55
  },
  "market_makers": [
   {
@@ -30,7 +30,7 @@
    "dealer_name": "台中銀自營"
   }
  ],
- "shares_outstanding": 80572991,
+ "shares_outstanding": 80682241,
  "shares_source": "MOPS 已發行普通股數",
  "shares_note": "MOPS 已發行普通股數，每次執行重抓；與 fetch_peers.py 同源，確保全站市值一致",
  "sources": {

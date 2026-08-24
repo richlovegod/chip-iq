@@ -1,7 +1,7 @@
 {
  "stock_id": "7729",
  "stock_name": "仲恩生醫",
- "shares_outstanding": 80572991,
+ "shares_outstanding": 80682241,
  "series": [
   {
    "date": "2024-09-02",
@@ -11,7 +11,7 @@
    "low": 26.3,
    "avg_price": 26.33,
    "trades": 3,
-   "market_cap": 21.21
+   "market_cap": 21.24
   },
   {
    "date": "2024-09-03",
@@ -21,7 +21,7 @@
    "low": 24.8,
    "avg_price": 25.11,
    "trades": 22,
-   "market_cap": 20.23
+   "market_cap": 20.26
   },
   {
    "date": "2024-09-04",
@@ -31,7 +31,7 @@
    "low": 24.0,
    "avg_price": 24.35,
    "trades": 28,
-   "market_cap": 19.62
+   "market_cap": 19.65
   },
   {
    "date": "2024-09-05",
@@ -41,7 +41,7 @@
    "low": 24.0,
    "avg_price": 24.41,
    "trades": 15,
-   "market_cap": 19.67
+   "market_cap": 19.69
   },
   {
    "date": "2024-09-06",
@@ -51,7 +51,7 @@
    "low": 24.0,
    "avg_price": 24.55,
    "trades": 28,
-   "market_cap": 19.78
+   "market_cap": 19.81
   },
   {
    "date": "2024-09-09",
@@ -61,7 +61,7 @@
    "low": 23.75,
    "avg_price": 24.43,
    "trades": 18,
-   "market_cap": 19.68
+   "market_cap": 19.71
   },
   {
    "date": "2024-09-10",
@@ -71,7 +71,7 @@
    "low": 23.8,
    "avg_price": 23.96,
    "trades": 13,
-   "market_cap": 19.31
+   "market_cap": 19.33
   },
   {
    "date": "2024-09-11",
@@ -81,7 +81,7 @@
    "low": 23.65,
    "avg_price": 23.9,
    "trades": 42,
-   "market_cap": 19.26
+   "market_cap": 19.28
   },
   {
    "date": "2024-09-12",
@@ -91,7 +91,7 @@
    "low": 23.4,
    "avg_price": 23.58,
    "trades": 23,
-   "market_cap": 19.0
+   "market_cap": 19.02
   },
   {
    "date": "2024-09-13",
@@ -101,7 +101,7 @@
    "low": 22.8,
    "avg_price": 23.04,
    "trades": 30,
-   "market_cap": 18.56
+   "market_cap": 18.59
   },
   {
    "date": "2024-09-16",
@@ -111,7 +111,7 @@
    "low": 23.1,
    "avg_price": 23.46,
    "trades": 47,
-   "market_cap": 18.9
+   "market_cap": 18.93
   },
   {
    "date": "2024-09-18",
@@ -121,7 +121,7 @@
    "low": 23.35,
    "avg_price": 23.9,
    "trades": 38,
-   "market_cap": 19.26
+   "market_cap": 19.28
   },
   {
    "date": "2024-09-19",
@@ -131,7 +131,7 @@
    "low": 24.15,
    "avg_price": 24.15,
    "trades": 6,
-   "market_cap": 19.46
+   "market_cap": 19.48
   },
   {
    "date": "2024-09-20",
@@ -141,7 +141,7 @@
    "low": 23.3,
    "avg_price": 23.47,
    "trades": 18,
-   "market_cap": 18.91
+   "market_cap": 18.94
   },
   {
    "date": "2024-09-23",
@@ -151,7 +151,7 @@
    "low": 23.0,
    "avg_price": 23.29,
    "trades": 42,
-   "market_cap": 18.77
+   "market_cap": 18.79
   },
   {
    "date": "2024-09-24",
@@ -161,7 +161,7 @@
    "low": 23.05,
    "avg_price": 23.41,
    "trades": 10,
-   "market_cap": 18.86
+   "market_cap": 18.89
   },
   {
    "date": "2024-09-25",
@@ -171,7 +171,7 @@
    "low": 23.3,
    "avg_price": 23.57,
    "trades": 25,
-   "market_cap": 18.99
+   "market_cap": 19.02
   },
   {
    "date": "2024-09-26",
@@ -181,7 +181,7 @@
    "low": 23.2,
    "avg_price": 23.74,
    "trades": 26,
-   "market_cap": 19.13
+   "market_cap": 19.15
   },
   {
    "date": "2024-09-27",
@@ -191,7 +191,7 @@
    "low": 23.85,
    "avg_price": 24.93,
    "trades": 78,
-   "market_cap": 20.09
+   "market_cap": 20.11
   },
   {
    "date": "2024-09-30",
@@ -201,7 +201,7 @@
    "low": 23.5,
    "avg_price": 24.65,
    "trades": 57,
-   "market_cap": 19.86
+   "market_cap": 19.89
   },
   {
    "date": "2024-10-01",
@@ -211,7 +211,7 @@
    "low": 23.35,
    "avg_price": 23.78,
    "trades": 42,
-   "market_cap": 19.16
+   "market_cap": 19.19
   },
   {
    "date": "2024-10-04",
@@ -221,7 +221,7 @@
    "low": 23.15,
    "avg_price": 23.65,
    "trades": 27,
-   "market_cap": 19.06
+   "market_cap": 19.08
   },
   {
    "date": "2024-10-07",
@@ -231,7 +231,7 @@
    "low": 23.4,
    "avg_price": 23.6,
    "trades": 11,
-   "market_cap": 19.02
+   "market_cap": 19.04
   },
   {
    "date": "2024-10-08",
@@ -241,7 +241,7 @@
    "low": 23.25,
    "avg_price": 24.03,
    "trades": 16,
-   "market_cap": 19.36
+   "market_cap": 19.39
   },
   {
    "date": "2024-10-09",
@@ -251,7 +251,7 @@
    "low": 23.0,
    "avg_price": 23.29,
    "trades": 29,
-   "market_cap": 18.77
+   "market_cap": 18.79
   },
   {
    "date": "2024-10-11",
@@ -261,7 +261,7 @@
    "low": 22.9,
    "avg_price": 23.01,
    "trades": 25,
-   "market_cap": 18.54
+   "market_cap": 18.56
   },
   {
    "date": "2024-10-14",
@@ -271,7 +271,7 @@
    "low": 22.8,
    "avg_price": 22.96,
    "trades": 32,
-   "market_cap": 18.5
+   "market_cap": 18.52
   },
   {
    "date": "2024-10-15",
@@ -281,7 +281,7 @@
    "low": 23.35,
    "avg_price": 23.37,
    "trades": 3,
-   "market_cap": 18.83
+   "market_cap": 18.86
   },
   {
    "date": "2024-10-16",
@@ -291,7 +291,7 @@
    "low": 23.3,
    "avg_price": 23.36,
    "trades": 6,
-   "market_cap": 18.82
+   "market_cap": 18.85
   },
   {
    "date": "2024-10-17",
@@ -301,7 +301,7 @@
    "low": 22.4,
    "avg_price": 22.53,
    "trades": 21,
-   "market_cap": 18.15
+   "market_cap": 18.18
   },
   {
    "date": "2024-10-18",
@@ -311,7 +311,7 @@
    "low": 22.3,
    "avg_price": 22.35,
    "trades": 9,
-   "market_cap": 18.01
+   "market_cap": 18.03
   },
   {
    "date": "2024-10-21",
@@ -321,7 +321,7 @@
    "low": 22.0,
    "avg_price": 22.27,
    "trades": 32,
-   "market_cap": 17.94
+   "market_cap": 17.97
   },
   {
    "date": "2024-10-22",
@@ -331,7 +331,7 @@
    "low": 21.85,
    "avg_price": 22.52,
    "trades": 6,
-   "market_cap": 18.15
+   "market_cap": 18.17
   },
   {
    "date": "2024-10-23",
@@ -341,7 +341,7 @@
    "low": 21.6,
    "avg_price": 21.94,
    "trades": 41,
-   "market_cap": 17.68
+   "market_cap": 17.7
   },
   {
    "date": "2024-10-24",
@@ -351,7 +351,7 @@
    "low": 21.6,
    "avg_price": 21.76,
    "trades": 16,
-   "market_cap": 17.53
+   "market_cap": 17.56
   },
   {
    "date": "2024-10-25",
@@ -361,7 +361,7 @@
    "low": 21.6,
    "avg_price": 22.69,
    "trades": 44,
-   "market_cap": 18.28
+   "market_cap": 18.31
   },
   {
    "date": "2024-10-28",
@@ -371,7 +371,7 @@
    "low": 23.0,
    "avg_price": 23.06,
    "trades": 7,
-   "market_cap": 18.58
+   "market_cap": 18.61
   },
   {
    "date": "2024-10-29",
@@ -381,7 +381,7 @@
    "low": 22.0,
    "avg_price": 22.22,
    "trades": 30,
-   "market_cap": 17.9
+   "market_cap": 17.93
   },
   {
    "date": "2024-10-30",
@@ -391,7 +391,7 @@
    "low": 21.55,
    "avg_price": 21.98,
    "trades": 30,
-   "market_cap": 17.71
+   "market_cap": 17.73
   },
   {
    "date": "2024-11-01",
@@ -401,7 +401,7 @@
    "low": 21.55,
    "avg_price": 21.97,
    "trades": 16,
-   "market_cap": 17.7
+   "market_cap": 17.73
   },
   {
    "date": "2024-11-04",
@@ -411,7 +411,7 @@
    "low": 21.5,
    "avg_price": 22.02,
    "trades": 12,
-   "market_cap": 17.74
+   "market_cap": 17.77
   },
   {
    "date": "2024-11-05",
@@ -421,7 +421,7 @@
    "low": 19.9,
    "avg_price": 20.39,
    "trades": 132,
-   "market_cap": 16.43
+   "market_cap": 16.45
   },
   {
    "date": "2024-11-06",
@@ -431,7 +431,7 @@
    "low": 19.95,
    "avg_price": 20.33,
    "trades": 170,
-   "market_cap": 16.38
+   "market_cap": 16.4
   },
   {
    "date": "2024-11-07",
@@ -441,7 +441,7 @@
    "low": 20.25,
    "avg_price": 20.57,
    "trades": 12,
-   "market_cap": 16.57
+   "market_cap": 16.6
   },
   {
    "date": "2024-11-08",
@@ -451,7 +451,7 @@
    "low": 20.3,
    "avg_price": 20.83,
    "trades": 26,
-   "market_cap": 16.78
+   "market_cap": 16.81
   },
   {
    "date": "2024-11-11",
@@ -461,7 +461,7 @@
    "low": 20.7,
    "avg_price": 21.98,
    "trades": 70,
-   "market_cap": 17.71
+   "market_cap": 17.73
   },
   {
    "date": "2024-11-12",
@@ -471,7 +471,7 @@
    "low": 22.0,
    "avg_price": 22.79,
    "trades": 67,
-   "market_cap": 18.36
+   "market_cap": 18.39
   },
   {
    "date": "2024-11-13",
@@ -481,7 +481,7 @@
    "low": 21.8,
    "avg_price": 22.01,
    "trades": 67,
-   "market_cap": 17.73
+   "market_cap": 17.76
   },
   {
    "date": "2024-11-14",
@@ -491,7 +491,7 @@
    "low": 20.95,
    "avg_price": 21.59,
    "trades": 31,
-   "market_cap": 17.4
+   "market_cap": 17.42
   },
   {
    "date": "2024-11-15",
@@ -501,7 +501,7 @@
    "low": 20.6,
    "avg_price": 21.7,
    "trades": 68,
-   "market_cap": 17.48
+   "market_cap": 17.51
   },
   {
    "date": "2024-11-18",
@@ -511,7 +511,7 @@
    "low": 20.8,
    "avg_price": 21.42,
    "trades": 31,
-   "market_cap": 17.26
+   "market_cap": 17.28
   },
   {
    "date": "2024-11-19",
@@ -521,7 +521,7 @@
    "low": 20.9,
    "avg_price": 21.9,
    "trades": 20,
-   "market_cap": 17.65
+   "market_cap": 17.67
   },
   {
    "date": "2024-11-20",
@@ -531,7 +531,7 @@
    "low": 21.55,
    "avg_price": 22.34,
    "trades": 32,
-   "market_cap": 18.0
+   "market_cap": 18.02
   },
   {
    "date": "2024-11-21",
@@ -541,7 +541,7 @@
    "low": 22.05,
    "avg_price": 22.48,
    "trades": 26,
-   "market_cap": 18.11
+   "market_cap": 18.14
   },
   {
    "date": "2024-11-22",
@@ -551,7 +551,7 @@
    "low": 21.95,
    "avg_price": 22.24,
    "trades": 39,
-   "market_cap": 17.92
+   "market_cap": 17.94
   },
   {
    "date": "2024-11-25",
@@ -561,7 +561,7 @@
    "low": 21.95,
    "avg_price": 22.82,
    "trades": 40,
-   "market_cap": 18.39
+   "market_cap": 18.41
   },
   {
    "date": "2024-11-26",
@@ -571,7 +571,7 @@
    "low": 22.35,
    "avg_price": 22.76,
    "trades": 20,
-   "market_cap": 18.34
+   "market_cap": 18.36
   },
   {
    "date": "2024-11-27",
@@ -581,7 +581,7 @@
    "low": 22.0,
    "avg_price": 22.36,
    "trades": 37,
-   "market_cap": 18.02
+   "market_cap": 18.04
   },
   {
    "date": "2024-11-28",
@@ -591,7 +591,7 @@
    "low": 21.75,
    "avg_price": 22.14,
    "trades": 18,
-   "market_cap": 17.84
+   "market_cap": 17.86
   },
   {
    "date": "2024-11-29",
@@ -601,7 +601,7 @@
    "low": 22.4,
    "avg_price": 22.64,
    "trades": 15,
-   "market_cap": 18.24
+   "market_cap": 18.27
   },
   {
    "date": "2024-12-02",
@@ -611,7 +611,7 @@
    "low": 22.65,
    "avg_price": 22.92,
    "trades": 55,
-   "market_cap": 18.47
+   "market_cap": 18.49
   },
   {
    "date": "2024-12-03",
@@ -621,7 +621,7 @@
    "low": 23.05,
    "avg_price": 24.0,
    "trades": 94,
-   "market_cap": 19.34
+   "market_cap": 19.36
   },
   {
    "date": "2024-12-04",
@@ -631,7 +631,7 @@
    "low": 23.1,
    "avg_price": 23.75,
    "trades": 21,
-   "market_cap": 19.14
+   "market_cap": 19.16
   },
   {
    "date": "2024-12-05",
@@ -641,7 +641,7 @@
    "low": 23.0,
    "avg_price": 23.39,
    "trades": 51,
-   "market_cap": 18.85
+   "market_cap": 18.87
   },
   {
    "date": "2024-12-06",
@@ -651,7 +651,7 @@
    "low": 22.35,
    "avg_price": 22.93,
    "trades": 29,
-   "market_cap": 18.48
+   "market_cap": 18.5
   },
   {
    "date": "2024-12-09",
@@ -661,7 +661,7 @@
    "low": 22.4,
    "avg_price": 22.61,
    "trades": 11,
-   "market_cap": 18.22
+   "market_cap": 18.24
   },
   {
    "date": "2024-12-10",
@@ -671,7 +671,7 @@
    "low": 22.3,
    "avg_price": 22.59,
    "trades": 28,
-   "market_cap": 18.2
+   "market_cap": 18.23
   },
   {
    "date": "2024-12-11",
@@ -681,7 +681,7 @@
    "low": 22.5,
    "avg_price": 22.8,
    "trades": 10,
-   "market_cap": 18.37
+   "market_cap": 18.4
   },
   {
    "date": "2024-12-12",
@@ -691,7 +691,7 @@
    "low": 22.0,
    "avg_price": 22.43,
    "trades": 46,
-   "market_cap": 18.07
+   "market_cap": 18.1
   },
   {
    "date": "2024-12-13",
@@ -701,7 +701,7 @@
    "low": 22.45,
    "avg_price": 22.61,
    "trades": 19,
-   "market_cap": 18.22
+   "market_cap": 18.24
   },
   {
    "date": "2024-12-16",
@@ -711,7 +711,7 @@
    "low": 21.45,
    "avg_price": 22.32,
    "trades": 18,
-   "market_cap": 17.98
+   "market_cap": 18.01
   },
   {
    "date": "2024-12-17",
@@ -721,7 +721,7 @@
    "low": 21.45,
    "avg_price": 21.89,
    "trades": 4,
-   "market_cap": 17.64
+   "market_cap": 17.66
   },
   {
    "date": "2024-12-18",
@@ -731,7 +731,7 @@
    "low": 22.0,
    "avg_price": 23.5,
    "trades": 70,
-   "market_cap": 18.93
+   "market_cap": 18.96
   },
   {
    "date": "2024-12-19",
@@ -741,7 +741,7 @@
    "low": 22.75,
    "avg_price": 23.07,
    "trades": 57,
-   "market_cap": 18.59
+   "market_cap": 18.61
   },
   {
    "date": "2024-12-20",
@@ -751,7 +751,7 @@
    "low": 22.7,
    "avg_price": 23.11,
    "trades": 42,
-   "market_cap": 18.62
+   "market_cap": 18.65
   },
   {
    "date": "2024-12-23",
@@ -761,7 +761,7 @@
    "low": 22.7,
    "avg_price": 23.01,
    "trades": 38,
-   "market_cap": 18.54
+   "market_cap": 18.56
   },
   {
    "date": "2024-12-24",
@@ -771,7 +771,7 @@
    "low": 21.35,
    "avg_price": 22.47,
    "trades": 59,
-   "market_cap": 18.1
+   "market_cap": 18.13
   },
   {
    "date": "2024-12-25",
@@ -781,7 +781,7 @@
    "low": 21.9,
    "avg_price": 22.07,
    "trades": 34,
-   "market_cap": 17.78
+   "market_cap": 17.81
   },
   {
    "date": "2024-12-26",
@@ -791,7 +791,7 @@
    "low": 21.8,
    "avg_price": 21.99,
    "trades": 21,
-   "market_cap": 17.72
+   "market_cap": 17.74
   },
   {
    "date": "2024-12-27",
@@ -801,7 +801,7 @@
    "low": 22.0,
    "avg_price": 22.95,
    "trades": 44,
-   "market_cap": 18.49
+   "market_cap": 18.52
   },
   {
    "date": "2024-12-30",
@@ -811,7 +811,7 @@
    "low": 22.55,
    "avg_price": 22.84,
    "trades": 16,
-   "market_cap": 18.4
+   "market_cap": 18.43
   },
   {
    "date": "2024-12-31",
@@ -821,7 +821,7 @@
    "low": 22.05,
    "avg_price": 22.36,
    "trades": 8,
-   "market_cap": 18.02
+   "market_cap": 18.04
   },
   {
    "date": "2025-01-02",
@@ -831,7 +831,7 @@
    "low": 22.1,
    "avg_price": 22.25,
    "trades": 15,
-   "market_cap": 17.93
+   "market_cap": 17.95
   },
   {
    "date": "2025-01-03",
@@ -841,7 +841,7 @@
    "low": 21.3,
    "avg_price": 22.0,
    "trades": 80,
-   "market_cap": 17.73
+   "market_cap": 17.75
   },
   {
    "date": "2025-01-06",
@@ -851,7 +851,7 @@
    "low": 21.0,
    "avg_price": 21.8,
    "trades": 79,
-   "market_cap": 17.56
+   "market_cap": 17.59
   },
   {
    "date": "2025-01-07",
@@ -861,7 +861,7 @@
    "low": 20.9,
    "avg_price": 21.23,
    "trades": 41,
-   "market_cap": 17.11
+   "market_cap": 17.13
   },
   {
    "date": "2025-01-08",
@@ -871,7 +871,7 @@
    "low": 21.0,
    "avg_price": 21.31,
    "trades": 31,
-   "market_cap": 17.17
+   "market_cap": 17.19
   },
   {
    "date": "2025-01-09",
@@ -881,7 +881,7 @@
    "low": 20.75,
    "avg_price": 20.97,
    "trades": 29,
-   "market_cap": 16.9
+   "market_cap": 16.92
   },
   {
    "date": "2025-01-10",
@@ -891,7 +891,7 @@
    "low": 20.75,
    "avg_price": 20.83,
    "trades": 7,
-   "market_cap": 16.78
+   "market_cap": 16.81
   },
   {
    "date": "2025-01-13",
@@ -901,7 +901,7 @@
    "low": 20.1,
    "avg_price": 20.8,
    "trades": 47,
-   "market_cap": 16.76
+   "market_cap": 16.78
   },
   {
    "date": "2025-01-14",
@@ -911,7 +911,7 @@
    "low": 20.2,
    "avg_price": 20.79,
    "trades": 16,
-   "market_cap": 16.75
+   "market_cap": 16.77
   },
   {
    "date": "2025-01-15",
@@ -921,7 +921,7 @@
    "low": 19.25,
    "avg_price": 19.88,
    "trades": 95,
-   "market_cap": 16.02
+   "market_cap": 16.04
   },
   {
    "date": "2025-01-16",
@@ -931,7 +931,7 @@
    "low": 20.0,
    "avg_price": 20.26,
    "trades": 27,
-   "market_cap": 16.32
+   "market_cap": 16.35
   },
   {
    "date": "2025-01-17",
@@ -941,7 +941,7 @@
    "low": 20.0,
    "avg_price": 20.29,
    "trades": 20,
-   "market_cap": 16.35
+   "market_cap": 16.37
   },
   {
    "date": "2025-01-20",
@@ -951,7 +951,7 @@
    "low": 20.05,
    "avg_price": 20.36,
    "trades": 20,
-   "market_cap": 16.4
+   "market_cap": 16.43
   },
   {
    "date": "2025-01-21",
@@ -961,7 +961,7 @@
    "low": 20.05,
    "avg_price": 20.33,
    "trades": 17,
-   "market_cap": 16.38
+   "market_cap": 16.4
   },
   {
    "date": "2025-01-22",
@@ -971,7 +971,7 @@
    "low": 19.9,
    "avg_price": 20.2,
    "trades": 20,
-   "market_cap": 16.28
+   "market_cap": 16.3
   },
   {
    "date": "2025-02-03",
@@ -981,7 +981,7 @@
    "low": 19.7,
    "avg_price": 20.17,
    "trades": 52,
-   "market_cap": 16.25
+   "market_cap": 16.27
   },
   {
    "date": "2025-02-04",
@@ -991,7 +991,7 @@
    "low": 19.8,
    "avg_price": 20.19,
    "trades": 45,
-   "market_cap": 16.27
+   "market_cap": 16.29
   },
   {
    "date": "2025-02-05",
@@ -1001,7 +1001,7 @@
    "low": 19.8,
    "avg_price": 19.94,
    "trades": 34,
-   "market_cap": 16.07
+   "market_cap": 16.09
   },
   {
    "date": "2025-02-06",
@@ -1011,7 +1011,7 @@
    "low": 19.85,
    "avg_price": 20.41,
    "trades": 55,
-   "market_cap": 16.44
+   "market_cap": 16.47
   },
   {
    "date": "2025-02-07",
@@ -1021,7 +1021,7 @@
    "low": 20.75,
    "avg_price": 20.75,
    "trades": 1,
-   "market_cap": 16.72
+   "market_cap": 16.74
   },
   {
    "date": "2025-02-10",
@@ -1031,7 +1031,7 @@
    "low": 20.0,
    "avg_price": 20.41,
    "trades": 12,
-   "market_cap": 16.44
+   "market_cap": 16.47
   },
   {
    "date": "2025-02-11",
@@ -1041,7 +1041,7 @@
    "low": 20.1,
    "avg_price": 20.88,
    "trades": 51,
-   "market_cap": 16.82
+   "market_cap": 16.85
   },
   {
    "date": "2025-02-12",
@@ -1051,7 +1051,7 @@
    "low": 21.05,
    "avg_price": 21.35,
    "trades": 29,
-   "market_cap": 17.2
+   "market_cap": 17.23
   },
   {
    "date": "2025-02-13",
@@ -1061,7 +1061,7 @@
    "low": 21.4,
    "avg_price": 21.73,
    "trades": 36,
-   "market_cap": 17.51
+   "market_cap": 17.53
   },
   {
    "date": "2025-02-14",
@@ -1071,7 +1071,7 @@
    "low": 20.95,
    "avg_price": 21.4,
    "trades": 25,
-   "market_cap": 17.24
+   "market_cap": 17.27
   },
   {
    "date": "2025-02-17",
@@ -1081,7 +1081,7 @@
    "low": 21.4,
    "avg_price": 21.77,
    "trades": 16,
-   "market_cap": 17.54
+   "market_cap": 17.56
   },
   {
    "date": "2025-02-18",
@@ -1091,7 +1091,7 @@
    "low": 19.65,
    "avg_price": 20.71,
    "trades": 82,
-   "market_cap": 16.69
+   "market_cap": 16.71
   },
   {
    "date": "2025-02-19",
@@ -1101,7 +1101,7 @@
    "low": 19.65,
    "avg_price": 20.46,
    "trades": 28,
-   "market_cap": 16.49
+   "market_cap": 16.51
   },
   {
    "date": "2025-02-20",
@@ -1111,7 +1111,7 @@
    "low": 19.8,
    "avg_price": 21.95,
    "trades": 109,
-   "market_cap": 17.69
+   "market_cap": 17.71
   },
   {
    "date": "2025-02-21",
@@ -1121,7 +1121,7 @@
    "low": 21.5,
    "avg_price": 22.26,
    "trades": 112,
-   "market_cap": 17.94
+   "market_cap": 17.96
   },
   {
    "date": "2025-02-24",
@@ -1131,7 +1131,7 @@
    "low": 21.7,
    "avg_price": 22.2,
    "trades": 95,
-   "market_cap": 17.89
+   "market_cap": 17.91
   },
   {
    "date": "2025-02-25",
@@ -1141,7 +1141,7 @@
    "low": 20.85,
    "avg_price": 21.55,
    "trades": 74,
-   "market_cap": 17.36
+   "market_cap": 17.39
   },
   {
    "date": "2025-02-26",
@@ -1151,7 +1151,7 @@
    "low": 21.25,
    "avg_price": 21.74,
    "trades": 34,
-   "market_cap": 17.52
+   "market_cap": 17.54
   },
   {
    "date": "2025-02-27",
@@ -1161,7 +1161,7 @@
    "low": 21.25,
    "avg_price": 21.55,
    "trades": 38,
-   "market_cap": 17.36
+   "market_cap": 17.39
   },
   {
    "date": "2025-03-03",
@@ -1171,7 +1171,7 @@
    "low": 20.0,
    "avg_price": 20.97,
    "trades": 102,
-   "market_cap": 16.9
+   "market_cap": 16.92
   },
   {
    "date": "2025-03-04",
@@ -1181,7 +1181,7 @@
    "low": 20.0,
    "avg_price": 20.64,
    "trades": 82,
-   "market_cap": 16.63
+   "market_cap": 16.65
   },
   {
    "date": "2025-03-05",
@@ -1191,7 +1191,7 @@
    "low": 20.0,
    "avg_price": 20.95,
    "trades": 77,
-   "market_cap": 16.88
+   "market_cap": 16.9
   },
   {
    "date": "2025-03-06",
@@ -1201,7 +1201,7 @@
    "low": 20.0,
    "avg_price": 20.68,
    "trades": 69,
-   "market_cap": 16.66
+   "market_cap": 16.69
   },
   {
    "date": "2025-03-07",
@@ -1211,7 +1211,7 @@
    "low": 20.0,
    "avg_price": 20.67,
    "trades": 68,
-   "market_cap": 16.65
+   "market_cap": 16.68
   },
   {
    "date": "2025-03-10",
@@ -1221,7 +1221,7 @@
    "low": 20.0,
    "avg_price": 20.71,
    "trades": 77,
-   "market_cap": 16.69
+   "market_cap": 16.71
   },
   {
    "date": "2025-03-11",
@@ -1231,7 +1231,7 @@
    "low": 20.0,
    "avg_price": 20.42,
    "trades": 63,
-   "market_cap": 16.45
+   "market_cap": 16.48
   },
   {
    "date": "2025-03-12",
@@ -1241,7 +1241,7 @@
    "low": 19.95,
    "avg_price": 20.2,
    "trades": 190,
-   "market_cap": 16.28
+   "market_cap": 16.3
   },
   {
    "date": "2025-03-13",
@@ -1251,7 +1251,7 @@
    "low": 19.9,
    "avg_price": 20.16,
    "trades": 74,
-   "market_cap": 16.24
+   "market_cap": 16.27
   },
   {
    "date": "2025-03-14",
@@ -1261,7 +1261,7 @@
    "low": 20.0,
    "avg_price": 20.28,
    "trades": 68,
-   "market_cap": 16.34
+   "market_cap": 16.36
   },
   {
    "date": "2025-03-17",
@@ -1271,7 +1271,7 @@
    "low": 20.0,
    "avg_price": 20.82,
    "trades": 145,
-   "market_cap": 16.78
+   "market_cap": 16.8
   },
   {
    "date": "2025-03-18",
@@ -1281,7 +1281,7 @@
    "low": 21.4,
    "avg_price": 22.71,
    "trades": 342,
-   "market_cap": 18.3
+   "market_cap": 18.32
   },
   {
    "date": "2025-03-19",
@@ -1291,7 +1291,7 @@
    "low": 23.0,
    "avg_price": 25.55,
    "trades": 600,
-   "market_cap": 20.59
+   "market_cap": 20.61
   },
   {
    "date": "2025-03-20",
@@ -1301,7 +1301,7 @@
    "low": 24.75,
    "avg_price": 25.39,
    "trades": 283,
-   "market_cap": 20.46
+   "market_cap": 20.49
   },
   {
    "date": "2025-03-21",
@@ -1311,7 +1311,7 @@
    "low": 23.9,
    "avg_price": 24.6,
    "trades": 168,
-   "market_cap": 19.82
+   "market_cap": 19.85
   },
   {
    "date": "2025-03-24",
@@ -1321,7 +1321,7 @@
    "low": 22.0,
    "avg_price": 23.03,
    "trades": 400,
-   "market_cap": 18.56
+   "market_cap": 18.58
   },
   {
    "date": "2025-03-25",
@@ -1331,7 +1331,7 @@
    "low": 22.5,
    "avg_price": 23.55,
    "trades": 171,
-   "market_cap": 18.97
+   "market_cap": 19.0
   },
   {
    "date": "2025-03-26",
@@ -1341,7 +1341,7 @@
    "low": 23.0,
    "avg_price": 23.57,
    "trades": 107,
-   "market_cap": 18.99
+   "market_cap": 19.02
   },
   {
    "date": "2025-03-27",
@@ -1351,7 +1351,7 @@
    "low": 23.0,
    "avg_price": 23.62,
    "trades": 109,
-   "market_cap": 19.03
+   "market_cap": 19.06
   },
   {
    "date": "2025-03-28",
@@ -1361,7 +1361,7 @@
    "low": 22.7,
    "avg_price": 22.95,
    "trades": 129,
-   "market_cap": 18.49
+   "market_cap": 18.52
   },
   {
    "date": "2025-03-31",
@@ -1371,7 +1371,7 @@
    "low": 21.9,
    "avg_price": 22.3,
    "trades": 130,
-   "market_cap": 17.97
+   "market_cap": 17.99
   },
   {
    "date": "2025-04-01",
@@ -1381,7 +1381,7 @@
    "low": 21.0,
    "avg_price": 21.43,
    "trades": 194,
-   "market_cap": 17.27
+   "market_cap": 17.29
   },
   {
    "date": "2025-04-02",
@@ -1391,7 +1391,7 @@
    "low": 21.0,
    "avg_price": 21.32,
    "trades": 80,
-   "market_cap": 17.18
+   "market_cap": 17.2
   },
   {
    "date": "2025-04-07",
@@ -1401,7 +1401,7 @@
    "low": 15.6,
    "avg_price": 17.43,
    "trades": 302,
-   "market_cap": 14.04
+   "market_cap": 14.06
   },
   {
    "date": "2025-04-08",
@@ -1411,7 +1411,7 @@
    "low": 16.5,
    "avg_price": 17.29,
    "trades": 115,
-   "market_cap": 13.93
+   "market_cap": 13.95
   },
   {
    "date": "2025-04-09",
@@ -1421,7 +1421,7 @@
    "low": 15.25,
    "avg_price": 16.71,
    "trades": 174,
-   "market_cap": 13.46
+   "market_cap": 13.48
   },
   {
    "date": "2025-04-10",
@@ -1431,7 +1431,7 @@
    "low": 16.3,
    "avg_price": 18.07,
    "trades": 97,
-   "market_cap": 14.56
+   "market_cap": 14.58
   },
   {
    "date": "2025-04-11",
@@ -1441,7 +1441,7 @@
    "low": 18.35,
    "avg_price": 18.74,
    "trades": 86,
-   "market_cap": 15.1
+   "market_cap": 15.12
   },
   {
    "date": "2025-04-14",
@@ -1451,7 +1451,7 @@
    "low": 19.0,
    "avg_price": 19.25,
    "trades": 67,
-   "market_cap": 15.51
+   "market_cap": 15.53
   },
   {
    "date": "2025-04-15",
@@ -1461,7 +1461,7 @@
    "low": 19.8,
    "avg_price": 20.1,
    "trades": 36,
-   "market_cap": 16.2
+   "market_cap": 16.22
   },
   {
    "date": "2025-04-16",
@@ -1471,7 +1471,7 @@
    "low": 20.15,
    "avg_price": 20.75,
    "trades": 64,
-   "market_cap": 16.72
+   "market_cap": 16.74
   },
   {
    "date": "2025-04-17",
@@ -1481,7 +1481,7 @@
    "low": 20.7,
    "avg_price": 21.67,
    "trades": 97,
-   "market_cap": 17.46
+   "market_cap": 17.48
   },
   {
    "date": "2025-04-18",
@@ -1491,7 +1491,7 @@
    "low": 22.6,
    "avg_price": 24.26,
    "trades": 339,
-   "market_cap": 19.55
+   "market_cap": 19.57
   },
   {
    "date": "2025-04-21",
@@ -1501,7 +1501,7 @@
    "low": 21.85,
    "avg_price": 22.4,
    "trades": 172,
-   "market_cap": 18.05
+   "market_cap": 18.07
   },
   {
    "date": "2025-04-22",
@@ -1511,7 +1511,7 @@
    "low": 20.9,
    "avg_price": 21.72,
    "trades": 53,
-   "market_cap": 17.5
+   "market_cap": 17.52
   },
   {
    "date": "2025-04-23",
@@ -1521,7 +1521,7 @@
    "low": 22.85,
    "avg_price": 23.29,
    "trades": 68,
-   "market_cap": 18.77
+   "market_cap": 18.79
   },
   {
    "date": "2025-04-24",
@@ -1531,7 +1531,7 @@
    "low": 21.5,
    "avg_price": 21.9,
    "trades": 102,
-   "market_cap": 17.65
+   "market_cap": 17.67
   },
   {
    "date": "2025-04-25",
@@ -1541,7 +1541,7 @@
    "low": 22.6,
    "avg_price": 23.15,
    "trades": 59,
-   "market_cap": 18.65
+   "market_cap": 18.68
   },
   {
    "date": "2025-04-28",
@@ -1551,7 +1551,7 @@
    "low": 22.4,
    "avg_price": 22.82,
    "trades": 73,
-   "market_cap": 18.39
+   "market_cap": 18.41
   },
   {
    "date": "2025-04-29",
@@ -1561,7 +1561,7 @@
    "low": 22.55,
    "avg_price": 22.75,
    "trades": 60,
-   "market_cap": 18.33
+   "market_cap": 18.36
   },
   {
    "date": "2025-04-30",
@@ -1571,7 +1571,7 @@
    "low": 21.9,
    "avg_price": 22.27,
    "trades": 96,
-   "market_cap": 17.94
+   "market_cap": 17.97
   },
   {
    "date": "2025-05-02",
@@ -1581,7 +1581,7 @@
    "low": 21.85,
    "avg_price": 22.03,
    "trades": 70,
-   "market_cap": 17.75
+   "market_cap": 17.77
   },
   {
    "date": "2025-05-05",
@@ -1591,7 +1591,7 @@
    "low": 20.2,
    "avg_price": 20.91,
    "trades": 82,
-   "market_cap": 16.85
+   "market_cap": 16.87
   },
   {
    "date": "2025-05-06",
@@ -1601,7 +1601,7 @@
    "low": 20.7,
    "avg_price": 21.1,
    "trades": 9,
-   "market_cap": 17.0
+   "market_cap": 17.02
   },
   {
    "date": "2025-05-07",
@@ -1611,7 +1611,7 @@
    "low": 20.45,
    "avg_price": 21.02,
    "trades": 69,
-   "market_cap": 16.94
+   "market_cap": 16.96
   },
   {
    "date": "2025-05-08",
@@ -1621,7 +1621,7 @@
    "low": 21.05,
    "avg_price": 21.26,
    "trades": 38,
-   "market_cap": 17.13
+   "market_cap": 17.15
   },
   {
    "date": "2025-05-09",
@@ -1631,7 +1631,7 @@
    "low": 21.4,
    "avg_price": 21.88,
    "trades": 29,
-   "market_cap": 17.63
+   "market_cap": 17.65
   },
   {
    "date": "2025-05-12",
@@ -1641,7 +1641,7 @@
    "low": 21.4,
    "avg_price": 21.7,
    "trades": 32,
-   "market_cap": 17.48
+   "market_cap": 17.51
   },
   {
    "date": "2025-05-13",
@@ -1651,7 +1651,7 @@
    "low": 21.45,
    "avg_price": 21.67,
    "trades": 38,
-   "market_cap": 17.46
+   "market_cap": 17.48
   },
   {
    "date": "2025-05-14",
@@ -1661,7 +1661,7 @@
    "low": 21.4,
    "avg_price": 21.55,
    "trades": 26,
-   "market_cap": 17.36
+   "market_cap": 17.39
   },
   {
    "date": "2025-05-15",
@@ -1671,7 +1671,7 @@
    "low": 21.15,
    "avg_price": 21.54,
    "trades": 34,
-   "market_cap": 17.36
+   "market_cap": 17.38
   },
   {
    "date": "2025-05-16",
@@ -1681,7 +1681,7 @@
    "low": 21.45,
    "avg_price": 21.8,
    "trades": 28,
-   "market_cap": 17.56
+   "market_cap": 17.59
   },
   {
    "date": "2025-05-19",
@@ -1691,7 +1691,7 @@
    "low": 21.4,
    "avg_price": 21.89,
    "trades": 42,
-   "market_cap": 17.64
+   "market_cap": 17.66
   },
   {
    "date": "2025-05-20",
@@ -1701,7 +1701,7 @@
    "low": 22.1,
    "avg_price": 22.29,
    "trades": 44,
-   "market_cap": 17.96
+   "market_cap": 17.98
   },
   {
    "date": "2025-05-21",
@@ -1711,7 +1711,7 @@
    "low": 21.85,
    "avg_price": 22.55,
    "trades": 83,
-   "market_cap": 18.17
+   "market_cap": 18.19
   },
   {
    "date": "2025-05-22",
@@ -1721,7 +1721,7 @@
    "low": 21.95,
    "avg_price": 22.21,
    "trades": 47,
-   "market_cap": 17.9
+   "market_cap": 17.92
   },
   {
    "date": "2025-05-23",
@@ -1731,7 +1731,7 @@
    "low": 21.9,
    "avg_price": 22.09,
    "trades": 52,
-   "market_cap": 17.8
+   "market_cap": 17.82
   },
   {
    "date": "2025-05-26",
@@ -1741,7 +1741,7 @@
    "low": 22.0,
    "avg_price": 22.22,
    "trades": 12,
-   "market_cap": 17.9
+   "market_cap": 17.93
   },
   {
    "date": "2025-05-27",
@@ -1751,7 +1751,7 @@
    "low": 21.4,
    "avg_price": 21.95,
    "trades": 34,
-   "market_cap": 17.69
+   "market_cap": 17.71
   },
   {
    "date": "2025-05-28",
@@ -1761,7 +1761,7 @@
    "low": 21.35,
    "avg_price": 21.64,
    "trades": 47,
-   "market_cap": 17.44
+   "market_cap": 17.46
   },
   {
    "date": "2025-05-29",
@@ -1771,7 +1771,7 @@
    "low": 21.2,
    "avg_price": 21.59,
    "trades": 34,
-   "market_cap": 17.4
+   "market_cap": 17.42
   },
   {
    "date": "2025-06-02",
@@ -1781,7 +1781,7 @@
    "low": 20.9,
    "avg_price": 21.04,
    "trades": 39,
-   "market_cap": 16.95
+   "market_cap": 16.98
   },
   {
    "date": "2025-06-03",
@@ -1791,7 +1791,7 @@
    "low": 20.65,
    "avg_price": 20.99,
    "trades": 41,
-   "market_cap": 16.91
+   "market_cap": 16.94
   },
   {
    "date": "2025-06-04",
@@ -1801,7 +1801,7 @@
    "low": 20.55,
    "avg_price": 20.69,
    "trades": 25,
-   "market_cap": 16.67
+   "market_cap": 16.69
   },
   {
    "date": "2025-06-05",
@@ -1811,7 +1811,7 @@
    "low": 20.4,
    "avg_price": 20.48,
    "trades": 9,
-   "market_cap": 16.5
+   "market_cap": 16.52
   },
   {
    "date": "2025-06-06",
@@ -1821,7 +1821,7 @@
    "low": 20.2,
    "avg_price": 20.49,
    "trades": 23,
-   "market_cap": 16.51
+   "market_cap": 16.53
   },
   {
    "date": "2025-06-09",
@@ -1831,7 +1831,7 @@
    "low": 20.2,
    "avg_price": 20.39,
    "trades": 38,
-   "market_cap": 16.43
+   "market_cap": 16.45
   },
   {
    "date": "2025-06-10",
@@ -1841,7 +1841,7 @@
    "low": 20.45,
    "avg_price": 21.06,
    "trades": 33,
-   "market_cap": 16.97
+   "market_cap": 16.99
   },
   {
    "date": "2025-06-11",
@@ -1851,7 +1851,7 @@
    "low": 20.5,
    "avg_price": 20.74,
    "trades": 24,
-   "market_cap": 16.71
+   "market_cap": 16.73
   },
   {
    "date": "2025-06-12",
@@ -1861,7 +1861,7 @@
    "low": 20.45,
    "avg_price": 20.55,
    "trades": 20,
-   "market_cap": 16.56
+   "market_cap": 16.58
   },
   {
    "date": "2025-06-13",
@@ -1871,7 +1871,7 @@
    "low": 19.55,
    "avg_price": 20.23,
    "trades": 37,
-   "market_cap": 16.3
+   "market_cap": 16.32
   },
   {
    "date": "2025-06-16",
@@ -1881,7 +1881,7 @@
    "low": 20.0,
    "avg_price": 20.25,
    "trades": 15,
-   "market_cap": 16.32
+   "market_cap": 16.34
   },
   {
    "date": "2025-06-17",
@@ -1891,7 +1891,7 @@
    "low": 20.15,
    "avg_price": 20.2,
    "trades": 5,
-   "market_cap": 16.28
+   "market_cap": 16.3
   },
   {
    "date": "2025-06-18",
@@ -1901,7 +1901,7 @@
    "low": 20.2,
    "avg_price": 20.3,
    "trades": 14,
-   "market_cap": 16.36
+   "market_cap": 16.38
   },
   {
    "date": "2025-06-19",
@@ -1911,7 +1911,7 @@
    "low": 20.3,
    "avg_price": 20.4,
    "trades": 8,
-   "market_cap": 16.44
+   "market_cap": 16.46
   },
   {
    "date": "2025-06-20",
@@ -1921,7 +1921,7 @@
    "low": 20.2,
    "avg_price": 20.35,
    "trades": 21,
-   "market_cap": 16.4
+   "market_cap": 16.42
   },
   {
    "date": "2025-06-23",
@@ -1931,7 +1931,7 @@
    "low": 20.25,
    "avg_price": 20.38,
    "trades": 9,
-   "market_cap": 16.42
+   "market_cap": 16.44
   },
   {
    "date": "2025-06-24",
@@ -1941,7 +1941,7 @@
    "low": 20.3,
    "avg_price": 20.49,
    "trades": 29,
-   "market_cap": 16.51
+   "market_cap": 16.53
   },
   {
    "date": "2025-06-25",
@@ -1951,7 +1951,7 @@
    "low": 20.4,
    "avg_price": 20.71,
    "trades": 21,
-   "market_cap": 16.69
+   "market_cap": 16.71
   },
   {
    "date": "2025-06-26",
@@ -1961,7 +1961,7 @@
    "low": 20.3,
    "avg_price": 20.87,
    "trades": 12,
-   "market_cap": 16.82
+   "market_cap": 16.84
   },
   {
    "date": "2025-06-27",
@@ -1971,7 +1971,7 @@
    "low": 19.8,
    "avg_price": 20.4,
    "trades": 47,
-   "market_cap": 16.44
+   "market_cap": 16.46
   },
   {
    "date": "2025-06-30",
@@ -1981,7 +1981,7 @@
    "low": 19.9,
    "avg_price": 20.26,
    "trades": 57,
-   "market_cap": 16.32
+   "market_cap": 16.35
   },
   {
    "date": "2025-07-01",
@@ -1991,7 +1991,7 @@
    "low": 19.9,
    "avg_price": 20.21,
    "trades": 19,
-   "market_cap": 16.28
+   "market_cap": 16.31
   },
   {
    "date": "2025-07-02",
@@ -2001,7 +2001,7 @@
    "low": 20.45,
    "avg_price": 21.72,
    "trades": 187,
-   "market_cap": 17.5
+   "market_cap": 17.52
   },
   {
    "date": "2025-07-03",
@@ -2011,7 +2011,7 @@
    "low": 20.6,
    "avg_price": 20.9,
    "trades": 73,
-   "market_cap": 16.84
+   "market_cap": 16.86
   },
   {
    "date": "2025-07-04",
@@ -2021,7 +2021,7 @@
    "low": 19.85,
    "avg_price": 20.15,
    "trades": 78,
-   "market_cap": 16.24
+   "market_cap": 16.26
   },
   {
    "date": "2025-07-07",
@@ -2031,7 +2031,7 @@
    "low": 20.65,
    "avg_price": 21.31,
    "trades": 89,
-   "market_cap": 17.17
+   "market_cap": 17.19
   },
   {
    "date": "2025-07-08",
@@ -2041,7 +2041,7 @@
    "low": 21.5,
    "avg_price": 21.86,
    "trades": 110,
-   "market_cap": 17.61
+   "market_cap": 17.64
   },
   {
    "date": "2025-07-09",
@@ -2051,7 +2051,7 @@
    "low": 21.6,
    "avg_price": 21.68,
    "trades": 32,
-   "market_cap": 17.47
+   "market_cap": 17.49
   },
   {
    "date": "2025-07-10",
@@ -2061,7 +2061,7 @@
    "low": 21.9,
    "avg_price": 23.75,
    "trades": 436,
-   "market_cap": 19.14
+   "market_cap": 19.16
   },
   {
    "date": "2025-07-11",
@@ -2071,7 +2071,7 @@
    "low": 24.5,
    "avg_price": 26.69,
    "trades": 752,
-   "market_cap": 21.5
+   "market_cap": 21.53
   },
   {
    "date": "2025-07-14",
@@ -2081,7 +2081,7 @@
    "low": 26.0,
    "avg_price": 27.38,
    "trades": 527,
-   "market_cap": 22.06
+   "market_cap": 22.09
   },
   {
    "date": "2025-07-15",
@@ -2091,7 +2091,7 @@
    "low": 23.9,
    "avg_price": 25.56,
    "trades": 312,
-   "market_cap": 20.59
+   "market_cap": 20.62
   },
   {
    "date": "2025-07-16",
@@ -2101,7 +2101,7 @@
    "low": 24.9,
    "avg_price": 25.66,
    "trades": 242,
-   "market_cap": 20.68
+   "market_cap": 20.7
   },
   {
    "date": "2025-07-17",
@@ -2111,7 +2111,7 @@
    "low": 24.3,
    "avg_price": 25.32,
    "trades": 261,
-   "market_cap": 20.4
+   "market_cap": 20.43
   },
   {
    "date": "2025-07-18",
@@ -2121,7 +2121,7 @@
    "low": 24.6,
    "avg_price": 25.43,
    "trades": 421,
-   "market_cap": 20.49
+   "market_cap": 20.52
   },
   {
    "date": "2025-07-21",
@@ -2131,7 +2131,7 @@
    "low": 21.95,
    "avg_price": 23.33,
    "trades": 346,
-   "market_cap": 18.8
+   "market_cap": 18.82
   },
   {
    "date": "2025-07-22",
@@ -2141,7 +2141,7 @@
    "low": 22.2,
    "avg_price": 22.72,
    "trades": 116,
-   "market_cap": 18.31
+   "market_cap": 18.33
   },
   {
    "date": "2025-07-23",
@@ -2151,7 +2151,7 @@
    "low": 22.3,
    "avg_price": 22.75,
    "trades": 82,
-   "market_cap": 18.33
+   "market_cap": 18.36
   },
   {
    "date": "2025-07-24",
@@ -2161,7 +2161,7 @@
    "low": 22.2,
    "avg_price": 22.55,
    "trades": 59,
-   "market_cap": 18.17
+   "market_cap": 18.19
   },
   {
    "date": "2025-07-25",
@@ -2171,7 +2171,7 @@
    "low": 22.9,
    "avg_price": 23.35,
    "trades": 121,
-   "market_cap": 18.81
+   "market_cap": 18.84
   },
   {
    "date": "2025-07-28",
@@ -2181,7 +2181,7 @@
    "low": 23.0,
    "avg_price": 23.82,
    "trades": 133,
-   "market_cap": 19.19
+   "market_cap": 19.22
   },
   {
    "date": "2025-07-29",
@@ -2191,7 +2191,7 @@
    "low": 23.0,
    "avg_price": 24.06,
    "trades": 211,
-   "market_cap": 19.39
+   "market_cap": 19.41
   },
   {
    "date": "2025-07-30",
@@ -2201,7 +2201,7 @@
    "low": 24.5,
    "avg_price": 26.48,
    "trades": 641,
-   "market_cap": 21.34
+   "market_cap": 21.36
   },
   {
    "date": "2025-07-31",
@@ -2211,7 +2211,7 @@
    "low": 26.0,
    "avg_price": 27.07,
    "trades": 561,
-   "market_cap": 21.81
+   "market_cap": 21.84
   },
   {
    "date": "2025-08-01",
@@ -2221,7 +2221,7 @@
    "low": 25.9,
    "avg_price": 27.38,
    "trades": 615,
-   "market_cap": 22.06
+   "market_cap": 22.09
   },
   {
    "date": "2025-08-04",
@@ -2231,7 +2231,7 @@
    "low": 26.8,
    "avg_price": 27.42,
    "trades": 477,
-   "market_cap": 22.09
+   "market_cap": 22.12
   },
   {
    "date": "2025-08-05",
@@ -2241,7 +2241,7 @@
    "low": 26.5,
    "avg_price": 27.32,
    "trades": 372,
-   "market_cap": 22.01
+   "market_cap": 22.04
   },
   {
    "date": "2025-08-06",
@@ -2251,7 +2251,7 @@
    "low": 26.05,
    "avg_price": 26.93,
    "trades": 271,
-   "market_cap": 21.7
+   "market_cap": 21.73
   },
   {
    "date": "2025-08-07",
@@ -2261,7 +2261,7 @@
    "low": 26.75,
    "avg_price": 27.13,
    "trades": 145,
-   "market_cap": 21.86
+   "market_cap": 21.89
   },
   {
    "date": "2025-08-08",
@@ -2271,7 +2271,7 @@
    "low": 27.05,
    "avg_price": 27.92,
    "trades": 143,
-   "market_cap": 22.5
+   "market_cap": 22.53
   },
   {
    "date": "2025-08-11",
@@ -2281,7 +2281,7 @@
    "low": 28.3,
    "avg_price": 32.2,
    "trades": 819,
-   "market_cap": 25.94
+   "market_cap": 25.98
   },
   {
    "date": "2025-08-12",
@@ -2291,7 +2291,7 @@
    "low": 32.65,
    "avg_price": 34.66,
    "trades": 484,
-   "market_cap": 27.93
+   "market_cap": 27.96
   },
   {
    "date": "2025-08-13",
@@ -2301,7 +2301,7 @@
    "low": 33.75,
    "avg_price": 34.8,
    "trades": 550,
-   "market_cap": 28.04
+   "market_cap": 28.08
   },
   {
    "date": "2025-08-14",
@@ -2311,7 +2311,7 @@
    "low": 33.25,
    "avg_price": 33.88,
    "trades": 311,
-   "market_cap": 27.3
+   "market_cap": 27.34
   },
   {
    "date": "2025-08-15",
@@ -2321,7 +2321,7 @@
    "low": 34.0,
    "avg_price": 35.8,
    "trades": 402,
-   "market_cap": 28.85
+   "market_cap": 28.88
   },
   {
    "date": "2025-08-18",
@@ -2331,7 +2331,7 @@
    "low": 35.8,
    "avg_price": 40.62,
    "trades": 933,
-   "market_cap": 32.73
+   "market_cap": 32.77
   },
   {
    "date": "2025-08-19",
@@ -2341,7 +2341,7 @@
    "low": 40.95,
    "avg_price": 42.93,
    "trades": 668,
-   "market_cap": 34.59
+   "market_cap": 34.64
   },
   {
    "date": "2025-08-20",
@@ -2351,7 +2351,7 @@
    "low": 42.75,
    "avg_price": 44.93,
    "trades": 1082,
-   "market_cap": 36.2
+   "market_cap": 36.25
   },
   {
    "date": "2025-08-21",
@@ -2361,7 +2361,7 @@
    "low": 46.8,
    "avg_price": 52.3,
    "trades": 1518,
-   "market_cap": 42.14
+   "market_cap": 42.2
   },
   {
    "date": "2025-08-22",
@@ -2371,7 +2371,7 @@
    "low": 48.0,
    "avg_price": 56.24,
    "trades": 3098,
-   "market_cap": 45.31
+   "market_cap": 45.38
   },
   {
    "date": "2025-08-25",
@@ -2381,7 +2381,7 @@
    "low": 45.15,
    "avg_price": 46.62,
    "trades": 2022,
-   "market_cap": 37.56
+   "market_cap": 37.61
   },
   {
    "date": "2025-08-26",
@@ -2391,7 +2391,7 @@
    "low": 42.5,
    "avg_price": 44.62,
    "trades": 1316,
-   "market_cap": 35.95
+   "market_cap": 36.0
   },
   {
    "date": "2025-08-27",
@@ -2401,7 +2401,7 @@
    "low": 41.5,
    "avg_price": 42.84,
    "trades": 895,
-   "market_cap": 34.52
+   "market_cap": 34.56
   },
   {
    "date": "2025-08-28",
@@ -2411,7 +2411,7 @@
    "low": 41.5,
    "avg_price": 46.61,
    "trades": 1082,
-   "market_cap": 37.56
+   "market_cap": 37.61
   },
   {
    "date": "2025-08-29",
@@ -2421,7 +2421,7 @@
    "low": 45.0,
    "avg_price": 48.02,
    "trades": 759,
-   "market_cap": 38.69
+   "market_cap": 38.74
   },
   {
    "date": "2025-09-01",
@@ -2431,7 +2431,7 @@
    "low": 43.25,
    "avg_price": 45.54,
    "trades": 529,
-   "market_cap": 36.69
+   "market_cap": 36.74
   },
   {
    "date": "2025-09-02",
@@ -2441,7 +2441,7 @@
    "low": 44.85,
    "avg_price": 45.38,
    "trades": 341,
-   "market_cap": 36.56
+   "market_cap": 36.61
   },
   {
    "date": "2025-09-03",
@@ -2451,7 +2451,7 @@
    "low": 45.0,
    "avg_price": 45.91,
    "trades": 373,
-   "market_cap": 36.99
+   "market_cap": 37.04
   },
   {
    "date": "2025-09-04",
@@ -2461,7 +2461,7 @@
    "low": 44.6,
    "avg_price": 45.27,
    "trades": 246,
-   "market_cap": 36.48
+   "market_cap": 36.52
   },
   {
    "date": "2025-09-05",
@@ -2471,7 +2471,7 @@
    "low": 44.4,
    "avg_price": 44.82,
    "trades": 228,
-   "market_cap": 36.11
+   "market_cap": 36.16
   },
   {
    "date": "2025-09-08",
@@ -2481,7 +2481,7 @@
    "low": 45.0,
    "avg_price": 45.76,
    "trades": 249,
-   "market_cap": 36.87
+   "market_cap": 36.92
   },
   {
    "date": "2025-09-09",
@@ -2491,7 +2491,7 @@
    "low": 44.85,
    "avg_price": 45.48,
    "trades": 335,
-   "market_cap": 36.64
+   "market_cap": 36.69
   },
   {
    "date": "2025-09-10",
@@ -2501,7 +2501,7 @@
    "low": 41.0,
    "avg_price": 42.15,
    "trades": 862,
-   "market_cap": 33.96
+   "market_cap": 34.01
   },
   {
    "date": "2025-09-11",
@@ -2511,7 +2511,7 @@
    "low": 38.5,
    "avg_price": 39.34,
    "trades": 548,
-   "market_cap": 31.7
+   "market_cap": 31.74
   },
   {
    "date": "2025-09-12",
@@ -2521,7 +2521,7 @@
    "low": 38.5,
    "avg_price": 42.05,
    "trades": 303,
-   "market_cap": 33.88
+   "market_cap": 33.93
   },
   {
    "date": "2025-09-15",
@@ -2531,7 +2531,7 @@
    "low": 39.5,
    "avg_price": 40.44,
    "trades": 280,
-   "market_cap": 32.58
+   "market_cap": 32.63
   },
   {
    "date": "2025-09-16",
@@ -2541,7 +2541,7 @@
    "low": 38.55,
    "avg_price": 39.31,
    "trades": 190,
-   "market_cap": 31.67
+   "market_cap": 31.72
   },
   {
    "date": "2025-09-17",
@@ -2551,7 +2551,7 @@
    "low": 39.1,
    "avg_price": 39.57,
    "trades": 157,
-   "market_cap": 31.88
+   "market_cap": 31.93
   },
   {
    "date": "2025-09-18",
@@ -2561,7 +2561,7 @@
    "low": 39.05,
    "avg_price": 39.61,
    "trades": 146,
-   "market_cap": 31.91
+   "market_cap": 31.96
   },
   {
    "date": "2025-09-19",
@@ -2571,7 +2571,7 @@
    "low": 38.25,
    "avg_price": 39.24,
    "trades": 120,
-   "market_cap": 31.62
+   "market_cap": 31.66
   },
   {
    "date": "2025-09-22",
@@ -2581,7 +2581,7 @@
    "low": 38.05,
    "avg_price": 38.87,
    "trades": 122,
-   "market_cap": 31.32
+   "market_cap": 31.36
   },
   {
    "date": "2025-09-23",
@@ -2591,7 +2591,7 @@
    "low": 38.55,
    "avg_price": 38.86,
    "trades": 184,
-   "market_cap": 31.31
+   "market_cap": 31.35
   },
   {
    "date": "2025-09-24",
@@ -2601,7 +2601,7 @@
    "low": 38.65,
    "avg_price": 38.9,
    "trades": 161,
-   "market_cap": 31.34
+   "market_cap": 31.39
   },
   {
    "date": "2025-09-25",
@@ -2611,7 +2611,7 @@
    "low": 38.55,
    "avg_price": 39.4,
    "trades": 363,
-   "market_cap": 31.75
+   "market_cap": 31.79
   },
   {
    "date": "2025-09-26",
@@ -2621,7 +2621,7 @@
    "low": 41.6,
    "avg_price": 43.19,
    "trades": 460,
-   "market_cap": 34.8
+   "market_cap": 34.85
   },
   {
    "date": "2025-09-30",
@@ -2631,7 +2631,7 @@
    "low": 43.0,
    "avg_price": 48.1,
    "trades": 959,
-   "market_cap": 38.76
+   "market_cap": 38.81
   },
   {
    "date": "2025-10-01",
@@ -2641,7 +2641,7 @@
    "low": 49.05,
    "avg_price": 51.12,
    "trades": 866,
-   "market_cap": 41.19
+   "market_cap": 41.24
   },
   {
    "date": "2025-10-02",
@@ -2651,7 +2651,7 @@
    "low": 45.6,
    "avg_price": 47.45,
    "trades": 658,
-   "market_cap": 38.23
+   "market_cap": 38.28
   },
   {
    "date": "2025-10-03",
@@ -2661,7 +2661,7 @@
    "low": 44.55,
    "avg_price": 46.23,
    "trades": 277,
-   "market_cap": 37.25
+   "market_cap": 37.3
   },
   {
    "date": "2025-10-07",
@@ -2671,7 +2671,7 @@
    "low": 46.15,
    "avg_price": 47.61,
    "trades": 383,
-   "market_cap": 38.36
+   "market_cap": 38.41
   },
   {
    "date": "2025-10-08",
@@ -2681,7 +2681,7 @@
    "low": 44.4,
    "avg_price": 45.56,
    "trades": 410,
-   "market_cap": 36.71
+   "market_cap": 36.76
   },
   {
    "date": "2025-10-09",
@@ -2691,7 +2691,7 @@
    "low": 43.95,
    "avg_price": 44.75,
    "trades": 226,
-   "market_cap": 36.06
+   "market_cap": 36.11
   },
   {
    "date": "2025-10-13",
@@ -2701,7 +2701,7 @@
    "low": 43.2,
    "avg_price": 44.07,
    "trades": 172,
-   "market_cap": 35.51
+   "market_cap": 35.56
   },
   {
    "date": "2025-10-14",
@@ -2711,7 +2711,7 @@
    "low": 44.1,
    "avg_price": 45.03,
    "trades": 185,
-   "market_cap": 36.28
+   "market_cap": 36.33
   },
   {
    "date": "2025-10-15",
@@ -2721,7 +2721,7 @@
    "low": 44.0,
    "avg_price": 44.94,
    "trades": 133,
-   "market_cap": 36.21
+   "market_cap": 36.26
   },
   {
    "date": "2025-10-16",
@@ -2731,7 +2731,7 @@
    "low": 44.0,
    "avg_price": 44.9,
    "trades": 131,
-   "market_cap": 36.18
+   "market_cap": 36.23
   },
   {
    "date": "2025-10-17",
@@ -2741,7 +2741,7 @@
    "low": 43.85,
    "avg_price": 44.53,
    "trades": 59,
-   "market_cap": 35.88
+   "market_cap": 35.93
   },
   {
    "date": "2025-10-20",
@@ -2751,7 +2751,7 @@
    "low": 43.85,
    "avg_price": 44.92,
    "trades": 124,
-   "market_cap": 36.19
+   "market_cap": 36.24
   },
   {
    "date": "2025-10-21",
@@ -2761,7 +2761,7 @@
    "low": 44.85,
    "avg_price": 45.08,
    "trades": 114,
-   "market_cap": 36.32
+   "market_cap": 36.37
   },
   {
    "date": "2025-10-22",
@@ -2771,7 +2771,7 @@
    "low": 44.65,
    "avg_price": 45.02,
    "trades": 119,
-   "market_cap": 36.27
+   "market_cap": 36.32
   },
   {
    "date": "2025-10-23",
@@ -2781,7 +2781,7 @@
    "low": 44.65,
    "avg_price": 45.03,
    "trades": 178,
-   "market_cap": 36.28
+   "market_cap": 36.33
   },
   {
    "date": "2025-10-27",
@@ -2791,7 +2791,7 @@
    "low": 42.65,
    "avg_price": 43.9,
    "trades": 268,
-   "market_cap": 35.37
+   "market_cap": 35.42
   },
   {
    "date": "2025-10-28",
@@ -2801,7 +2801,7 @@
    "low": 42.95,
    "avg_price": 43.86,
    "trades": 105,
-   "market_cap": 35.34
+   "market_cap": 35.39
   },
   {
    "date": "2025-10-29",
@@ -2811,7 +2811,7 @@
    "low": 40.55,
    "avg_price": 42.61,
    "trades": 369,
-   "market_cap": 34.33
+   "market_cap": 34.38
   },
   {
    "date": "2025-10-30",
@@ -2821,7 +2821,7 @@
    "low": 39.65,
    "avg_price": 40.88,
    "trades": 403,
-   "market_cap": 32.94
+   "market_cap": 32.98
   },
   {
    "date": "2025-10-31",
@@ -2831,7 +2831,7 @@
    "low": 39.75,
    "avg_price": 41.63,
    "trades": 230,
-   "market_cap": 33.54
+   "market_cap": 33.59
   },
   {
    "date": "2025-11-03",
@@ -2841,7 +2841,7 @@
    "low": 39.1,
    "avg_price": 39.8,
    "trades": 220,
-   "market_cap": 32.07
+   "market_cap": 32.11
   },
   {
    "date": "2025-11-04",
@@ -2851,7 +2851,7 @@
    "low": 38.55,
    "avg_price": 39.68,
    "trades": 119,
-   "market_cap": 31.97
+   "market_cap": 32.01
   },
   {
    "date": "2025-11-05",
@@ -2861,7 +2861,7 @@
    "low": 39.05,
    "avg_price": 39.66,
    "trades": 136,
-   "market_cap": 31.96
+   "market_cap": 32.0
   },
   {
    "date": "2025-11-06",
@@ -2871,7 +2871,7 @@
    "low": 37.85,
    "avg_price": 38.59,
    "trades": 389,
-   "market_cap": 31.09
+   "market_cap": 31.14
   },
   {
    "date": "2025-11-07",
@@ -2881,7 +2881,7 @@
    "low": 38.45,
    "avg_price": 39.03,
    "trades": 134,
-   "market_cap": 31.45
+   "market_cap": 31.49
   },
   {
    "date": "2025-11-10",
@@ -2891,7 +2891,7 @@
    "low": 38.45,
    "avg_price": 39.57,
    "trades": 89,
-   "market_cap": 31.88
+   "market_cap": 31.93
   },
   {
    "date": "2025-11-11",
@@ -2901,7 +2901,7 @@
    "low": 39.3,
    "avg_price": 39.75,
    "trades": 93,
-   "market_cap": 32.03
+   "market_cap": 32.07
   },
   {
    "date": "2025-11-12",
@@ -2911,7 +2911,7 @@
    "low": 38.15,
    "avg_price": 42.74,
    "trades": 758,
-   "market_cap": 34.44
+   "market_cap": 34.48
   },
   {
    "date": "2025-11-13",
@@ -2921,7 +2921,7 @@
    "low": 42.5,
    "avg_price": 44.36,
    "trades": 269,
-   "market_cap": 35.74
+   "market_cap": 35.79
   },
   {
    "date": "2025-11-14",
@@ -2931,7 +2931,7 @@
    "low": 41.6,
    "avg_price": 43.06,
    "trades": 236,
-   "market_cap": 34.69
+   "market_cap": 34.74
   },
   {
    "date": "2025-11-17",
@@ -2941,7 +2941,7 @@
    "low": 41.9,
    "avg_price": 42.94,
    "trades": 193,
-   "market_cap": 34.6
+   "market_cap": 34.64
   },
   {
    "date": "2025-11-18",
@@ -2951,7 +2951,7 @@
    "low": 40.0,
    "avg_price": 41.44,
    "trades": 328,
-   "market_cap": 33.39
+   "market_cap": 33.43
   },
   {
    "date": "2025-11-19",
@@ -2961,7 +2961,7 @@
    "low": 39.55,
    "avg_price": 40.36,
    "trades": 203,
-   "market_cap": 32.52
+   "market_cap": 32.56
   },
   {
    "date": "2025-11-20",
@@ -2971,7 +2971,7 @@
    "low": 41.0,
    "avg_price": 42.88,
    "trades": 211,
-   "market_cap": 34.55
+   "market_cap": 34.6
   },
   {
    "date": "2025-11-21",
@@ -2981,7 +2981,7 @@
    "low": 42.0,
    "avg_price": 43.18,
    "trades": 306,
-   "market_cap": 34.79
+   "market_cap": 34.84
   },
   {
    "date": "2025-11-24",
@@ -2991,7 +2991,7 @@
    "low": 41.85,
    "avg_price": 42.46,
    "trades": 178,
-   "market_cap": 34.21
+   "market_cap": 34.26
   },
   {
    "date": "2025-11-25",
@@ -3001,7 +3001,7 @@
    "low": 41.2,
    "avg_price": 41.68,
    "trades": 219,
-   "market_cap": 33.58
+   "market_cap": 33.63
   },
   {
    "date": "2025-11-26",
@@ -3011,7 +3011,7 @@
    "low": 40.6,
    "avg_price": 41.22,
    "trades": 193,
-   "market_cap": 33.21
+   "market_cap": 33.26
   },
   {
    "date": "2025-11-27",
@@ -3021,7 +3021,7 @@
    "low": 41.05,
    "avg_price": 42.49,
    "trades": 175,
-   "market_cap": 34.24
+   "market_cap": 34.28
   },
   {
    "date": "2025-11-28",
@@ -3031,7 +3031,7 @@
    "low": 43.0,
    "avg_price": 43.93,
    "trades": 293,
-   "market_cap": 35.4
+   "market_cap": 35.44
   },
   {
    "date": "2025-12-01",
@@ -3041,7 +3041,7 @@
    "low": 44.0,
    "avg_price": 44.5,
    "trades": 212,
-   "market_cap": 35.85
+   "market_cap": 35.9
   },
   {
    "date": "2025-12-02",
@@ -3051,7 +3051,7 @@
    "low": 43.0,
    "avg_price": 43.73,
    "trades": 159,
-   "market_cap": 35.23
+   "market_cap": 35.28
   },
   {
    "date": "2025-12-03",
@@ -3061,7 +3061,7 @@
    "low": 43.1,
    "avg_price": 43.66,
    "trades": 72,
-   "market_cap": 35.18
+   "market_cap": 35.23
   },
   {
    "date": "2025-12-04",
@@ -3071,7 +3071,7 @@
    "low": 43.0,
    "avg_price": 43.33,
    "trades": 101,
-   "market_cap": 34.91
+   "market_cap": 34.96
   },
   {
    "date": "2025-12-05",
@@ -3081,7 +3081,7 @@
    "low": 41.65,
    "avg_price": 42.38,
    "trades": 161,
-   "market_cap": 34.15
+   "market_cap": 34.19
   },
   {
    "date": "2025-12-08",
@@ -3091,7 +3091,7 @@
    "low": 41.2,
    "avg_price": 42.0,
    "trades": 136,
-   "market_cap": 33.84
+   "market_cap": 33.89
   },
   {
    "date": "2025-12-09",
@@ -3101,7 +3101,7 @@
    "low": 41.0,
    "avg_price": 41.34,
    "trades": 125,
-   "market_cap": 33.31
+   "market_cap": 33.35
   },
   {
    "date": "2025-12-10",
@@ -3111,7 +3111,7 @@
    "low": 40.0,
    "avg_price": 41.08,
    "trades": 169,
-   "market_cap": 33.1
+   "market_cap": 33.14
   },
   {
    "date": "2025-12-11",
@@ -3121,7 +3121,7 @@
    "low": 39.7,
    "avg_price": 40.64,
    "trades": 192,
-   "market_cap": 32.74
+   "market_cap": 32.79
   },
   {
    "date": "2025-12-12",
@@ -3131,7 +3131,7 @@
    "low": 40.85,
    "avg_price": 42.22,
    "trades": 183,
-   "market_cap": 34.02
+   "market_cap": 34.06
   },
   {
    "date": "2025-12-15",
@@ -3141,7 +3141,7 @@
    "low": 42.0,
    "avg_price": 43.47,
    "trades": 226,
-   "market_cap": 35.03
+   "market_cap": 35.07
   },
   {
    "date": "2025-12-16",
@@ -3151,7 +3151,7 @@
    "low": 41.5,
    "avg_price": 42.68,
    "trades": 234,
-   "market_cap": 34.39
+   "market_cap": 34.44
   },
   {
    "date": "2025-12-17",
@@ -3161,7 +3161,7 @@
    "low": 41.55,
    "avg_price": 42.78,
    "trades": 87,
-   "market_cap": 34.47
+   "market_cap": 34.52
   },
   {
    "date": "2025-12-18",
@@ -3171,7 +3171,7 @@
    "low": 42.3,
    "avg_price": 42.79,
    "trades": 94,
-   "market_cap": 34.48
+   "market_cap": 34.52
   },
   {
    "date": "2025-12-19",
@@ -3181,7 +3181,7 @@
    "low": 43.1,
    "avg_price": 44.11,
    "trades": 686,
-   "market_cap": 35.54
+   "market_cap": 35.59
   },
   {
    "date": "2025-12-22",
@@ -3191,7 +3191,7 @@
    "low": 45.05,
    "avg_price": 48.91,
    "trades": 1199,
-   "market_cap": 39.41
+   "market_cap": 39.46
   },
   {
    "date": "2025-12-23",
@@ -3201,7 +3201,7 @@
    "low": 49.0,
    "avg_price": 50.13,
    "trades": 775,
-   "market_cap": 40.39
+   "market_cap": 40.45
   },
   {
    "date": "2025-12-24",
@@ -3211,7 +3211,7 @@
    "low": 49.35,
    "avg_price": 50.12,
    "trades": 640,
-   "market_cap": 40.38
+   "market_cap": 40.44
   },
   {
    "date": "2025-12-26",
@@ -3221,7 +3221,7 @@
    "low": 51.2,
    "avg_price": 55.84,
    "trades": 1303,
-   "market_cap": 44.99
+   "market_cap": 45.05
   },
   {
    "date": "2025-12-29",
@@ -3231,7 +3231,7 @@
    "low": 54.6,
    "avg_price": 59.15,
    "trades": 1499,
-   "market_cap": 47.66
+   "market_cap": 47.72
   },
   {
    "date": "2025-12-30",
@@ -3241,7 +3241,7 @@
    "low": 55.6,
    "avg_price": 57.71,
    "trades": 702,
-   "market_cap": 46.5
+   "market_cap": 46.56
   },
   {
    "date": "2025-12-31",
@@ -3251,7 +3251,7 @@
    "low": 57.9,
    "avg_price": 60.74,
    "trades": 704,
-   "market_cap": 48.94
+   "market_cap": 49.01
   },
   {
    "date": "2026-01-02",
@@ -3261,7 +3261,7 @@
    "low": 58.3,
    "avg_price": 59.46,
    "trades": 548,
-   "market_cap": 47.91
+   "market_cap": 47.97
   },
   {
    "date": "2026-01-05",
@@ -3271,7 +3271,7 @@
    "low": 57.1,
    "avg_price": 58.24,
    "trades": 526,
-   "market_cap": 46.93
+   "market_cap": 46.99
   },
   {
    "date": "2026-01-06",
@@ -3281,7 +3281,7 @@
    "low": 54.1,
    "avg_price": 55.83,
    "trades": 825,
-   "market_cap": 44.98
+   "market_cap": 45.04
   },
   {
    "date": "2026-01-07",
@@ -3291,7 +3291,7 @@
    "low": 52.0,
    "avg_price": 52.96,
    "trades": 648,
-   "market_cap": 42.67
+   "market_cap": 42.73
   },
   {
    "date": "2026-01-08",
@@ -3301,7 +3301,7 @@
    "low": 51.4,
    "avg_price": 52.76,
    "trades": 334,
-   "market_cap": 42.51
+   "market_cap": 42.57
   },
   {
    "date": "2026-01-09",
@@ -3311,7 +3311,7 @@
    "low": 51.8,
    "avg_price": 57.12,
    "trades": 487,
-   "market_cap": 46.02
+   "market_cap": 46.09
   },
   {
    "date": "2026-01-12",
@@ -3321,7 +3321,7 @@
    "low": 59.0,
    "avg_price": 64.18,
    "trades": 1747,
-   "market_cap": 51.71
+   "market_cap": 51.78
   },
   {
    "date": "2026-01-13",
@@ -3331,7 +3331,7 @@
    "low": 68.0,
    "avg_price": 73.47,
    "trades": 1495,
-   "market_cap": 59.2
+   "market_cap": 59.28
   },
   {
    "date": "2026-01-14",
@@ -3341,7 +3341,7 @@
    "low": 71.3,
    "avg_price": 74.13,
    "trades": 687,
-   "market_cap": 59.73
+   "market_cap": 59.81
   },
   {
    "date": "2026-01-15",
@@ -3351,7 +3351,7 @@
    "low": 72.7,
    "avg_price": 74.9,
    "trades": 605,
-   "market_cap": 60.35
+   "market_cap": 60.43
   },
   {
    "date": "2026-01-16",
@@ -3361,7 +3361,7 @@
    "low": 75.3,
    "avg_price": 86.65,
    "trades": 1608,
-   "market_cap": 69.82
+   "market_cap": 69.91
   },
   {
    "date": "2026-01-19",
@@ -3371,7 +3371,7 @@
    "low": 87.5,
    "avg_price": 91.83,
    "trades": 1405,
-   "market_cap": 73.99
+   "market_cap": 74.09
   },
   {
    "date": "2026-01-20",
@@ -3381,7 +3381,7 @@
    "low": 75.3,
    "avg_price": 83.15,
    "trades": 1680,
-   "market_cap": 67.0
+   "market_cap": 67.09
   },
   {
    "date": "2026-01-21",
@@ -3391,7 +3391,7 @@
    "low": 81.0,
    "avg_price": 87.09,
    "trades": 622,
-   "market_cap": 70.17
+   "market_cap": 70.27
   },
   {
    "date": "2026-01-22",
@@ -3401,7 +3401,7 @@
    "low": 87.7,
    "avg_price": 89.05,
    "trades": 402,
-   "market_cap": 71.75
+   "market_cap": 71.85
   },
   {
    "date": "2026-01-23",
@@ -3411,7 +3411,7 @@
    "low": 84.2,
    "avg_price": 86.65,
    "trades": 627,
-   "market_cap": 69.82
+   "market_cap": 69.91
   },
   {
    "date": "2026-01-26",
@@ -3421,7 +3421,7 @@
    "low": 79.1,
    "avg_price": 81.21,
    "trades": 902,
-   "market_cap": 65.43
+   "market_cap": 65.52
   },
   {
    "date": "2026-01-27",
@@ -3431,7 +3431,7 @@
    "low": 77.6,
    "avg_price": 80.85,
    "trades": 846,
-   "market_cap": 65.14
+   "market_cap": 65.23
   },
   {
    "date": "2026-01-28",
@@ -3441,7 +3441,7 @@
    "low": 81.9,
    "avg_price": 84.17,
    "trades": 385,
-   "market_cap": 67.82
+   "market_cap": 67.91
   },
   {
    "date": "2026-01-29",
@@ -3451,7 +3451,7 @@
    "low": 79.1,
    "avg_price": 80.69,
    "trades": 498,
-   "market_cap": 65.01
+   "market_cap": 65.1
   },
   {
    "date": "2026-01-30",
@@ -3461,7 +3461,7 @@
    "low": 74.6,
    "avg_price": 77.91,
    "trades": 714,
-   "market_cap": 62.77
+   "market_cap": 62.86
   },
   {
    "date": "2026-02-02",
@@ -3471,7 +3471,7 @@
    "low": 70.0,
    "avg_price": 71.82,
    "trades": 693,
-   "market_cap": 57.87
+   "market_cap": 57.95
   },
   {
    "date": "2026-02-03",
@@ -3481,7 +3481,7 @@
    "low": 71.6,
    "avg_price": 73.14,
    "trades": 326,
-   "market_cap": 58.93
+   "market_cap": 59.01
   },
   {
    "date": "2026-02-04",
@@ -3491,7 +3491,7 @@
    "low": 71.1,
    "avg_price": 75.28,
    "trades": 302,
-   "market_cap": 60.66
+   "market_cap": 60.74
   },
   {
    "date": "2026-02-05",
@@ -3501,7 +3501,7 @@
    "low": 78.2,
    "avg_price": 81.01,
    "trades": 492,
-   "market_cap": 65.27
+   "market_cap": 65.36
   },
   {
    "date": "2026-02-06",
@@ -3511,7 +3511,7 @@
    "low": 77.6,
    "avg_price": 78.38,
    "trades": 255,
-   "market_cap": 63.15
+   "market_cap": 63.24
   },
   {
    "date": "2026-02-09",
@@ -3521,7 +3521,7 @@
    "low": 77.0,
    "avg_price": 77.91,
    "trades": 272,
-   "market_cap": 62.77
+   "market_cap": 62.86
   },
   {
    "date": "2026-02-10",
@@ -3531,7 +3531,7 @@
    "low": 75.7,
    "avg_price": 77.16,
    "trades": 251,
-   "market_cap": 62.17
+   "market_cap": 62.25
   },
   {
    "date": "2026-02-11",
@@ -3541,7 +3541,7 @@
    "low": 74.0,
    "avg_price": 76.55,
    "trades": 317,
-   "market_cap": 61.68
+   "market_cap": 61.76
   },
   {
    "date": "2026-02-23",
@@ -3551,7 +3551,7 @@
    "low": 76.6,
    "avg_price": 82.93,
    "trades": 767,
-   "market_cap": 66.82
+   "market_cap": 66.91
   },
   {
    "date": "2026-02-24",
@@ -3561,7 +3561,7 @@
    "low": 87.7,
    "avg_price": 92.27,
    "trades": 1283,
-   "market_cap": 74.34
+   "market_cap": 74.45
   },
   {
    "date": "2026-02-25",
@@ -3571,7 +3571,7 @@
    "low": 86.0,
    "avg_price": 89.51,
    "trades": 475,
-   "market_cap": 72.12
+   "market_cap": 72.22
   },
   {
    "date": "2026-02-26",
@@ -3581,7 +3581,7 @@
    "low": 85.2,
    "avg_price": 87.48,
    "trades": 302,
-   "market_cap": 70.49
+   "market_cap": 70.58
   },
   {
    "date": "2026-03-02",
@@ -3591,7 +3591,7 @@
    "low": 83.2,
    "avg_price": 84.74,
    "trades": 419,
-   "market_cap": 68.28
+   "market_cap": 68.37
   },
   {
    "date": "2026-03-03",
@@ -3601,7 +3601,7 @@
    "low": 79.2,
    "avg_price": 80.56,
    "trades": 395,
-   "market_cap": 64.91
+   "market_cap": 65.0
   },
   {
    "date": "2026-03-04",
@@ -3611,7 +3611,7 @@
    "low": 76.0,
    "avg_price": 77.64,
    "trades": 560,
-   "market_cap": 62.56
+   "market_cap": 62.64
   },
   {
    "date": "2026-03-05",
@@ -3621,7 +3621,7 @@
    "low": 78.0,
    "avg_price": 81.82,
    "trades": 247,
-   "market_cap": 65.92
+   "market_cap": 66.01
   },
   {
    "date": "2026-03-06",
@@ -3631,7 +3631,7 @@
    "low": 79.9,
    "avg_price": 81.04,
    "trades": 182,
-   "market_cap": 65.3
+   "market_cap": 65.38
   },
   {
    "date": "2026-03-09",
@@ -3641,7 +3641,7 @@
    "low": 76.7,
    "avg_price": 77.84,
    "trades": 286,
-   "market_cap": 62.72
+   "market_cap": 62.8
   },
   {
    "date": "2026-03-10",
@@ -3651,7 +3651,7 @@
    "low": 79.2,
    "avg_price": 79.99,
    "trades": 190,
-   "market_cap": 64.45
+   "market_cap": 64.54
   },
   {
    "date": "2026-03-11",
@@ -3661,7 +3661,7 @@
    "low": 77.5,
    "avg_price": 79.44,
    "trades": 317,
-   "market_cap": 64.01
+   "market_cap": 64.09
   },
   {
    "date": "2026-03-12",
@@ -3671,7 +3671,7 @@
    "low": 80.1,
    "avg_price": 81.44,
    "trades": 287,
-   "market_cap": 65.62
+   "market_cap": 65.71
   },
   {
    "date": "2026-03-13",
@@ -3681,7 +3681,7 @@
    "low": 80.5,
    "avg_price": 85.67,
    "trades": 780,
-   "market_cap": 69.03
+   "market_cap": 69.12
   },
   {
    "date": "2026-03-16",
@@ -3691,7 +3691,7 @@
    "low": 87.1,
    "avg_price": 89.21,
    "trades": 529,
-   "market_cap": 71.88
+   "market_cap": 71.98
   },
   {
    "date": "2026-03-17",
@@ -3701,7 +3701,7 @@
    "low": 85.6,
    "avg_price": 87.36,
    "trades": 304,
-   "market_cap": 70.39
+   "market_cap": 70.48
   },
   {
    "date": "2026-03-18",
@@ -3711,7 +3711,7 @@
    "low": 87.1,
    "avg_price": 89.24,
    "trades": 238,
-   "market_cap": 71.9
+   "market_cap": 72.0
   },
   {
    "date": "2026-03-19",
@@ -3721,7 +3721,7 @@
    "low": 85.7,
    "avg_price": 86.53,
    "trades": 237,
-   "market_cap": 69.72
+   "market_cap": 69.81
   },
   {
    "date": "2026-03-20",
@@ -3731,7 +3731,7 @@
    "low": 85.1,
    "avg_price": 86.41,
    "trades": 220,
-   "market_cap": 69.62
+   "market_cap": 69.72
   },
   {
    "date": "2026-03-23",
@@ -3741,7 +3741,7 @@
    "low": 82.0,
    "avg_price": 83.83,
    "trades": 233,
-   "market_cap": 67.54
+   "market_cap": 67.64
   },
   {
    "date": "2026-03-24",
@@ -3751,7 +3751,7 @@
    "low": 80.6,
    "avg_price": 82.14,
    "trades": 235,
-   "market_cap": 66.18
+   "market_cap": 66.27
   },
   {
    "date": "2026-03-25",
@@ -3761,7 +3761,7 @@
    "low": 80.9,
    "avg_price": 82.82,
    "trades": 185,
-   "market_cap": 66.73
+   "market_cap": 66.82
   },
   {
    "date": "2026-03-26",
@@ -3771,7 +3771,7 @@
    "low": 79.2,
    "avg_price": 80.54,
    "trades": 279,
-   "market_cap": 64.89
+   "market_cap": 64.98
   },
   {
    "date": "2026-03-27",
@@ -3781,7 +3781,7 @@
    "low": 77.0,
    "avg_price": 77.96,
    "trades": 274,
-   "market_cap": 62.81
+   "market_cap": 62.9
   },
   {
    "date": "2026-03-30",
@@ -3791,7 +3791,7 @@
    "low": 75.2,
    "avg_price": 79.13,
    "trades": 208,
-   "market_cap": 63.76
+   "market_cap": 63.84
   },
   {
    "date": "2026-03-31",
@@ -3801,7 +3801,7 @@
    "low": 77.1,
    "avg_price": 78.56,
    "trades": 229,
-   "market_cap": 63.3
+   "market_cap": 63.38
   },
   {
    "date": "2026-04-01",
@@ -3811,7 +3811,7 @@
    "low": 77.2,
    "avg_price": 79.05,
    "trades": 2248,
-   "market_cap": 63.69
+   "market_cap": 63.78
   },
   {
    "date": "2026-04-02",
@@ -3821,7 +3821,7 @@
    "low": 76.7,
    "avg_price": 77.94,
    "trades": 1818,
-   "market_cap": 62.8
+   "market_cap": 62.88
   },
   {
    "date": "2026-04-07",
@@ -3831,7 +3831,7 @@
    "low": 76.3,
    "avg_price": 77.34,
    "trades": 1692,
-   "market_cap": 62.32
+   "market_cap": 62.4
   },
   {
    "date": "2026-04-08",
@@ -3841,7 +3841,7 @@
    "low": 76.1,
    "avg_price": 77.0,
    "trades": 1075,
-   "market_cap": 62.04
+   "market_cap": 62.13
   },
   {
    "date": "2026-04-09",
@@ -3851,7 +3851,7 @@
    "low": 76.1,
    "avg_price": 76.86,
    "trades": 754,
-   "market_cap": 61.93
+   "market_cap": 62.01
   },
   {
    "date": "2026-04-10",
@@ -3861,7 +3861,7 @@
    "low": 76.1,
    "avg_price": 77.1,
    "trades": 590,
-   "market_cap": 62.12
+   "market_cap": 62.21
   },
   {
    "date": "2026-04-13",
@@ -3871,7 +3871,7 @@
    "low": 71.7,
    "avg_price": 75.54,
    "trades": 1012,
-   "market_cap": 60.86
+   "market_cap": 60.95
   },
   {
    "date": "2026-04-14",
@@ -3881,7 +3881,7 @@
    "low": 74.3,
    "avg_price": 75.95,
    "trades": 742,
-   "market_cap": 61.2
+   "market_cap": 61.28
   },
   {
    "date": "2026-04-15",
@@ -3891,7 +3891,7 @@
    "low": 76.1,
    "avg_price": 79.48,
    "trades": 852,
-   "market_cap": 64.04
+   "market_cap": 64.13
   },
   {
    "date": "2026-04-16",
@@ -3901,7 +3901,7 @@
    "low": 82.7,
    "avg_price": 84.47,
    "trades": 659,
-   "market_cap": 68.06
+   "market_cap": 68.15
   },
   {
    "date": "2026-04-17",
@@ -3911,7 +3911,7 @@
    "low": 81.8,
    "avg_price": 83.81,
    "trades": 654,
-   "market_cap": 67.53
+   "market_cap": 67.62
   },
   {
    "date": "2026-04-20",
@@ -3921,7 +3921,7 @@
    "low": 80.6,
    "avg_price": 83.8,
    "trades": 1228,
-   "market_cap": 67.52
+   "market_cap": 67.61
   },
   {
    "date": "2026-04-21",
@@ -3931,7 +3931,7 @@
    "low": 79.6,
    "avg_price": 81.79,
    "trades": 1064,
-   "market_cap": 65.9
+   "market_cap": 65.99
   },
   {
    "date": "2026-04-22",
@@ -3941,7 +3941,7 @@
    "low": 81.0,
    "avg_price": 82.44,
    "trades": 671,
-   "market_cap": 66.42
+   "market_cap": 66.51
   },
   {
    "date": "2026-04-23",
@@ -3951,7 +3951,7 @@
    "low": 75.2,
    "avg_price": 77.81,
    "trades": 1147,
-   "market_cap": 62.69
+   "market_cap": 62.78
   },
   {
    "date": "2026-04-24",
@@ -3961,7 +3961,7 @@
    "low": 74.6,
    "avg_price": 76.93,
    "trades": 839,
-   "market_cap": 61.98
+   "market_cap": 62.07
   },
   {
    "date": "2026-04-27",
@@ -3971,7 +3971,7 @@
    "low": 76.0,
    "avg_price": 77.33,
    "trades": 1460,
-   "market_cap": 62.31
+   "market_cap": 62.39
   },
   {
    "date": "2026-04-28",
@@ -3981,7 +3981,7 @@
    "low": 75.1,
    "avg_price": 78.85,
    "trades": 1830,
-   "market_cap": 63.53
+   "market_cap": 63.62
   },
   {
    "date": "2026-04-29",
@@ -3991,7 +3991,7 @@
    "low": 76.6,
    "avg_price": 79.61,
    "trades": 567,
-   "market_cap": 64.14
+   "market_cap": 64.23
   },
   {
    "date": "2026-04-30",
@@ -4001,7 +4001,7 @@
    "low": 75.9,
    "avg_price": 78.03,
    "trades": 305,
-   "market_cap": 62.87
+   "market_cap": 62.96
   },
   {
    "date": "2026-05-04",
@@ -4011,7 +4011,7 @@
    "low": 75.9,
    "avg_price": 77.32,
    "trades": 248,
-   "market_cap": 62.3
+   "market_cap": 62.38
   },
   {
    "date": "2026-05-05",
@@ -4021,7 +4021,7 @@
    "low": 74.0,
    "avg_price": 76.72,
    "trades": 194,
-   "market_cap": 61.82
+   "market_cap": 61.9
   },
   {
    "date": "2026-05-06",
@@ -4031,7 +4031,7 @@
    "low": 74.6,
    "avg_price": 76.65,
    "trades": 266,
-   "market_cap": 61.76
+   "market_cap": 61.84
   },
   {
    "date": "2026-05-07",
@@ -4041,7 +4041,7 @@
    "low": 74.1,
    "avg_price": 74.97,
    "trades": 230,
-   "market_cap": 60.41
+   "market_cap": 60.49
   },
   {
    "date": "2026-05-08",
@@ -4051,7 +4051,7 @@
    "low": 74.0,
    "avg_price": 75.29,
    "trades": 244,
-   "market_cap": 60.66
+   "market_cap": 60.75
   },
   {
    "date": "2026-05-11",
@@ -4061,7 +4061,7 @@
    "low": 71.4,
    "avg_price": 73.13,
    "trades": 532,
-   "market_cap": 58.92
+   "market_cap": 59.0
   },
   {
    "date": "2026-05-12",
@@ -4071,7 +4071,7 @@
    "low": 70.4,
    "avg_price": 71.82,
    "trades": 292,
-   "market_cap": 57.87
+   "market_cap": 57.95
   },
   {
    "date": "2026-05-13",
@@ -4081,7 +4081,7 @@
    "low": 67.7,
    "avg_price": 70.83,
    "trades": 271,
-   "market_cap": 57.07
+   "market_cap": 57.15
   },
   {
    "date": "2026-05-14",
@@ -4091,7 +4091,7 @@
    "low": 68.9,
    "avg_price": 71.47,
    "trades": 254,
-   "market_cap": 57.59
+   "market_cap": 57.66
   },
   {
    "date": "2026-05-15",
@@ -4101,7 +4101,7 @@
    "low": 71.7,
    "avg_price": 73.29,
    "trades": 217,
-   "market_cap": 59.05
+   "market_cap": 59.13
   },
   {
    "date": "2026-05-18",
@@ -4111,7 +4111,7 @@
    "low": 72.5,
    "avg_price": 75.98,
    "trades": 360,
-   "market_cap": 61.22
+   "market_cap": 61.3
   },
   {
    "date": "2026-05-19",
@@ -4121,7 +4121,7 @@
    "low": 74.0,
    "avg_price": 75.7,
    "trades": 275,
-   "market_cap": 60.99
+   "market_cap": 61.08
   },
   {
    "date": "2026-05-20",
@@ -4131,7 +4131,7 @@
    "low": 73.5,
    "avg_price": 74.54,
    "trades": 208,
-   "market_cap": 60.06
+   "market_cap": 60.14
   },
   {
    "date": "2026-05-21",
@@ -4141,7 +4141,7 @@
    "low": 72.5,
    "avg_price": 73.34,
    "trades": 207,
-   "market_cap": 59.09
+   "market_cap": 59.17
   },
   {
    "date": "2026-05-22",
@@ -4151,7 +4151,7 @@
    "low": 72.0,
    "avg_price": 72.87,
    "trades": 230,
-   "market_cap": 58.71
+   "market_cap": 58.79
   },
   {
    "date": "2026-05-25",
@@ -4161,7 +4161,7 @@
    "low": 70.6,
    "avg_price": 71.59,
    "trades": 275,
-   "market_cap": 57.68
+   "market_cap": 57.76
   },
   {
    "date": "2026-05-26",
@@ -4171,7 +4171,7 @@
    "low": 70.1,
    "avg_price": 71.13,
    "trades": 245,
-   "market_cap": 57.31
+   "market_cap": 57.39
   },
   {
    "date": "2026-05-27",
@@ -4181,7 +4181,7 @@
    "low": 69.5,
    "avg_price": 70.11,
    "trades": 307,
-   "market_cap": 56.49
+   "market_cap": 56.57
   },
   {
    "date": "2026-05-28",
@@ -4191,7 +4191,7 @@
    "low": 68.6,
    "avg_price": 69.21,
    "trades": 329,
-   "market_cap": 55.76
+   "market_cap": 55.84
   },
   {
    "date": "2026-05-29",
@@ -4201,7 +4201,7 @@
    "low": 67.1,
    "avg_price": 68.01,
    "trades": 409,
-   "market_cap": 54.8
+   "market_cap": 54.87
   },
   {
    "date": "2026-06-01",
@@ -4211,7 +4211,7 @@
    "low": 67.6,
    "avg_price": 68.51,
    "trades": 379,
-   "market_cap": 55.2
+   "market_cap": 55.28
   },
   {
    "date": "2026-06-02",
@@ -4221,7 +4221,7 @@
    "low": 69.1,
    "avg_price": 70.37,
    "trades": 201,
-   "market_cap": 56.7
+   "market_cap": 56.78
   },
   {
    "date": "2026-06-03",
@@ -4231,7 +4231,7 @@
    "low": 70.2,
    "avg_price": 72.35,
    "trades": 205,
-   "market_cap": 58.29
+   "market_cap": 58.37
   },
   {
    "date": "2026-06-04",
@@ -4241,7 +4241,7 @@
    "low": 74.0,
    "avg_price": 76.7,
    "trades": 343,
-   "market_cap": 61.8
+   "market_cap": 61.88
   },
   {
    "date": "2026-06-05",
@@ -4251,7 +4251,7 @@
    "low": 73.4,
    "avg_price": 75.62,
    "trades": 184,
-   "market_cap": 60.93
+   "market_cap": 61.01
   },
   {
    "date": "2026-06-08",
@@ -4261,7 +4261,7 @@
    "low": 72.6,
    "avg_price": 73.41,
    "trades": 170,
-   "market_cap": 59.15
+   "market_cap": 59.23
   },
   {
    "date": "2026-06-09",
@@ -4271,7 +4271,7 @@
    "low": 72.7,
    "avg_price": 73.86,
    "trades": 151,
-   "market_cap": 59.51
+   "market_cap": 59.59
   },
   {
    "date": "2026-06-10",
@@ -4281,7 +4281,7 @@
    "low": 73.7,
    "avg_price": 74.12,
    "trades": 126,
-   "market_cap": 59.72
+   "market_cap": 59.8
   },
   {
    "date": "2026-06-11",
@@ -4291,7 +4291,7 @@
    "low": 73.1,
    "avg_price": 75.38,
    "trades": 229,
-   "market_cap": 60.74
+   "market_cap": 60.82
   },
   {
    "date": "2026-06-12",
@@ -4301,7 +4301,7 @@
    "low": 74.8,
    "avg_price": 77.04,
    "trades": 395,
-   "market_cap": 62.07
+   "market_cap": 62.16
   },
   {
    "date": "2026-06-15",
@@ -4311,7 +4311,7 @@
    "low": 77.4,
    "avg_price": 81.55,
    "trades": 531,
-   "market_cap": 65.71
+   "market_cap": 65.8
   },
   {
    "date": "2026-06-16",
@@ -4321,7 +4321,7 @@
    "low": 80.1,
    "avg_price": 82.34,
    "trades": 323,
-   "market_cap": 66.34
+   "market_cap": 66.43
   },
   {
    "date": "2026-06-17",
@@ -4331,7 +4331,7 @@
    "low": 81.0,
    "avg_price": 82.43,
    "trades": 288,
-   "market_cap": 66.42
+   "market_cap": 66.51
   },
   {
    "date": "2026-06-18",
@@ -4341,7 +4341,7 @@
    "low": 81.6,
    "avg_price": 82.81,
    "trades": 179,
-   "market_cap": 66.72
+   "market_cap": 66.81
   },
   {
    "date": "2026-06-22",
@@ -4351,7 +4351,7 @@
    "low": 80.1,
    "avg_price": 86.24,
    "trades": 615,
-   "market_cap": 69.49
+   "market_cap": 69.58
   },
   {
    "date": "2026-06-23",
@@ -4361,7 +4361,7 @@
    "low": 78.6,
    "avg_price": 79.58,
    "trades": 247,
-   "market_cap": 64.12
+   "market_cap": 64.21
   },
   {
    "date": "2026-06-24",
@@ -4371,7 +4371,7 @@
    "low": 79.1,
    "avg_price": 80.82,
    "trades": 142,
-   "market_cap": 65.12
+   "market_cap": 65.21
   },
   {
    "date": "2026-06-25",
@@ -4381,7 +4381,7 @@
    "low": 75.6,
    "avg_price": 77.93,
    "trades": 271,
-   "market_cap": 62.79
+   "market_cap": 62.88
   },
   {
    "date": "2026-06-26",
@@ -4391,7 +4391,7 @@
    "low": 74.1,
    "avg_price": 75.88,
    "trades": 120,
-   "market_cap": 61.14
+   "market_cap": 61.22
   },
   {
    "date": "2026-06-29",
@@ -4401,7 +4401,7 @@
    "low": 74.6,
    "avg_price": 78.02,
    "trades": 94,
-   "market_cap": 62.86
+   "market_cap": 62.95
   },
   {
    "date": "2026-06-30",
@@ -4411,7 +4411,7 @@
    "low": 76.4,
    "avg_price": 77.57,
    "trades": 116,
-   "market_cap": 62.5
+   "market_cap": 62.59
   },
   {
    "date": "2026-07-01",
@@ -4421,7 +4421,7 @@
    "low": 73.5,
    "avg_price": 74.5,
    "trades": 114,
-   "market_cap": 60.03
+   "market_cap": 60.11
   },
   {
    "date": "2026-07-02",
@@ -4431,7 +4431,7 @@
    "low": 73.1,
    "avg_price": 73.87,
    "trades": 109,
-   "market_cap": 59.52
+   "market_cap": 59.6
   },
   {
    "date": "2026-07-03",
@@ -4441,7 +4441,7 @@
    "low": 72.2,
    "avg_price": 73.08,
    "trades": 94,
-   "market_cap": 58.88
+   "market_cap": 58.96
   },
   {
    "date": "2026-07-06",
@@ -4451,7 +4451,7 @@
    "low": 72.5,
    "avg_price": 73.84,
    "trades": 115,
-   "market_cap": 59.5
+   "market_cap": 59.58
   },
   {
    "date": "2026-07-07",
@@ -4461,7 +4461,7 @@
    "low": 72.5,
    "avg_price": 73.45,
    "trades": 180,
-   "market_cap": 59.18
+   "market_cap": 59.26
   },
   {
    "date": "2026-07-08",
@@ -4471,7 +4471,7 @@
    "low": 68.1,
    "avg_price": 70.75,
    "trades": 249,
-   "market_cap": 57.01
+   "market_cap": 57.08
   },
   {
    "date": "2026-07-09",
@@ -4481,7 +4481,7 @@
    "low": 73.0,
    "avg_price": 76.72,
    "trades": 552,
-   "market_cap": 61.82
+   "market_cap": 61.9
   },
   {
    "date": "2026-07-13",
@@ -4491,7 +4491,7 @@
    "low": 73.8,
    "avg_price": 76.49,
    "trades": 219,
-   "market_cap": 61.63
+   "market_cap": 61.71
   },
   {
    "date": "2026-07-14",
@@ -4501,7 +4501,7 @@
    "low": 70.9,
    "avg_price": 73.72,
    "trades": 194,
-   "market_cap": 59.4
+   "market_cap": 59.48
   },
   {
    "date": "2026-07-15",
@@ -4511,7 +4511,7 @@
    "low": 72.8,
    "avg_price": 74.73,
    "trades": 108,
-   "market_cap": 60.21
+   "market_cap": 60.29
   },
   {
    "date": "2026-07-16",
@@ -4521,7 +4521,7 @@
    "low": 71.0,
    "avg_price": 72.63,
    "trades": 157,
-   "market_cap": 58.52
+   "market_cap": 58.6
   },
   {
    "date": "2026-07-17",
@@ -4531,7 +4531,7 @@
    "low": 68.5,
    "avg_price": 69.63,
    "trades": 340,
-   "market_cap": 56.1
+   "market_cap": 56.18
   },
   {
    "date": "2026-07-20",
@@ -4541,7 +4541,7 @@
    "low": 67.1,
    "avg_price": 69.29,
    "trades": 213,
-   "market_cap": 55.83
+   "market_cap": 55.9
   },
   {
    "date": "2026-07-21",
@@ -4551,7 +4551,7 @@
    "low": 69.4,
    "avg_price": 70.84,
    "trades": 101,
-   "market_cap": 57.08
+   "market_cap": 57.16
   },
   {
    "date": "2026-07-22",
@@ -4561,7 +4561,7 @@
    "low": 71.1,
    "avg_price": 71.97,
    "trades": 118,
-   "market_cap": 57.99
+   "market_cap": 58.07
   },
   {
    "date": "2026-07-23",
@@ -4571,7 +4571,7 @@
    "low": 72.3,
    "avg_price": 75.17,
    "trades": 350,
-   "market_cap": 60.57
+   "market_cap": 60.65
   },
   {
    "date": "2026-07-24",
@@ -4581,7 +4581,7 @@
    "low": 73.6,
    "avg_price": 78.65,
    "trades": 470,
-   "market_cap": 63.37
+   "market_cap": 63.46
   },
   {
    "date": "2026-07-27",
@@ -4591,7 +4591,7 @@
    "low": 75.1,
    "avg_price": 79.08,
    "trades": 289,
-   "market_cap": 63.72
+   "market_cap": 63.8
   },
   {
    "date": "2026-07-28",
@@ -4601,7 +4601,7 @@
    "low": 76.1,
    "avg_price": 79.18,
    "trades": 372,
-   "market_cap": 63.8
+   "market_cap": 63.88
   },
   {
    "date": "2026-07-29",
@@ -4611,7 +4611,7 @@
    "low": 74.2,
    "avg_price": 78.54,
    "trades": 345,
-   "market_cap": 63.28
+   "market_cap": 63.37
   },
   {
    "date": "2026-07-30",
@@ -4621,7 +4621,7 @@
    "low": 68.0,
    "avg_price": 74.92,
    "trades": 229,
-   "market_cap": 60.37
+   "market_cap": 60.45
   },
   {
    "date": "2026-07-31",
@@ -4631,7 +4631,7 @@
    "low": 71.0,
    "avg_price": 78.75,
    "trades": 338,
-   "market_cap": 63.45
+   "market_cap": 63.54
   },
   {
    "date": "2026-08-03",
@@ -4641,7 +4641,7 @@
    "low": 77.0,
    "avg_price": 79.38,
    "trades": 194,
-   "market_cap": 63.96
+   "market_cap": 64.05
   },
   {
    "date": "2026-08-04",
@@ -4651,7 +4651,7 @@
    "low": 74.2,
    "avg_price": 76.43,
    "trades": 180,
-   "market_cap": 61.58
+   "market_cap": 61.67
   },
   {
    "date": "2026-08-05",
@@ -4661,7 +4661,7 @@
    "low": 75.1,
    "avg_price": 77.4,
    "trades": 153,
-   "market_cap": 62.36
+   "market_cap": 62.45
   },
   {
    "date": "2026-08-06",
@@ -4671,7 +4671,7 @@
    "low": 72.0,
    "avg_price": 74.63,
    "trades": 227,
-   "market_cap": 60.13
+   "market_cap": 60.21
   },
   {
    "date": "2026-08-07",
@@ -4681,7 +4681,7 @@
    "low": 76.0,
    "avg_price": 77.87,
    "trades": 235,
-   "market_cap": 62.74
+   "market_cap": 62.83
   },
   {
    "date": "2026-08-10",
@@ -4691,7 +4691,7 @@
    "low": 77.2,
    "avg_price": 78.19,
    "trades": 224,
-   "market_cap": 63.0
+   "market_cap": 63.09
   },
   {
    "date": "2026-08-11",
@@ -4701,7 +4701,7 @@
    "low": 77.5,
    "avg_price": 79.0,
    "trades": 299,
-   "market_cap": 63.65
+   "market_cap": 63.74
   },
   {
    "date": "2026-08-12",
@@ -4711,7 +4711,7 @@
    "low": 76.1,
    "avg_price": 78.47,
    "trades": 220,
-   "market_cap": 63.23
+   "market_cap": 63.31
   },
   {
    "date": "2026-08-13",
@@ -4721,7 +4721,7 @@
    "low": 74.0,
    "avg_price": 76.71,
    "trades": 215,
-   "market_cap": 61.81
+   "market_cap": 61.89
   },
   {
    "date": "2026-08-14",
@@ -4731,7 +4731,7 @@
    "low": 77.0,
    "avg_price": 78.22,
    "trades": 161,
-   "market_cap": 63.02
+   "market_cap": 63.11
   },
   {
    "date": "2026-08-17",
@@ -4741,7 +4741,7 @@
    "low": 77.0,
    "avg_price": 79.17,
    "trades": 369,
-   "market_cap": 63.79
+   "market_cap": 63.88
   },
   {
    "date": "2026-08-18",
@@ -4751,7 +4751,7 @@
    "low": 78.4,
    "avg_price": 79.39,
    "trades": 260,
-   "market_cap": 63.97
+   "market_cap": 64.05
   },
   {
    "date": "2026-08-19",
@@ -4761,7 +4761,7 @@
    "low": 77.1,
    "avg_price": 78.76,
    "trades": 120,
-   "market_cap": 63.46
+   "market_cap": 63.55
   },
   {
    "date": "2026-08-20",
@@ -4771,7 +4771,7 @@
    "low": 76.7,
    "avg_price": 78.93,
    "trades": 172,
-   "market_cap": 63.6
+   "market_cap": 63.68
   },
   {
    "date": "2026-08-21",
@@ -4781,7 +4781,17 @@
    "low": 77.2,
    "avg_price": 78.69,
    "trades": 157,
-   "market_cap": 63.4
+   "market_cap": 63.49
+  },
+  {
+   "date": "2026-08-24",
+   "volume": 487197,
+   "turnover": 37828865,
+   "high": 80.0,
+   "low": 76.1,
+   "avg_price": 77.65,
+   "trades": 234,
+   "market_cap": 62.65
   }
  ]
 }
