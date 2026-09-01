@@ -4,206 +4,6 @@
  "shares_outstanding": 80682241,
  "series": [
   {
-   "date": "2024-09-02",
-   "volume": 4005,
-   "turnover": 105432,
-   "high": 26.4,
-   "low": 26.3,
-   "avg_price": 26.33,
-   "trades": 3,
-   "market_cap": 21.24
-  },
-  {
-   "date": "2024-09-03",
-   "volume": 35154,
-   "turnover": 882723,
-   "high": 26.4,
-   "low": 24.8,
-   "avg_price": 25.11,
-   "trades": 22,
-   "market_cap": 20.26
-  },
-  {
-   "date": "2024-09-04",
-   "volume": 67204,
-   "turnover": 1636746,
-   "high": 25.2,
-   "low": 24.0,
-   "avg_price": 24.35,
-   "trades": 28,
-   "market_cap": 19.65
-  },
-  {
-   "date": "2024-09-05",
-   "volume": 22928,
-   "turnover": 559575,
-   "high": 25.1,
-   "low": 24.0,
-   "avg_price": 24.41,
-   "trades": 15,
-   "market_cap": 19.69
-  },
-  {
-   "date": "2024-09-06",
-   "volume": 103161,
-   "turnover": 2532525,
-   "high": 25.2,
-   "low": 24.0,
-   "avg_price": 24.55,
-   "trades": 28,
-   "market_cap": 19.81
-  },
-  {
-   "date": "2024-09-09",
-   "volume": 15085,
-   "turnover": 368569,
-   "high": 25.0,
-   "low": 23.75,
-   "avg_price": 24.43,
-   "trades": 18,
-   "market_cap": 19.71
-  },
-  {
-   "date": "2024-09-10",
-   "volume": 5248,
-   "turnover": 125748,
-   "high": 25.0,
-   "low": 23.8,
-   "avg_price": 23.96,
-   "trades": 13,
-   "market_cap": 19.33
-  },
-  {
-   "date": "2024-09-11",
-   "volume": 45745,
-   "turnover": 1093332,
-   "high": 25.0,
-   "low": 23.65,
-   "avg_price": 23.9,
-   "trades": 42,
-   "market_cap": 19.28
-  },
-  {
-   "date": "2024-09-12",
-   "volume": 27415,
-   "turnover": 646323,
-   "high": 24.05,
-   "low": 23.4,
-   "avg_price": 23.58,
-   "trades": 23,
-   "market_cap": 19.02
-  },
-  {
-   "date": "2024-09-13",
-   "volume": 28071,
-   "turnover": 646827,
-   "high": 24.15,
-   "low": 22.8,
-   "avg_price": 23.04,
-   "trades": 30,
-   "market_cap": 18.59
-  },
-  {
-   "date": "2024-09-16",
-   "volume": 105857,
-   "turnover": 2483518,
-   "high": 24.2,
-   "low": 23.1,
-   "avg_price": 23.46,
-   "trades": 47,
-   "market_cap": 18.93
-  },
-  {
-   "date": "2024-09-18",
-   "volume": 79213,
-   "turnover": 1893162,
-   "high": 24.65,
-   "low": 23.35,
-   "avg_price": 23.9,
-   "trades": 38,
-   "market_cap": 19.28
-  },
-  {
-   "date": "2024-09-19",
-   "volume": 1071,
-   "turnover": 25864,
-   "high": 24.15,
-   "low": 24.15,
-   "avg_price": 24.15,
-   "trades": 6,
-   "market_cap": 19.48
-  },
-  {
-   "date": "2024-09-20",
-   "volume": 20122,
-   "turnover": 472231,
-   "high": 24.15,
-   "low": 23.3,
-   "avg_price": 23.47,
-   "trades": 18,
-   "market_cap": 18.94
-  },
-  {
-   "date": "2024-09-23",
-   "volume": 63330,
-   "turnover": 1474687,
-   "high": 24.15,
-   "low": 23.0,
-   "avg_price": 23.29,
-   "trades": 42,
-   "market_cap": 18.79
-  },
-  {
-   "date": "2024-09-24",
-   "volume": 11023,
-   "turnover": 258001,
-   "high": 24.0,
-   "low": 23.05,
-   "avg_price": 23.41,
-   "trades": 10,
-   "market_cap": 18.89
-  },
-  {
-   "date": "2024-09-25",
-   "volume": 57029,
-   "turnover": 1343944,
-   "high": 23.95,
-   "low": 23.3,
-   "avg_price": 23.57,
-   "trades": 25,
-   "market_cap": 19.02
-  },
-  {
-   "date": "2024-09-26",
-   "volume": 29554,
-   "turnover": 701610,
-   "high": 24.7,
-   "low": 23.2,
-   "avg_price": 23.74,
-   "trades": 26,
-   "market_cap": 19.15
-  },
-  {
-   "date": "2024-09-27",
-   "volume": 143950,
-   "turnover": 3589351,
-   "high": 26.25,
-   "low": 23.85,
-   "avg_price": 24.93,
-   "trades": 78,
-   "market_cap": 20.11
-  },
-  {
-   "date": "2024-09-30",
-   "volume": 82734,
-   "turnover": 2039016,
-   "high": 25.3,
-   "low": 23.5,
-   "avg_price": 24.65,
-   "trades": 57,
-   "market_cap": 19.89
-  },
-  {
    "date": "2024-10-01",
    "volume": 63123,
    "turnover": 1500904,
@@ -4842,6 +4642,16 @@
    "avg_price": 77.41,
    "trades": 131,
    "market_cap": 62.46
+  },
+  {
+   "date": "2026-09-01",
+   "volume": 242783,
+   "turnover": 18698516,
+   "high": 77.9,
+   "low": 76.5,
+   "avg_price": 77.02,
+   "trades": 141,
+   "market_cap": 62.14
   }
  ]
 }
