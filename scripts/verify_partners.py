@@ -326,16 +326,28 @@ def check_partner(p, R):
         want = round((series[-1]["c"] / series[0]["c"] - 1) * 100, 2)
         if abs(perf.get("return_pct", 0) - want) > PCT_TOL:
             R.fail("C11", f"{sym} 期間報酬 {perf.get('return_pct')}% 與序列首末算出的 {want}% 不符")
+        crossed = []
         for a, b, label in (("high_52w", "high_52w_yahoo", "52 週高"),
                             ("low_52w", "low_52w_yahoo", "52 週低")):
-            if perf.get(a) is not None and perf.get(b) is not None \
-                    and abs(perf[a] - perf[b]) > 0.01:
+            # Yahoo 的 meta 偶爾整欄回 0（8/27 就因此擋掉一整天的發佈：自算 52 週低
+            # 2300 對上 Yahoo 的 0.0）。價格不可能 ≤ 0，那是「這次沒給」而不是
+            # 「跟我們算的不一樣」——跳過交叉核對，不要拿別人的空值擋自己的發佈。
+            if perf.get(a) is None or not (perf.get(b) or 0) > 0:
+                continue
+            crossed.append(label)
+            if abs(perf[a] - perf[b]) > 0.01:
                 R.fail("C11", f"{sym} 自算{label} {perf[a]} 與 Yahoo meta {perf[b]} 不符")
         if not [f for f in R.fails if f.startswith("[C11]")]:
+            # 跳過的部分要照實講。驗證報告說「一致」卻其實沒比對過，
+            # 比沒有這項檢查更糟——之後沒人知道哪幾天是真的核對過的。
+            if crossed:
+                cross = "／".join(crossed) + " 與 Yahoo meta 一致"
+            else:
+                cross = "Yahoo meta 未提供 52 週高低，本次未交叉核對"
             R.ok("C11", f"{sym} 期間報酬 {perf['return_pct']:+.2f}%"
                         f"（{perf['first']['d']} {perf['first']['c']:,.2f}"
                         f" → {perf['last']['d']} {perf['last']['c']:,.2f}）"
-                        f"、52 週高低與 Yahoo meta 一致")
+                        f"、{cross}")
 
     # C12 溯源：股數每一筆變動都要有來源與基準日；註記必須分清事實與推論
     for comp in (sh.get("components") or []):

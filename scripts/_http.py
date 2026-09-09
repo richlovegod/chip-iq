@@ -17,7 +17,12 @@ Cloudflare 錯誤頁（解 JSON 時就是 JSONDecodeError）的情況——8/14 
 """
 import http.client, json, time, urllib.error, urllib.request
 
-_RETRIABLE = (urllib.error.URLError, http.client.HTTPException, json.JSONDecodeError)
+# 改抓 OSError 而不是逐一列舉：URLError、TimeoutError、ConnectionResetError 全都是
+# 它的子類別。在這個只做 HTTP 取檔的函式裡，OSError 只可能是網路問題。
+# 之前逐一列舉的寫法讓我們每出一次包才補一種：IncompleteRead（7/28）、
+# JSONDecodeError（8/17）、TimeoutError（8/25，讀 body 讀到一半逾時，
+# 它不是 URLError 的子類別所以漏接）。這次一次收乾淨，不要再打地鼠。
+_RETRIABLE = (OSError, http.client.HTTPException, json.JSONDecodeError)
 
 _BACKOFF = (3, 8, 20, 45)  # 每次失敗後等待的秒數；嘗試次數 = len + 1
 
