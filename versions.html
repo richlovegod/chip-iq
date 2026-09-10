@@ -50,7 +50,7 @@
     <b>排程</b> <code>.github/workflows/daily.yml</code>，每個交易日台北 17:30（GitHub 常延遲 1–4 小時），也可手動觸發。<br>
     <b>四道守門員</b> <code>verify_broker.py</code>（分點對 2026-07-21 黃金樣本）、<code>verify_partners.py</code>（夥伴 12 項＋突變測試）、<code>verify_site.py</code>（全站形狀與日期）——任一失敗就不 commit，網站停在昨天的好資料。<br>
     <b>失敗了怎麼看</b> GitHub Actions 頁面點進失敗的 run，看紅色那步的最後 20 行；守門員的訊息會直接說是哪一項、什麼值對不上。<br>
-    <b>不要在台北 13:30–13:45 手動觸發</b>：TWSE 那段時間停用全市場查詢，會失敗（訊息會說明）。<br>
+    <b>不要在台北 13:30–14:00 手動觸發</b>：TWSE 那段時間停用全市場查詢（自稱到 13:45，實測 13:53 仍擋），會失敗，訊息會直接說明。<br>
     <b>repo 連續 60 天沒活動</b> GitHub 會停用排程；機器人的 commit 算不算活動並不明確，每月看一眼「最後更新」。<br>
     <b>已知會過期的東西</b> 黃金樣本（2026-07-21）滾出抓取窗格後，同業對帳表會消失（有提示）、分點對帳靠 cache 永久保留不受影響；<code>verify_partners.py</code> 的 GOLDEN_CAP 錨點基準日（2026-08-14）滾出 2 年窗格後只警告不擋。
   </div>
