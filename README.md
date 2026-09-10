@@ -24,14 +24,15 @@
 https://www.tpex.org.tw/www/zh-tw/emerging/dailyDl?name=EMdss004.YYYYMMDD-C.csv
 ```
 
-四個會卡住的地方：
+五個會卡住的地方：
 
 1. **必須帶 `/www/` 前綴**。日統計頁面上列出的連結是 `/zh-tw/emerging/dailyDl?...`，直接打會 302 到 `/errors`。頁面本身有 Cloudflare 擋，但這支下載端點沒有。
 2. 編碼是 **Big5**（用 `big5hkscs` 才不會掉罕用字），CRLF 換行，格式是自訂的 `TITLE`／`HEADER`／`BODY` 前綴而非標準 CSV 表頭。
 3. **只涵蓋「電腦議價點選系統交易」**，不含系統外議價（那是 `EMdcs002`）。現行報表也只用這一份，不要自作主張合併，否則對不上。
 4. 興櫃日報表只給**券商代號**。TWSE 兩支證券商基本資料 API 可蓋掉 99.2%，但「經紀部／自營」這類總公司層級的交易代號查不到，需併入公司自行彙整的對照表（見 `fetch_broker_lut.py` 的 `EXTRA`）。
+5. **「查無資料」≠「非交易日」**。TPEx 約 16:35 才出檔，在那之前打「今天」一定是空的。曾把 2026-07-27、07-31、09-10 三個正常交易日永久標成非交易日（在盤後檔出來前跑了一次），網站上那幾天的分點就一直是空的。現在 `cache/nodata.json` 只記「確定已過出檔時間」的日子，且 10 天內的標記每次都重查。
 
-歷史自民國 96 年起提供，可一次回補；目前站上為近一年（241 個交易日、827 家分點）。
+歷史自民國 96 年起提供，可一次回補；站上自 2025-07-28 起逐日累積（`cache/` 永久保留，不隨 `--days` 縮短）。
 
 ### ⚠️ 券商代號會中途改編
 
@@ -94,10 +95,12 @@ https://www.tpex.org.tw/www/zh-tw/emerging/dailyDl?name=EMdss004.YYYYMMDD-C.csv
 
 ## 市值正確性驗證
 
-以現行每日報表 2026-07-21 那期作為黃金樣本逐檔對帳：
+以現行每日報表 2026-07-21 那期作為黃金樣本逐檔對帳。首次對帳（2026-07-23）的結果：
 
 - **再生醫療 12 檔**：6 檔誤差 0.00%，10/12 在 0.5% 以內
 - **生技大盤 Top 30**：市值 26/30 完全吻合；成分 29/30 重疊
+
+⚠️ 這組數字會隨時間變差，不是壞掉：本站每天重抓 MOPS 的已發行股數，黃金樣本的股數是 7/21 當天的靜態值，之後每有一家增資，該檔的落差就出現。網站「同業比較」頁底部的對帳表是即時算的，以那個為準；落差超過 0.5% 的個股會列在說明文字裡。
 
 剩餘落差**全部來自股數與成分、不是價格**。
 
@@ -113,8 +116,8 @@ https://www.tpex.org.tw/www/zh-tw/emerging/dailyDl?name=EMdss004.YYYYMMDD-C.csv
 |---|---|---|
 | 代號 | 東證 4978 | KOSDAQ 298060 |
 | 關係 | 日本 MAH 與獨家開發／商業化授權方，同時是仲恩股東 | 2020-10-13 南韓獨家授權（polyQ 型 SCA） |
-| 2 年報酬 | +15.62% | −78.29% |
-| 市值 | ¥14.93B（149.32 億円） | ₩25.11B（251.06 억원） |
+
+即時的股價、報酬與市值見網站「合作夥伴」頁籤，不在此重複——寫在這裡的數字隔天就過期。
 
 > **公司名稱方向不要寫反**：풍전약품（POONGJEON PHARMACY）是**新名**，SCM Lifescience 是舊名。
 > 2025-07 SCM 買下製藥流通商 풍전약품 並吸收合併，存續公司改用被併公司的名字（2026-03-24 決議、04-24 變更上市）。一般提及時的「SCM(POONGJEON)」確實是同一個代號。
@@ -153,6 +156,7 @@ python scripts/fetch_broker_daily.py  # 券商分點每日明細（預設回補 
 python scripts/verify_broker.py       # 分點回歸測試（對 2026-07-21 黃金樣本）
 python scripts/fetch_partners.py      # 海外授權夥伴 4978.T／298060.KQ（近 2 年）
 python scripts/verify_partners.py     # 夥伴回歸測試（--self-test 跑突變測試）
+python scripts/verify_site.py         # 全站形狀與日期檢查（發佈前最後一道）
 ```
 
 每日更新只要跑 `fetch_broker_daily.py --days 7`——抓過的日子存在 `cache/`（一天一檔約 6KB，**進版控**），不會重複下載，換一台機器跑排程也不必重新回補。回補一整年約 250 個請求、每天 2MB，跑一次十分鐘左右。
@@ -165,7 +169,7 @@ python scripts/verify_partners.py     # 夥伴回歸測試（--self-test 跑突�
 
 ## 排程
 
-`.github/workflows/daily.yml`：每個交易日 UTC 09:30（台北 17:30）自動跑完上面全部腳本、跑回歸測試、commit 並發佈。回歸測試沒過就中止，不會把錯的數字推上去。也可以在 Actions 頁面手動觸發。
+`.github/workflows/daily.yml`：每個交易日 UTC 09:30（台北 17:30）自動跑完上面全部腳本、跑三道回歸測試（分點、夥伴、全站結構）、commit 並發佈。任一道沒過就中止，不會把錯的數字推上去。也可以在 Actions 頁面手動觸發——**但避開台北 13:30–13:45**，TWSE 那段時間停用全市場查詢。所有腳本的 `date.today()` 以台北時間為準（workflow 設了 `TZ=Asia/Taipei`）。
 
 之所以能跑在 GitHub Actions，是因為**本站所有資料源都是公開 API、沒有任何憑證要保管**，排程不綁任何一台個人電腦。反過來說，需要帳密或內部資料的東西不要加進這個 workflow。
 
@@ -173,6 +177,10 @@ python scripts/verify_partners.py     # 夥伴回歸測試（--self-test 跑突�
 
 - **repo 連續 60 天沒有活動，GitHub 會自動停用排程**。機器人自己推的 commit 算不算活動並不明確，請每月看一眼網頁上的「最後更新」日期。
 - **repo 日後轉移給公司帳號時，Actions 會跟著走、不必改設定**，但 GitHub Pages 網址會從 `richlovegod.github.io/chip-iq` 變成 `<新帳號>.github.io/chip-iq`，已經發出去的連結會失效，要重新通知使用者。
+
+## 版本紀錄
+
+`versions.html`（讀 `data/versions.json`）列出每一版改了什麼、為什麼改，頁首版本號可點進去。發新版時三處一起改：`data/versions.json` 最前面加一筆、`index.html` 頁首與頁尾的版本號、commit 訊息寫清楚原因。版號規則：介面或資料源有新東西 → 第二位進位；只修 bug 或守門員 → 第三位進位。
 
 ## 本機預覽
 
@@ -188,6 +196,7 @@ python -m http.server 8899
 
 ```
 index.html                  介面（單檔，含所有圖表，無外部相依）
+versions.html               版本紀錄與維運說明（讀 data/versions.json）
 data/quote_daily.json       7729 每日價量與市值
 data/peers.json             再生醫療 12 檔每日市值 + 對帳結果
 data/universe.json          生技全市場排名、Top 30、7729 名次
@@ -197,6 +206,10 @@ data/broker_lut.json        券商代號 → 分點名稱對照表 ＋ 造市商
 data/broker_fixture.json    2026-07-21 黃金樣本，僅供對帳
 data/partners.json          海外授權夥伴價量、市值、公司事件（fetch_partners.py 產出）
 data/partners_ref.json      夥伴股數與公司事件的人工維護正本（fetch_partners.py 的輸入）
+data/partners_profile.json  夥伴的授權關係、Pipeline、新聞等敘事（人工策展）
+data/versions.json          版本紀錄
 cache/7729/YYYYMMDD.json    分點每日快取（一天一檔，進版控，換機器跑免重新回補）
-scripts/*.py                資料抓取腳本（僅用 Python 標準函式庫，無需 pip install）
+scripts/fetch_*.py          資料抓取腳本（僅用 Python 標準函式庫，無需 pip install）
+scripts/verify_*.py         三道守門員：分點對帳、夥伴 12 項檢查＋突變測試、全站形狀與日期
+scripts/_http.py            共用的重試邏輯
 ```

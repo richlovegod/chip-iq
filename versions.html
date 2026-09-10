@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7729 籌碼與市值監測 · 版本紀錄</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Segoe UI","Microsoft JhengHei",sans-serif;background:#0d141c;color:#e6edf3;line-height:1.6;padding:0 0 48px}
+  .wrap{max-width:900px;margin:0 auto;padding:30px 24px 0}
+  .top a{color:#ff6b5a;text-decoration:none;font-size:13px}
+  h1{font-size:22px;margin:18px 0 4px;color:#fff}
+  h1 b{color:#ff6b5a}
+  .sub{color:#8b9bb0;font-size:13px;margin-bottom:8px}
+  .note{background:#141f2c;border:1px solid #243748;border-left:3px solid #ff6b5a;border-radius:8px;padding:12px 15px;color:#a8bccf;font-size:12.5px;line-height:1.7;margin:16px 0 26px}
+  .note b{color:#e6edf3}
+  .note code{background:#0d141c;border:1px solid #243748;border-radius:4px;padding:0 5px;font-size:12px;color:#ffce7a}
+  .sec{font-size:13px;color:#ff6b5a;text-transform:uppercase;letter-spacing:1px;margin:34px 0 12px;border-top:1px solid #243748;padding-top:22px}
+  .verrow{padding:16px 0;border-bottom:1px solid #1c2a39}
+  .verhd{font-weight:700;color:#e6edf3;font-size:15px;margin-bottom:8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .vtag{background:#3a1f1c;color:#ff8a7a;border:1px solid #7a3a30;border-radius:5px;padding:1px 9px;font-size:12.5px;font-variant-numeric:tabular-nums}
+  .vdate{color:#6a7c92;font-size:12px;margin-left:auto;font-variant-numeric:tabular-nums}
+  ul{margin:0 0 0 20px;padding:0;color:#c9d6e3;font-size:13px}
+  li{margin:6px 0;line-height:1.7}
+  .foot{color:#6a7c92;font-size:11px;margin-top:14px;line-height:1.7}
+  .kv{font-size:12.5px;color:#c9d6e3;line-height:1.9}
+  .kv b{color:#9fb4cc;font-weight:600}
+  .kv code{background:#0d141c;border:1px solid #243748;border-radius:4px;padding:0 5px;font-size:12px;color:#ffce7a}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="index.html">← 回面板</a></div>
+  <h1>7729 <b>仲恩生醫</b> 籌碼與市值監測 · 版本紀錄</h1>
+  <div class="sub">給接手維護的人看的：每一版改了什麼、為什麼改。</div>
+  <div class="note">
+    <b>發新版的固定動作</b>（三處要一起改，少一處就對不上）：<br>
+    ① 在 <code>data/versions.json</code> 最前面加一筆（version、dateDisplay、title、changes）<br>
+    ② 改 <code>index.html</code> 頁首與頁尾的版本號<br>
+    ③ commit 訊息寫清楚「為什麼」——這一頁是給人看的摘要，git log 才是完整脈絡<br>
+    版號規則：介面或資料源有新東西 → 第二位進位（v0.4 → v0.5）；只修 bug 或守門員 → 第三位進位（v0.4 → v0.4.1）。
+  </div>
+
+  <div class="sec">版本更新紀錄</div>
+  <div id="verList"></div>
+  <div class="foot">資料來源：<code>data/versions.json</code>。時間軸與完整脈絡見 <code>git log</code>；每日的資料更新（機器人 commit）不列入版本。</div>
+
+  <div class="sec">維運要知道的事</div>
+  <div class="kv">
+    <b>排程</b> <code>.github/workflows/daily.yml</code>，每個交易日台北 17:30（GitHub 常延遲 1–4 小時），也可手動觸發。<br>
+    <b>四道守門員</b> <code>verify_broker.py</code>（分點對 2026-07-21 黃金樣本）、<code>verify_partners.py</code>（夥伴 12 項＋突變測試）、<code>verify_site.py</code>（全站形狀與日期）——任一失敗就不 commit，網站停在昨天的好資料。<br>
+    <b>失敗了怎麼看</b> GitHub Actions 頁面點進失敗的 run，看紅色那步的最後 20 行；守門員的訊息會直接說是哪一項、什麼值對不上。<br>
+    <b>不要在台北 13:30–13:45 手動觸發</b>：TWSE 那段時間停用全市場查詢，會失敗（訊息會說明）。<br>
+    <b>repo 連續 60 天沒活動</b> GitHub 會停用排程；機器人的 commit 算不算活動並不明確，每月看一眼「最後更新」。<br>
+    <b>已知會過期的東西</b> 黃金樣本（2026-07-21）滾出抓取窗格後，同業對帳表會消失（有提示）、分點對帳靠 cache 永久保留不受影響；<code>verify_partners.py</code> 的 GOLDEN_CAP 錨點基準日（2026-08-14）滾出 2 年窗格後只警告不擋。
+  </div>
+</div>
+<script>
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+fetch('data/versions.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(rows){
+  document.getElementById('verList').innerHTML=rows.map(function(v){
+    var items=(v.changes||[]).map(function(c){return '<li>'+esc(c)+'</li>';}).join('');
+    return '<div class="verrow"><div class="verhd"><span class="vtag">'+esc(v.version)+'</span>'+esc(v.title||'')
+      +'<span class="vdate">'+esc(v.dateDisplay)+'</span></div><ul>'+items+'</ul></div>';
+  }).join('');
+}).catch(function(){document.getElementById('verList').innerHTML='<p style="color:#8b9bb0">版本資料載入失敗。</p>';});
+</script>
+</body>
+</html>

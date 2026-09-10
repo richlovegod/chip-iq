@@ -32,7 +32,7 @@
   python fetch_broker_daily.py 2026-07-01 2026-07-25
 """
 import csv, io, json, os, sys, time, urllib.error
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 from _http import fetch_bytes
 
@@ -47,6 +47,18 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126.0 Safari/537.36",
     "Referer": "https://www.tpex.org.tw/zh-tw/esb/trading/info/historical/day.html",
 }
+
+# 「今天」一律用台北時間。GitHub Actions 的機器是 UTC，排程若被延遲到台北午夜之後，
+# date.today() 會還停在前一天；這裡的日期判斷全靠它，不能交給機器時區決定。
+TPE = timezone(timedelta(hours=8))
+
+# 「查無資料」要多久之後才可信。TPEx 約 16:35 出檔；在那之前打「今天」一定是空的，
+# 那不是非交易日，只是還沒出。10 天內的空結果一律不當定論、下次再查一次。
+NODATA_TRUST_AFTER_DAYS = 10
+
+
+def today_tpe():
+    return datetime.now(TPE).date()
 
 
 def num(s, default=0):
@@ -80,8 +92,15 @@ def parse(raw):
     return [[c, b, s, round(amt, 2)] for c, b, s, amt in rows]
 
 
-def fetch_day(d, nodata):
-    """回傳當日分點列；無交易日回傳 None。已抓過的直接讀 cache。"""
+def fetch_day(d, nodata, today):
+    """回傳當日分點列；無交易日回傳 None。已抓過的直接讀 cache。
+
+    ⚠️ 「查無資料」不等於「非交易日」。2026-07-27、07-31、09-10 三天都是正常交易日，
+    卻因為在盤後檔案出來之前跑了一次（手動測試、或排程被提前）而被永久標成 nodata，
+    之後每天的 --days 7 都跳過它們，網站上那幾天的分點就一直是空的。
+    所以：當天（台北時間）的空結果**不寫入** nodata；main() 載入時也會把 10 天內的
+    標記丟掉重查。多打幾個請求換資料不會無聲消失，划算。
+    """
     ymd = d.strftime("%Y%m%d")
     path = os.path.join(CACHE, f"{ymd}.json")
     if os.path.exists(path):
@@ -98,7 +117,8 @@ def fetch_day(d, nodata):
             raise
     # 非交易日會 302 到 /errors，urllib 跟隨後拿到 HTML；用長度與內容判斷
     if len(raw) < 5000 or b"BODY" not in raw[:200000]:
-        nodata.add(ymd)
+        if d < today:
+            nodata.add(ymd)
         return None
 
     rows = parse(raw)
@@ -118,7 +138,7 @@ def load_lut():
 
 def main():
     args = sys.argv[1:]
-    today = date.today()
+    today = today_tpe()
     if len(args) == 2 and not args[0].startswith("--"):
         d0 = date.fromisoformat(args[0])
         d1 = date.fromisoformat(args[1])
@@ -132,6 +152,9 @@ def main():
     if os.path.exists(NODATA):
         with open(NODATA, encoding="utf-8") as f:
             nodata = set(json.load(f))
+    # 近 10 天的「查無資料」不算數，重查（見 fetch_day 的說明）
+    trust_before = (today - timedelta(days=NODATA_TRUST_AFTER_DAYS)).strftime("%Y%m%d")
+    nodata = {x for x in nodata if x < trust_before}
 
     lut = load_lut()
     names, makers = lut["names"], set(lut["market_makers"])
@@ -142,7 +165,7 @@ def main():
         if d.weekday() < 5:  # 六日直接跳過，少打兩百多次無謂的請求
             hit = os.path.exists(os.path.join(CACHE, d.strftime("%Y%m%d.json")))
             try:
-                rows = fetch_day(d, nodata)
+                rows = fetch_day(d, nodata, today)
             except Exception as e:
                 print(f"  {d} FAIL {type(e).__name__}: {e}")
                 d += timedelta(days=1)

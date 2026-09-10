@@ -19,6 +19,11 @@ on:
 permissions:
   contents: write
 
+# 所有腳本的 date.today() 都以台北時間為準。runner 是 UTC，排程被延遲到台北午夜
+# 之後時，UTC 日期會比台北慢一天，meta.updated_at 就會跟 commit 訊息對不上。
+env:
+  TZ: Asia/Taipei
+
 concurrency:
   group: daily-update
   cancel-in-progress: false
@@ -66,6 +71,12 @@ jobs:
         run: |
           python scripts/verify_partners.py
           python scripts/verify_partners.py --self-test
+
+      # 全站形狀與日期（quote／meta／universe／peers／broker）。分點與夥伴各有
+      # 守門員，但其餘幾個檔以前沒有人在 commit 前看一眼——fetch_tpex 某月抓失敗
+      # 會帶著缺口上線、peers 某檔序列為空會讓前端整頁 TypeError。
+      - name: 回歸測試（全站結構）
+        run: python scripts/verify_site.py
 
       - name: 提交更新
         run: |

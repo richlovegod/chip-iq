@@ -12,7 +12,8 @@
   .brand{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}
   .logo{font-size:23px;font-weight:800;color:#fff;letter-spacing:.3px}
   .logo b{color:#ff6b5a}
-  .logo .v{font-size:11px;color:#6a7c92;font-weight:600;margin-left:8px;vertical-align:middle}
+  .logo .v{font-size:11px;color:#6a7c92;font-weight:600;margin-left:8px;vertical-align:middle;text-decoration:none}
+  .logo a.v:hover{color:#cfe0f2}
   .tag{font-size:12.5px;color:#8b9bb0;margin-top:5px}
   .live{display:inline-block;width:8px;height:8px;background:#2ecc71;border-radius:50%;margin-right:6px;box-shadow:0 0 8px #2ecc71;animation:p 1.6s infinite}
   @keyframes p{0%,100%{opacity:1}50%{opacity:.35}}
@@ -154,7 +155,7 @@
   <div class="wrap">
     <div class="brand">
       <div>
-        <div class="logo">7729 <b>仲恩生醫</b> <span class="v">籌碼與市值監測 · v0.3</span></div>
+        <div class="logo">7729 <b>仲恩生醫</b> <a class="v" href="versions.html" title="版本紀錄與維運說明">籌碼與市值監測 · v0.5 ↗</a></div>
         <div class="tag"><span class="live"></span>興櫃 · 資料源 TPEx 公開資訊 · <span id="rangeTag">—</span></div>
       </div>
       <div class="meta">
@@ -361,7 +362,7 @@
 </section>
 
 <div class="foot">
-  <b>7729 籌碼與市值監測 v0.3</b>　|　價量與市值：TWSE／TPEx／公開資訊觀測站　|　分點進出：TPEx 興櫃買賣日報表（EMdss004）＋ TWSE 證券商基本資料，皆程式化每日更新<br>
+  <b>7729 籌碼與市值監測 v0.5</b>　<a href="versions.html" style="color:#8b9bb0">版本紀錄 ↗</a>　|　價量與市值：TWSE／TPEx／公開資訊觀測站　|　分點進出：TPEx 興櫃買賣日報表（EMdss004）＋ TWSE 證券商基本資料，皆程式化每日更新<br>
   海外授權夥伴：價量取自 Yahoo Finance v8 chart（免憑證公開端點），發行股數與公司事件取自各國官方揭露（日本決算短信／韓國 DART、KIND），人工覆核後落地為資料，每筆附來源與基準日<br>
   興櫃採議價交易、由推薦證券商造市，<b>造市商成交均價顯示 0.00 屬正常結構性現象</b>，非資料缺漏。<br>
   本頁所有內容均來自公開資料，不含任何非公開資訊，亦不構成投資建議。<br>  股價與市值為程式自動抓取；授權關係、進度與消息為人工整理，各條均附來源連結與整理日期。
@@ -678,7 +679,8 @@ function renderTrace(){
 
 /* ---------- 市值 ---------- */
 function renderCap(days){
-  var s=Q.series.slice(-days);
+  /* 均價為空的列（TPEx 偶發回 '-'）不能進圖：Math.min 會把 null 當 0，走勢會憑空插到底 */
+  var s=Q.series.filter(function(r){return r.market_cap!=null;}).slice(-days);
   document.querySelectorAll('#capSel button').forEach(function(b){b.classList.toggle('on',+b.dataset.d===days);});
   lineChart(document.getElementById('capChart'),s,function(r){return r.market_cap;},
             {color:'#ff6b5a',fmt:function(v){return v.toFixed(0)+'億';}});
@@ -711,10 +713,13 @@ function rankArrow(ch){
 }
 
 function renderUniverse(){
-  if(!U||!U.focus){document.getElementById('rankKpi').innerHTML='';return;}
+  if(!U||!U.top){document.getElementById('rankKpi').innerHTML='';return;}
   var f=U.focus;
-  var dCap=f.prev_cap==null?null:f.cap-f.prev_cap;
-  document.getElementById('rankKpi').innerHTML=[
+  /* 7729 當天查無價格時 focus 為空：排名 KPI 沒得算，但 Top 30 表照畫，不要整張跟著消失 */
+  if(!f) document.getElementById('rankKpi').innerHTML=
+    '<div class="box"><div class="n flat">—</div><div class="l">生技全市場排名</div><div class="d">7729 基準日無成交，未納入排名</div></div>';
+  var dCap=(!f||f.prev_cap==null)?null:f.cap-f.prev_cap;
+  if(f) document.getElementById('rankKpi').innerHTML=[
     ['生技全市場排名','<span class="up">第 '+f.rank+'</span>','共 '+U.total+' 家'],
     ['名次變化',rankArrow(f.rank_change),f.prev_rank?('前日第 '+f.prev_rank):'—'],
     ['市值','<span class="'+cls(dCap)+'">'+nf(f.cap,2)+'</span> 億',
@@ -730,7 +735,7 @@ function renderUniverse(){
 
   document.getElementById('top30Body').innerHTML=U.top.map(function(r){
     var d=r.prev_cap==null?null:(r.cap/r.prev_cap-1)*100;
-    return '<tr class="'+(r.code===U.focus.code?'me':'')+'">'
+    return '<tr class="'+(f&&r.code===f.code?'me':'')+'">'
       +'<td><b>'+r.rank+'</b></td><td>'+rankArrow(r.rank_change)+'</td>'
       +'<td>'+r.code+'</td><td>'+esc(r.name)+'</td>'
       +'<td><span class="mkt">'+r.market+'</span></td>'
@@ -742,8 +747,8 @@ function renderUniverse(){
   var tot=U.top.reduce(function(a,r){return a+r.cap;},0);
   document.getElementById('top30Tip').innerHTML=
     'Top 30 合計 <b>'+nf(tot,0)+' 億</b>　|　入榜門檻 <b>'+nf(U.top[U.top.length-1].cap,2)+' 億</b>'
-    +'　|　7729 目前 <b>'+nf(U.focus.cap,2)+' 億</b>，距離入榜還差 '
-    +nf(U.top[U.top.length-1].cap-U.focus.cap,2)+' 億'
+    +(f?'　|　7729 目前 <b>'+nf(f.cap,2)+' 億</b>，距離入榜還差 '
+      +nf(U.top[U.top.length-1].cap-f.cap,2)+' 億':'　|　7729 基準日無成交，未納入排名')
     +(U.no_price?'　|　'+U.no_price+' 家因查無價格未納入排名':'');
 }
 
@@ -847,6 +852,9 @@ function renderPeer(days){
   var total=P.peers.reduce(function(a,p){return a+(p.latest?p.latest.cap:0);},0);
 
   document.getElementById('peerBody').innerHTML=P.peers.map(function(p){
+    /* 某檔整段抓不到時 latest 為空，這一列寫「無資料」就好，不要讓整頁跟著 TypeError */
+    if(!p.latest) return '<tr><td>—</td><td>'+p.code+'</td><td>'+esc(p.name)+'</td>'
+      +'<td><span class="mkt">'+p.market+'</span></td><td colspan="4" style="color:#8b9bb0">無資料（本次未取得行情）</td></tr>';
     var l=byCode[p.code], last=l.vals[l.vals.length-1];
     var ret=(l.base&&last!=null)?(last/l.base-1)*100:null;
     var st=p.stitched_from_emerging
@@ -868,8 +876,9 @@ function renderPeer(days){
     var l=byCode[p.code],lv=l.vals[l.vals.length-1];
     return l.base&&lv!=null&&(lv/l.base-1)*100<meRet;
   }).length;
-  document.getElementById('peerFoot').innerHTML=
-    '群組總市值 <b>'+nf(total,2)+' 億</b>　|　7729 佔 <b>'+(me.latest.cap/total*100).toFixed(1)+'%</b>，'
+  document.getElementById('peerFoot').innerHTML=(!me||!me.latest)
+    ? '群組總市值 <b>'+nf(total,2)+' 億</b>　|　7729 本次未取得行情，未納入群內排名'
+    : '群組總市值 <b>'+nf(total,2)+' 億</b>　|　7729 佔 <b>'+(me.latest.cap/total*100).toFixed(1)+'%</b>，'
     +'群內排名 <b>第 '+me.group_rank+'</b>（共 '+P.peers.length+' 檔）　|　'
     +'本區間 7729 <span class="'+cls(meRet)+'">'+sign(meRet,1)+'%</span>，表現優於 <b>'+beat+'/'+(P.peers.length-1)+'</b> 檔同業';
 
@@ -877,7 +886,7 @@ function renderPeer(days){
     '區間 '+fr.dates[0]+' ～ '+fr.dates[fr.dates.length-1]+'（'+fr.dates.length+' 個交易日）'
     +'　點下方標籤可單獨顯示或隱藏個股';
 
-  hBar(document.getElementById('peerBar'),P.peers.map(function(p){
+  hBar(document.getElementById('peerBar'),P.peers.filter(function(p){return p.latest;}).map(function(p){
     return {name:p.name,cap:p.latest.cap,color:byCode[p.code].color,focus:p.code===P.focus};
   }));
 
@@ -900,11 +909,14 @@ function renderPeerMeta(){
       +'<td class="num">'+nf(c.computed,2)+'</td><td class="num">'+nf(c.reported,2)+'</td>'
       +'<td class="num" style="color:'+(good?'#3dd68c':'#ffce7a')+'">'+sign(c.diff_pct,2)+'%</td></tr>';
   }).join('');
-  document.getElementById('peerValNote').innerHTML=
-    '<b style="color:#3dd68c">'+exact+' 檔完全吻合、'+ok+'/'+v.length+' 檔誤差在 0.5% 內。</b><br>'
-    +'剩餘落差全部來自<b>股數</b>而非價格：現行報表的股數是一份靜態清單會逐漸過期，'
+  var off=v.filter(function(c){return Math.abs(c.diff_pct)>=0.5;}).map(function(c){return c.name;});
+  document.getElementById('peerValNote').innerHTML=!v.length
+    ? '<b style="color:#ffce7a">黃金樣本 '+esc(P.validation.sample||'')+' 已滾出本站的抓取窗格（預設近 12 個月），對帳表不再顯示。</b><br>'
+      +'要恢復對帳，把 fetch_peers.py 的月數拉長，或換一期較近的報表當黃金樣本。'
+    : '<b style="color:#3dd68c">'+exact+' 檔完全吻合、'+ok+'/'+v.length+' 檔誤差在 0.5% 內。</b><br>'
+    +'落差全部來自<b>股數</b>而非價格：現行報表的股數是一份靜態清單會逐漸過期，'
     +'本站每次執行都重抓公開資訊觀測站的「已發行普通股數」，故以本站為準。'
-    +'（樂迦、永笙兩檔的股數差異建議與報表維護同仁核對後定案）';
+    +(off.length?'（'+esc(off.join('、'))+' 的股數差異建議與報表維護同仁核對後定案）':'');
 
   document.getElementById('peerNote').innerHTML=
     '<b>'+esc(P.group)+' '+P.peers.length+' 檔</b>　橫跨 上市／上櫃／興櫃 三個市場，'
@@ -920,7 +932,7 @@ function renderOv(){
   var dAvg=last.avg_price-prev.avg_price, dPct=dAvg/prev.avg_price*100;
   var dCap=last.market_cap-prev.market_cap;
   var boxes=[
-    ['最後成交價',t.latest_price!=null?nf(t.latest_price,2):'—','當日最後一筆成交'],
+    ['最後成交價',t.latest_price!=null?nf(t.latest_price,2):'—',t.date?esc(t.date)+' 最後一筆成交':'當日最後一筆成交'],
     ['成交均價','<span class="'+cls(dAvg)+'">'+nf(last.avg_price,2)+'</span>',
       '<span class="'+cls(dAvg)+'">'+sign(dAvg,2)+'（'+sign(dPct,2)+'%）</span>'],
     ['市值','<span class="'+cls(dCap)+'">'+nf(last.market_cap,2)+'</span> 億',
@@ -931,7 +943,7 @@ function renderOv(){
   document.getElementById('kpi').innerHTML=boxes.map(function(b){
     return '<div class="box"><div class="n">'+b[1]+'</div><div class="l">'+b[0]+'</div><div class="d">'+b[2]+'</div></div>';
   }).join('');
-  lineChart(document.getElementById('ovChart'),s.slice(-60),function(r){return r.avg_price;},{color:'#ff6b5a'});
+  lineChart(document.getElementById('ovChart'),s.filter(function(r){return r.avg_price!=null;}).slice(-60),function(r){return r.avg_price;},{color:'#ff6b5a'});
 
   var a=aggregate(1);
   function mini(dir){
