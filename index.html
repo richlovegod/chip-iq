@@ -47,6 +47,20 @@
   .filters button.on{background:#3a1f1c;border-color:#ff6b5a;color:#fff;font-weight:600}
   .filters button:disabled{opacity:.35;cursor:not-allowed}
   .mm{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:20px;margin-left:5px;background:#3a2f14;color:#ffce7a;border:1px solid #6a5a2e;vertical-align:middle}
+  /* 籌碼分析：分點在本區間的動作，對照它區間前的累計部位 */
+  .act{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;white-space:nowrap;border:1px solid}
+  .a-add{background:#3a1f1c;color:#ffb0a4;border-color:#7a3a30}
+  .a-cov{background:#2a2040;color:#d7c6ff;border-color:#5a4a80}
+  .a-new{background:#16283c;color:#8fc4f5;border-color:#24567f}
+  .a-take{background:#3a2f14;color:#ffce7a;border-color:#6a5a2e}
+  .a-loss{background:#12301f;color:#6ee7a0;border-color:#1e5a3a}
+  .a-dist{background:#10303b;color:#8fe0f0;border-color:#2b5566}
+  .stack{display:flex;height:16px;border-radius:4px;overflow:hidden;background:#182533;margin:6px 0 8px}
+  .stack i{display:block;height:100%}
+  .lg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:#9fb4cc}
+  .lg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  .lg b{color:#e6edf3;font-weight:600}
+  .stitle{font-size:12px;color:#c9d6e3;font-weight:600;margin:4px 0 2px}
   .other td{color:#8b9bb0;font-style:italic}
   .tot td{border-top:2px solid #2b3a4d;font-weight:700;color:#e6edf3}
   .warn{background:rgba(255,206,122,.09);border:1px solid #6a5a2e;color:#f0d9a8;border-radius:8px;padding:11px 15px;font-size:12.5px;line-height:1.6;margin-bottom:16px}
@@ -155,7 +169,7 @@
   <div class="wrap">
     <div class="brand">
       <div>
-        <div class="logo">7729 <b>仲恩生醫</b> <a class="v" href="versions.html" title="版本紀錄與維運說明">籌碼與市值監測 · v0.5 ↗</a></div>
+        <div class="logo">7729 <b>仲恩生醫</b> <a class="v" href="versions.html" title="版本紀錄與維運說明">籌碼與市值監測 · v0.6 ↗</a></div>
         <div class="tag"><span class="live"></span>興櫃 · 資料源 TPEx 公開資訊 · <span id="rangeTag">—</span></div>
       </div>
       <div class="meta">
@@ -203,21 +217,56 @@
   <div class="kpi" id="chipKpi"></div>
   <div class="grid2">
     <div class="card">
-      <h2>◎ 買超分點</h2>
+      <h2>◎ 買超分點 <small>右三欄：這家分點在區間開始前已累積的部位、成本，以及本區間的動作</small></h2>
       <table>
-        <thead><tr><th>分點</th><th class="num">買超(股)</th><th class="num">均價</th><th class="num">佔比</th></tr></thead>
+        <thead><tr><th>分點</th><th class="num">買超(股)</th><th class="num">均價</th><th class="num">佔比</th>
+        <th class="num" title="區間起始日之前、自資料起點累計的淨額">區間前部位</th>
+        <th class="num" title="區間前所有買賣的成交量加權價">成本</th><th>動作</th></tr></thead>
         <tbody id="buyBody"></tbody>
       </table>
     </div>
     <div class="card">
-      <h2>◎ 賣超分點</h2>
+      <h2>◎ 賣超分點 <small>了結／認賠＝原本累計淨買超者在賣，續出＝原本就是淨賣超者</small></h2>
       <table>
-        <thead><tr><th>分點</th><th class="num">賣超(股)</th><th class="num">均價</th><th class="num">佔比</th></tr></thead>
+        <thead><tr><th>分點</th><th class="num">賣超(股)</th><th class="num">均價</th><th class="num">佔比</th>
+        <th class="num" title="區間起始日之前、自資料起點累計的淨額">區間前部位</th>
+        <th class="num" title="區間前所有買賣的成交量加權價">成本</th><th>動作</th></tr></thead>
         <tbody id="sellBody"></tbody>
       </table>
     </div>
   </div>
-  <div class="warn" id="chipUnk" style="display:none"></div>
+  <div class="info" id="chipUnk" style="display:none"></div>
+  <div class="card">
+    <h2>◎ 真實換手 <small>扣除造市商經手量之後，淨買超與淨賣超各從哪裡來</small></h2>
+    <div class="kpi" id="flowKpi"></div>
+    <div class="grid2" id="flowBars"></div>
+    <div class="tip" id="flowTip"></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h2>◎ 持續累積 <small>近 20 個交易日</small></h2>
+      <table>
+        <thead><tr><th>分點</th><th class="num">淨額</th><th class="num">佔股本</th><th class="num">淨買天數</th>
+        <th class="num" title="連續交易日淨買超的最長天數，中間停手或淨賣即中斷">最長連買</th><th class="num">均價</th><th>最後一日</th></tr></thead>
+        <tbody id="streakBuy"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>◎ 持續出貨 <small>近 20 個交易日</small></h2>
+      <table>
+        <thead><tr><th>分點</th><th class="num">淨額</th><th class="num">佔股本</th><th class="num">淨賣天數</th>
+        <th class="num" title="連續交易日淨賣超的最長天數，中間停手或淨買即中斷">最長連賣</th><th class="num">均價</th><th>最後一日</th></tr></thead>
+        <tbody id="streakSell"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="tip" id="streakTip" style="margin:-8px 0 18px"></div>
+  <div class="card">
+    <h2>◎ 持股成本分層 <small>自資料起點累計淨買超的分點，依成交量加權成本分層；成本低於現價的部分就是潛在賣壓</small></h2>
+    <div class="kpi" id="costKpi"></div>
+    <div class="hbars" id="costBars"></div>
+    <div class="tip" id="costTip"></div>
+  </div>
   <div class="card">
     <h2>◎ 資料驗證 <small>對現行《生技籌碼與市值綜合日報》2026-07-21 當日窗格逐筆對帳</small></h2>
     <table>
@@ -363,7 +412,7 @@
 </section>
 
 <div class="foot">
-  <b>7729 籌碼與市值監測 v0.5</b>　<a href="versions.html" style="color:#8b9bb0">版本紀錄 ↗</a>　|　價量與市值：TWSE／TPEx／公開資訊觀測站　|　分點進出：TPEx 興櫃買賣日報表（EMdss004）＋ TWSE 證券商基本資料，皆程式化每日更新<br>
+  <b>7729 籌碼與市值監測 v0.6</b>　<a href="versions.html" style="color:#8b9bb0">版本紀錄 ↗</a>　|　價量與市值：TWSE／TPEx／公開資訊觀測站　|　分點進出：TPEx 興櫃買賣日報表（EMdss004）＋ TWSE 證券商基本資料，皆程式化每日更新<br>
   海外授權夥伴：價量取自 Yahoo Finance v8 chart（免憑證公開端點），發行股數與公司事件取自各國官方揭露（日本決算短信／韓國 DART、KIND），人工覆核後落地為資料，每筆附來源與基準日<br>
   興櫃採議價交易、由推薦證券商造市，<b>造市商成交均價顯示 0.00 屬正常結構性現象</b>，非資料缺漏。<br>
   本頁所有內容均來自公開資料，不含任何非公開資訊，亦不構成投資建議。<br>  股價與市值為程式自動抓取；授權關係、進度與消息為人工整理，各條均附來源連結與整理日期。
@@ -371,7 +420,7 @@
 </div>
 
 <script>
-var Q=null, F=null, M=null, P=null, U=null, BD=null;
+var Q=null, F=null, M=null, P=null, U=null, BD=null, QMAP={};
 var traceCode=null, traceDays=120;
 
 function tab(e,id){
@@ -456,7 +505,7 @@ function aggregate(days,endDate){
   });
   var rows=Object.keys(agg).map(function(c){
     var a=agg[c],qty=a[0]+a[1],b=BD.brokers[c]||{n:c,mm:false};
-    return {code:c,name:b.n,mm:b.mm,unk:!!b.unk,net:a[0]-a[1],buy:a[0],sell:a[1],
+    return {code:c,name:b.n,mm:b.mm,unk:!!b.unk,was:b.was||null,net:a[0]-a[1],buy:a[0],sell:a[1],
             avg_price:qty?a[2]/qty:0,days:a[3],
             pct:total?Math.abs(a[0]-a[1])/total*100:0};
   });
@@ -481,62 +530,321 @@ function side(rows,dir,topN){
   return {rows:out,total:hit.reduce(function(a,r){return a+r.net;},0)};
 }
 
-/* 一年份資料裡有兩組券商代號中途換掉了（用本站資料反推的停用／啟用日）：
-     592x  最後出現 2026-01-30，9B2x 自 2026-02-02 起接手
-     815x  最後出現 2026-04-02，9B1x 自 2026-04-07 起接手
-   影響：區間若跨過換碼日，同一家分點會被拆成新舊兩列，長區間的累計會被低估。
-   這不是我們算錯，是券商代號本身變了；現行報表用 5／10 日窗格看不到，
-   拉長區間就會遇到，所以照實標示出來。 */
-function unkNote(rows,dates){
-  if(!rows.some(function(r){return r.unk;})) return '';
-  return '<b>⚠️ 本區間含已停用的舊券商代號。</b>'
-    +'592x 於 2026-01-30 後改編為 9B2x、815x 於 2026-04-02 後改編為 9B1x，'
-    +'TWSE 現行券商清單查不到舊碼的名稱，因此以代號顯示。'
-    +'<b>區間若跨過換碼日，同一家分點會分裂成新舊兩列</b>，解讀長區間累計時請留意。';
+/* ---------- 券商改碼：舊碼併入現行代號 ----------
+   一年份資料裡有兩組券商代號中途整批換掉，兩件都有官方來源（對照表由
+   scripts/fetch_broker_daily.py 產在 BD.aliases，來源寫在 BD.alias_events）：
+     元富 592x → 9B2x  2026-02-02 起，後一碼不變（元富證券公告）
+     台新 815x → 9B1x  2026-04-07 起，依分公司名稱對應（台新合併專區「服務據點異動」）
+   每日明細保留原始代號（cache 與對帳腳本都不動），載入時在這裡併成同一分點。
+   不併的話，區間一跨過改碼日，同一家就被拆成新舊兩列、長區間累計被低估
+   ——例如 8150「台新」+26.8 萬與 9B17「台新-台北營業部」+22.5 萬其實是同一家。 */
+function applyAliases(){
+  var al=BD.aliases||{};
+  if(!Object.keys(al).length) return;
+  BD.dates.forEach(function(d){
+    var rows=BD.daily[d]||[],idx={},out=[];
+    rows.forEach(function(r){
+      var c=al[r[0]]||r[0];
+      if(idx[c]!=null){var t=out[idx[c]];t[1]+=r[1];t[2]+=r[2];t[3]+=r[3];}
+      else{idx[c]=out.length;out.push([c,r[1],r[2],r[3]]);}
+    });
+    BD.daily[d]=out;
+  });
+  Object.keys(al).forEach(function(o){
+    var n=al[o],ob=BD.brokers[o]||{};
+    if(!BD.brokers[n]) BD.brokers[n]={n:ob.n||n,mm:false};
+    (BD.brokers[n].was=BD.brokers[n].was||[]).push((ob.old_name||o)+'（舊碼 '+o+'）');
+  });
+}
+
+/* 區間跨過改碼日時說一聲：數字已經併好了，名稱是現行名稱 */
+function aliasNote(dates){
+  if(!dates.length) return '';
+  var ev=(BD.alias_events||[]).filter(function(e){return dates[0]<e.date&&dates[dates.length-1]>=e.date;});
+  if(!ev.length) return '';
+  return '<b>本區間跨越券商改碼日，舊碼已依官方對照併回同一分點：</b>'
+    +ev.map(function(e){
+      return esc(e.firm)+' '+esc(e.from)+'→'+esc(e.to)+'（'+esc(e.date)+' 起，'+esc(e.rule)+'）'
+        +(e.source?' <a class="src" href="'+esc(e.source)+'" target="_blank" rel="noopener">來源 ↗</a>':'');
+    }).join('；')
+    +'。分點以現行名稱顯示，滑過名稱可看改碼前的名稱。';
 }
 
 /* 查無名稱的代號多為已停業／併購的券商，只會出現在較早的歷史資料。
    照實顯示代號並標記，不要假裝它是一家沒名字的分點。 */
 function bname(r){
-  if(!r.unk) return esc(r.name);
-  return '<span title="TWSE 現行券商清單查無此代號，多為已停業或併購之券商">'
-    +esc(r.name)+' <span class="flat">·代號</span></span>';
+  var t=esc(r.name);
+  if(r.was) t='<span title="含改碼前的 '+esc(r.was.join('、'))+'">'+t+'</span>';
+  if(r.unk) t='<span title="TWSE 現行券商清單查無此代號，多為已停業或併購之券商">'
+    +t+' <span class="flat">·代號</span></span>';
+  return t;
 }
 
-function brokerRows(list){
+/* ---------- 區間前累計部位 ----------
+   自資料起點（BD.date_from）累計到指定日期的每分點淨額與成本。
+   有了它，當日排名才分得出「加碼／新進」與「了結／續出」——只看單日排名，
+   9/9 群益金鼎經紀買超第一，看不出它 8 月才剛倒掉 50 萬股。
+   成本＝該分點期間內所有買賣的成交量加權價，是分點層級的近似值，不是某一位客戶的成本。 */
+var _posCache={};
+function cumPos(date,inclusive){
+  var key=date+(inclusive?'i':'x');
+  if(_posCache[key]) return _posCache[key];
+  var m={};
+  for(var i=0;i<BD.dates.length;i++){
+    var d=BD.dates[i];
+    if(inclusive?d>date:d>=date) break;
+    (BD.daily[d]||[]).forEach(function(r){
+      var a=m[r[0]]||(m[r[0]]=[0,0,0]);a[0]+=r[1];a[1]+=r[2];a[2]+=r[3];
+    });
+  }
+  var out={};
+  Object.keys(m).forEach(function(c){
+    var a=m[c],q=a[0]+a[1];
+    out[c]={net:a[0]-a[1],cost:q?a[2]/q:0,buy:a[0],sell:a[1]};
+  });
+  return _posCache[key]=out;
+}
+
+/* 本區間的動作標籤：拿區間淨額對照區間前的累計部位 */
+function actTag(r,p){
+  if(r.mm||r.other) return '';
+  var pn=p?p.net:0;
+  if(r.net>0){
+    if(pn>0) return '<span class="act a-add" title="區間前已有累計淨買超，本區間再買">加碼</span>';
+    if(pn<0) return '<span class="act a-cov" title="區間前為累計淨賣超，本區間買回">回補</span>';
+    return '<span class="act a-new" title="區間前無部位（資料自 '+esc(BD.date_from)+' 起）">新進</span>';
+  }
+  if(r.net<0){
+    if(pn>0) return r.avg_price>p.cost
+      ? '<span class="act a-take" title="賣出均價高於區間前成本 '+nf(p.cost,2)+'">了結</span>'
+      : '<span class="act a-loss" title="賣出均價低於區間前成本 '+nf(p.cost,2)+'">認賠</span>';
+    if(pn<0) return '<span class="act a-dist" title="區間前已是累計淨賣超，持續出貨">續出</span>';
+    return '<span class="act a-new" title="區間前無部位（資料自 '+esc(BD.date_from)+' 起）">新賣</span>';
+  }
+  return '';
+}
+
+function brokerRows(list,prior){
   return list.map(function(r){
     var mm=r.mm?'<span class="mm">造市商</span>':'';
     var price=r.mm?'<span class="flat" title="造市結構所致，非缺漏">造市</span>':nf(r.avg_price,2);
+    var p=(prior&&!r.other)?prior[r.code]:null;
+    var pos='',cost='';
+    if(!r.other&&!r.mm){
+      if(!prior){pos='<span class="flat">—</span>';cost='<span class="flat">—</span>';}
+      else if(p&&p.net){pos='<span class="'+cls(p.net)+'">'+sign(p.net,0)+'</span>';cost=nf(p.cost,2);}
+      else{pos='<span class="flat">0</span>';cost='<span class="flat">—</span>';}
+    }
     return '<tr class="'+(r.other?'other':'')+'"><td>'+bname(r)+mm+'</td>'
       +'<td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
       +'<td class="num">'+price+'</td>'
-      +'<td class="num">'+r.pct.toFixed(2)+'%</td></tr>';
+      +'<td class="num">'+r.pct.toFixed(2)+'%</td>'
+      +'<td class="num">'+pos+'</td><td class="num">'+cost+'</td>'
+      +'<td>'+(prior?actTag(r,p):'')+'</td></tr>';
   }).join('');
+}
+
+/* ---------- 真實換手 ----------
+   興櫃是議價交易，造市商經手固定佔單邊量的一半左右（全期中位數），
+   不扣掉會把「熱度」高估一倍。扣掉之後，再把淨買超／淨賣超各拆成：
+     買：加碼（區間前已有部位）／回補（區間前淨賣超）／新進（區間前無部位）
+     賣：了結／認賠（區間前累計淨買超者，以區間賣出均價對其成本分）／續出／新賣 */
+function decompose(a,prior){
+  var o={mmBuy:0,mmSell:0,nb:0,ns:0,rt:0,add:0,cov:0,neu:0,take:0,loss:0,dist:0,news:0,nBuy:0,nSell:0};
+  a.rows.forEach(function(r){
+    if(r.mm){o.mmBuy+=r.buy;o.mmSell+=r.sell;return;}
+    o.nb+=r.buy;o.ns+=r.sell;o.rt+=Math.min(r.buy,r.sell);
+    var p=prior?prior[r.code]:null,pn=p?p.net:0;
+    if(r.net>0){o.nBuy+=r.net;if(pn>0)o.add+=r.net;else if(pn<0)o.cov+=r.net;else o.neu+=r.net;}
+    else if(r.net<0){
+      var q=-r.net;o.nSell+=q;
+      if(pn>0){if(r.avg_price>p.cost)o.take+=q;else o.loss+=q;}
+      else if(pn<0)o.dist+=q;else o.news+=q;
+    }
+  });
+  o.mmShare=a.total?(o.mmBuy+o.mmSell)/2/a.total:0;
+  return o;
+}
+var MM_MED=0;
+function mmShareMedian(){
+  var v=[];
+  BD.dates.forEach(function(d){
+    var t=0,m=0;
+    (BD.daily[d]||[]).forEach(function(r){t+=r[1];if((BD.brokers[r[0]]||{}).mm)m+=r[1]+r[2];});
+    if(t)v.push(m/2/t);
+  });
+  v.sort(function(x,y){return x-y;});
+  return v.length?v[Math.floor(v.length/2)]:0;
+}
+function stackBar(title,parts){
+  var tot=parts.reduce(function(s,p){return s+p.v;},0)||1;
+  return '<div><div class="stitle">'+esc(title)+'</div><div class="stack">'
+    +parts.filter(function(p){return p.v>0;}).map(function(p){
+      return '<i style="width:'+(p.v/tot*100).toFixed(2)+'%;background:'+p.c+'" title="'
+        +esc(p.l)+' '+nf(p.v)+' 股（'+(p.v/tot*100).toFixed(0)+'%）"></i>';
+    }).join('')+'</div><div class="lg">'
+    +parts.map(function(p){
+      return '<span><i style="background:'+p.c+'"></i>'+esc(p.l)+' <b>'+nf(p.v)+'</b>（'+(p.v/tot*100).toFixed(0)+'%）</span>';
+    }).join('')+'</div></div>';
+}
+function pct(x,t){return t?(x/t*100).toFixed(0)+'%':'—';}
+function kpiBoxes(list){
+  return list.map(function(x){
+    return '<div class="box"><div class="n">'+x[1]+'</div><div class="l">'+x[0]+'</div><div class="d">'+x[2]+'</div></div>';
+  }).join('');
+}
+
+function renderFlow(a,prior){
+  var o=decompose(a,prior),one=a.dates.length===1;
+  var k=[
+    ['造市商經手佔比',(o.mmShare*100).toFixed(0)+'%','全期中位數 '+(MM_MED*100).toFixed(0)+'%，興櫃結構使然，不是熱度'],
+    ['扣除造市商後單邊量',nf(Math.round((o.nb+o.ns)/2)),'買 '+nf(o.nb)+' / 賣 '+nf(o.ns)],
+    ['同分點'+(one?'當日':'區間內')+'來回',nf(o.rt),pct(o.rt,o.nb)+' 的非造市商買進量']
+  ];
+  if(prior){
+    k.push(['淨買超中的加碼','<span class="up">'+pct(o.add,o.nBuy)+'</span>','原本就有部位的分點再買 '+nf(o.add)+' 股']);
+    k.push(['淨賣超中的了結＋認賠','<span class="down">'+pct(o.take+o.loss,o.nSell)+'</span>','原本累計淨買超者賣出 '+nf(o.take+o.loss)+' 股']);
+  }
+  document.getElementById('flowKpi').innerHTML=kpiBoxes(k);
+  if(!prior){
+    document.getElementById('flowBars').innerHTML='';
+    document.getElementById('flowTip').innerHTML=
+      '區間從資料起點 '+esc(BD.date_from)+' 開始，沒有「區間前部位」可以對照，故不拆解來源。選較短的區間即可看到。';
+    return;
+  }
+  document.getElementById('flowBars').innerHTML=
+    stackBar('非造市商淨買超 '+nf(o.nBuy)+' 股的來源',[
+      {l:'加碼',v:o.add,c:'#ff6b5a'},{l:'回補',v:o.cov,c:'#c792ea'},{l:'新進',v:o.neu,c:'#4da3ff'}])
+    +stackBar('非造市商淨賣超 '+nf(o.nSell)+' 股的來源',[
+      {l:'了結',v:o.take,c:'#ffce7a'},{l:'認賠',v:o.loss,c:'#3dd68c'},{l:'續出',v:o.dist,c:'#4db6ac'},{l:'新賣',v:o.news,c:'#7986cb'}]);
+  var lead=o.nBuy?(o.add/o.nBuy>=0.5?'買方主要是既有持有者加碼，不是新錢進場':(o.neu/o.nBuy>=0.5?'買方主要是區間前沒有部位的新資金':'買方由既有持有者與新資金各佔一半左右')):'本區間非造市商沒有淨買超';
+  var sl=o.nSell?((o.take+o.loss)/o.nSell>=0.5?'賣方主要是原本累計淨買超者在兌現':(o.dist/o.nSell>=0.5?'賣方主要是原本就在出貨的分點繼續賣':'賣方來源分散')):'';
+  document.getElementById('flowTip').innerHTML=
+    '<b style="color:#cfe0f2">'+esc(lead)+(sl?'；'+esc(sl):'')+'。</b><br>'
+    +'「區間前部位」自 '+esc(BD.date_from)+' 起算，更早的持股不在內；分點是券商營業據點，不等於單一投資人。'
+    +'了結／認賠以本區間賣出均價對該分點區間前的加權成本判定。';
+}
+
+/* ---------- 持續累積／持續出貨 ----------
+   單日排名看不到持續性。固定看最近 20 個交易日：同方向淨額天數 ≥ 5、反向量不超過同向量的 25%、
+   淨額 ≥ 股本 0.05%，才算「持續」。最長連買（賣）以交易日計，停手一天就中斷。 */
+function streakRows(endDate){
+  var N=20,idx=BD.dates.indexOf(endDate);
+  if(idx<0) idx=BD.dates.length-1;
+  var ds=BD.dates.slice(Math.max(0,idx-N+1),idx+1),m={};
+  ds.forEach(function(d,i){
+    (BD.daily[d]||[]).forEach(function(r){
+      var b=BD.brokers[r[0]]||{};
+      if(b.mm) return;
+      var a=m[r[0]]||(m[r[0]]={code:r[0],name:b.n||r[0],was:b.was||null,buy:0,sell:0,amt:0,bd:0,sd:0,sb:0,ss:0,mb:0,ms:0,li:-9,last:null,lastNet:0});
+      var n=r[1]-r[2];
+      if(a.li!==i-1){a.sb=0;a.ss=0;}
+      a.buy+=r[1];a.sell+=r[2];a.amt+=r[3];
+      if(n>0){a.bd++;a.sb++;a.ss=0;}else if(n<0){a.sd++;a.ss++;a.sb=0;}
+      a.mb=Math.max(a.mb,a.sb);a.ms=Math.max(a.ms,a.ss);
+      a.li=i;a.last=d;a.lastNet=n;
+    });
+  });
+  var so=Q.shares_outstanding||M.shares_outstanding||0,minNet=so*0.0005;
+  var all=Object.keys(m).map(function(c){var a=m[c];a.net=a.buy-a.sell;a.avg=(a.buy+a.sell)?a.amt/(a.buy+a.sell):0;a.pct=so?a.net/so*100:0;return a;});
+  var acc=all.filter(function(a){return a.net>0&&a.bd>=5&&a.sell<=a.buy*0.25&&a.net>=minNet;})
+              .sort(function(x,y){return y.net-x.net;}).slice(0,8);
+  var dis=all.filter(function(a){return a.net<0&&a.sd>=5&&a.buy<=a.sell*0.25&&-a.net>=minNet;})
+              .sort(function(x,y){return x.net-y.net;}).slice(0,8);
+  return {dates:ds,acc:acc,dis:dis,minNet:minNet};
+}
+function renderStreak(endDate){
+  var s=streakRows(endDate);
+  function row(a,buy){
+    return '<tr><td>'+bname(a)+'</td>'
+      +'<td class="num '+cls(a.net)+'">'+nf(a.net)+'</td>'
+      +'<td class="num" style="color:#8b9bb0">'+sign(a.pct,2)+'%</td>'
+      +'<td class="num" style="color:#8b9bb0">'+(buy?a.bd:a.sd)+' / '+(a.bd+a.sd)+'</td>'
+      +'<td class="num">'+(buy?a.mb:a.ms)+' 天</td>'
+      +'<td class="num">'+nf(a.avg,2)+'</td>'
+      +'<td><span style="color:#8b9bb0">'+a.last.slice(5)+'</span> <span class="'+cls(a.lastNet)+'">'+sign(a.lastNet,0)+'</span></td></tr>';
+  }
+  var none='<tr><td colspan="7" class="empty" style="padding:18px">近 20 日沒有分點符合條件</td></tr>';
+  document.getElementById('streakBuy').innerHTML=s.acc.length?s.acc.map(function(a){return row(a,true);}).join(''):none;
+  document.getElementById('streakSell').innerHTML=s.dis.length?s.dis.map(function(a){return row(a,false);}).join(''):none;
+  var top=s.acc[0];
+  document.getElementById('streakTip').innerHTML=
+    '區間 '+s.dates[0]+' ～ '+s.dates[s.dates.length-1]+'（'+s.dates.length+' 個交易日，不隨上方區間按鈕變動）。'
+    +'條件：同方向淨額天數 ≥ 5、反向量 ≤ 同向量 25%、淨額 ≥ 股本 0.05%（'+nf(Math.round(s.minNet))+' 股）。'
+    +'「淨買天數 / 進出天數」看的是一致性，「最長連買」看的是有沒有中斷。'
+    +(top?'　目前最一致的累積者是 <b style="color:#cfe0f2">'+esc(top.name)+'</b>：'+top.bd+' 天淨買、最長連買 '+top.mb+' 天、均價 '+nf(top.avg,2)+'。':'');
+}
+
+/* ---------- 持股成本分層 ----------
+   自資料起點累計到區間最後一日，仍為淨買超的非造市商分點，按其加權成本分層。
+   成本低於現價的那一塊全數處於獲利，是最現成的潛在賣壓；本區間已了結多少也一併給。 */
+function renderCost(a,prior){
+  var end=a.dates[a.dates.length-1],pos=cumPos(end,true);
+  var px=(QMAP[end]&&QMAP[end].avg_price)||Q.series[Q.series.length-1].avg_price;
+  var rows=[];
+  Object.keys(pos).forEach(function(c){
+    if((BD.brokers[c]||{}).mm) return;
+    var p=pos[c]; if(p.net>0) rows.push({net:p.net,cost:p.cost});
+  });
+  var so=Q.shares_outstanding||M.shares_outstanding||0;
+  var tot=rows.reduce(function(s,r){return s+r.net;},0);
+  if(!tot){document.getElementById('costKpi').innerHTML='';document.getElementById('costBars').innerHTML='';
+    document.getElementById('costTip').textContent='沒有累計淨買超的分點';return;}
+  var inProfit=rows.filter(function(r){return r.cost<px;}).reduce(function(s,r){return s+r.net;},0);
+  var wcost=rows.reduce(function(s,r){return s+r.net*r.cost;},0)/tot;
+  var o=decompose(a,prior),took=prior?(o.take+o.loss):null;
+  var priorLong=prior?Object.keys(prior).reduce(function(s,c){return s+((!(BD.brokers[c]||{}).mm&&prior[c].net>0)?prior[c].net:0);},0):0;
+  document.getElementById('costKpi').innerHTML=kpiBoxes([
+    ['累計淨買超籌碼',nf(tot),'佔股本 '+(so?(tot/so*100).toFixed(1):'—')+'%，共 '+rows.length+' 家分點'],
+    ['加權平均成本',nf(wcost,2),'對 '+end.slice(5)+' 均價 '+nf(px,2)+'：<span class="'+cls(px-wcost)+'">'+sign((px/wcost-1)*100,1)+'%</span>'],
+    ['獲利籌碼比率','<span class="up">'+pct(inProfit,tot)+'</span>','成本低於現價的 '+nf(inProfit)+' 股'],
+    ['本區間已了結',took==null?'—':nf(took),took==null?'區間自資料起點開始，無法判定':'佔區間前淨買超籌碼 '+pct(took,priorLong)]
+  ]);
+  var lo=Math.floor(Math.min.apply(null,rows.map(function(r){return r.cost;}))/10)*10;
+  var hi=Math.ceil(Math.max.apply(null,rows.map(function(r){return r.cost;}))/10)*10;
+  if(hi<=lo) hi=lo+10;
+  var w=10; while((hi-lo)/w>10) w*=2;
+  var bk=[]; for(var v=lo;v<hi;v+=w) bk.push({lo:v,hi:v+w,net:0,n:0});
+  rows.forEach(function(r){var i=Math.min(bk.length-1,Math.floor((r.cost-lo)/w));bk[i].net+=r.net;bk[i].n++;});
+  var mx=Math.max.apply(null,bk.map(function(b){return b.net;}))||1;
+  document.getElementById('costBars').innerHTML=bk.map(function(b){
+    var c=b.hi<=px?'#ff6b5a':(b.lo>=px?'#3dd68c':'#ffce7a');
+    var st=b.hi<=px?'全數獲利':(b.lo>=px?'全數套牢':'現價落在此層');
+    return '<span class="n">'+b.lo+'–'+b.hi+'</span>'
+      +'<span class="t" title="'+st+'，'+b.n+' 家分點"><i style="width:'+(b.net/mx*100).toFixed(2)+'%;background:'+c+'"></i></span>'
+      +'<span class="v">'+nf(b.net)+'（'+(b.net/tot*100).toFixed(1)+'%）</span>';
+  }).join('');
+  document.getElementById('costTip').innerHTML=
+    '紅＝該層成本全數低於 '+end.slice(5)+' 均價 '+nf(px,2)+'（獲利），綠＝全數高於（套牢），黃＝現價落在該層。'
+    +'只計自 '+esc(BD.date_from)+' 起的進出，更早的持股（含登錄前股東）不在內；分點成本為該據點全部買賣的加權價，是近似值。';
 }
 
 function renderChip(win){
   document.querySelectorAll('#winSel button').forEach(function(b){b.classList.toggle('on',+b.dataset.w===win);});
   var a=aggregate(win),b=side(a.rows,1,10),s=side(a.rows,-1,10);
-  document.getElementById('buyBody').innerHTML=brokerRows(b.rows)
-    +'<tr class="tot"><td>買超合計</td><td class="num up">'+nf(b.total)+'</td><td></td><td></td></tr>';
-  document.getElementById('sellBody').innerHTML=brokerRows(s.rows)
-    +'<tr class="tot"><td>賣超合計</td><td class="num down">'+nf(s.total)+'</td><td></td><td></td></tr>';
+  /* 區間從資料起點開始時沒有「區間前」可言，prior 給 null，相關欄位顯示 — */
+  var prior=a.dates[0]>BD.date_from?cumPos(a.dates[0],false):null;
+  document.getElementById('buyBody').innerHTML=brokerRows(b.rows,prior)
+    +'<tr class="tot"><td>買超合計</td><td class="num up">'+nf(b.total)+'</td><td colspan="5"></td></tr>';
+  document.getElementById('sellBody').innerHTML=brokerRows(s.rows,prior)
+    +'<tr class="tot"><td>賣超合計</td><td class="num down">'+nf(s.total)+'</td><td colspan="5"></td></tr>';
 
-  var note=unkNote(b.rows.concat(s.rows),a.dates),box=document.getElementById('chipUnk');
+  var note=aliasNote(a.dates),box=document.getElementById('chipUnk');
   box.style.display=note?'block':'none';
   box.innerHTML=note;
 
   var nBuy=a.rows.filter(function(r){return r.net>0;}).length;
   var nSell=a.rows.filter(function(r){return r.net<0;}).length;
-  document.getElementById('chipKpi').innerHTML=[
+  document.getElementById('chipKpi').innerHTML=kpiBoxes([
     ['區間',a.dates.length+' 個交易日',a.dates[0]+' ～ '+a.dates[a.dates.length-1]],
     ['單邊總成交量',nf(a.total),'買進合計＝賣出合計'],
     ['買超家數','<span class="up">'+nBuy+'</span>','合計 '+nf(b.total)+' 股'],
     ['賣超家數','<span class="down">'+nSell+'</span>','合計 '+nf(s.total)+' 股'],
     ['參與分點',a.rows.length+' 家','區間內有進出者']
-  ].map(function(x){
-    return '<div class="box"><div class="n">'+x[1]+'</div><div class="l">'+x[0]+'</div><div class="d">'+x[2]+'</div></div>';
-  }).join('');
+  ]);
+  renderFlow(a,prior);
+  renderStreak(a.dates[a.dates.length-1]);
+  renderCost(a,prior);
 }
 
 /* ---------- 分點追蹤 ---------- */
@@ -632,10 +940,10 @@ function renderTrace(){
   Array.prototype.forEach.call(document.querySelectorAll('#traceRank tr'),function(tr){
     tr.onclick=function(){traceCode=tr.dataset.c;renderTrace();};
   });
-  var top20=rank.slice(0,20);
+  var an=aliasNote(a.dates);
   document.getElementById('traceRankTip').innerHTML=
     '區間共 '+a.rows.length+' 家分點有進出，此處列累計淨額絕對值前 20 名'
-    +(unkNote(top20,a.dates)?'<br>'+unkNote(top20,a.dates):'');
+    +(an?'<br>'+an:'');
 
   if(!traceCode){document.getElementById('traceChart').innerHTML='';return;}
   var rows=traceRows(traceCode,traceDays),act=rows.filter(function(r){return r.active;});
@@ -946,14 +1254,15 @@ function renderOv(){
   }).join('');
   lineChart(document.getElementById('ovChart'),s.filter(function(r){return r.avg_price!=null;}).slice(-60),function(r){return r.avg_price;},{color:'#ff6b5a'});
 
-  var a=aggregate(1);
+  var a=aggregate(1),prior=cumPos(a.dates[0],false);
   function mini(dir){
     var hit=a.rows.filter(function(r){return dir>0?r.net>0:r.net<0;});
     if(dir<0) hit=hit.slice().reverse();
     return hit.slice(0,5).map(function(r){
       var mm=r.mm?'<span class="mm">造市商</span>':'';
-      return '<tr><td>'+esc(r.name)+mm+'</td><td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
-        +'<td class="num" style="color:#8b9bb0">'+r.pct.toFixed(2)+'%</td></tr>';
+      return '<tr><td>'+bname(r)+mm+'</td><td class="num '+cls(r.net)+'">'+nf(r.net)+'</td>'
+        +'<td class="num" style="color:#8b9bb0">'+r.pct.toFixed(2)+'%</td>'
+        +'<td>'+actTag(r,prior[r.code])+'</td></tr>';
     }).join('');
   }
   document.getElementById('top5buy').innerHTML=mini(1);
@@ -1669,6 +1978,9 @@ Promise.all([
 ]).then(function(a){
   Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];BD=a[5];PT=a[6];PP=a[7];
   var s=Q.series;
+  QMAP={}; s.forEach(function(r){QMAP[r.date]=r;});
+  applyAliases();
+  MM_MED=mmShareMedian();
   /* 「更新時間」與「資料日」是兩件事，這是使用者最容易誤會的一點：
        更新時間＝排程幾點跑的；資料日＝畫面上的數字是哪一個交易日的**盤後**資料。
        盤中去 Yahoo 看到的即時價一定比這裡新，那不是本站漏更新。
@@ -1686,7 +1998,11 @@ Promise.all([
     +' 共 '+BD.trading_days+' 個交易日的每日明細（一列＝一天×一分點）。<br>'
     +'因為存的是明細而非加總後的窗格，<b>任何區間都能即時算出來</b>——'
     +'現行 email 報表固定在 5／10 日，是資料形態造成的限制，不是選擇。'
-    +'券商代號對照併用 TWSE 證券商總公司／分公司基本資料與公司自行彙整的對照表。';
+    +'券商代號對照併用 TWSE 證券商總公司／分公司基本資料與公司自行彙整的對照表；'
+    +'期間內的兩次券商改碼（元富 592x→9B2x、台新 815x→9B1x）已依官方公告併回同一分點。<br>'
+    +'<b>看法：</b>單日排名只說「今天誰在買」。每家分點旁多給「區間前部位／成本／動作」，'
+    +'下面再把換手拆成加碼或新錢、了結或續出，並列出近 20 日持續累積者與持股成本分層——'
+    +'這幾件事合起來，才分得出一根長紅是新資金進場，還是老籌碼在互相換手。';
 
   var wins=[[1,'當日'],[5,'近 5 日'],[10,'近 10 日'],[20,'近 20 日'],[60,'近 60 日'],
             [120,'近 120 日'],[BD.trading_days,'全部']];

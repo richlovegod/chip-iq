@@ -52,6 +52,38 @@ HEADERS = {
 # date.today() 會還停在前一天；這裡的日期判斷全靠它，不能交給機器時區決定。
 TPE = timezone(timedelta(hours=8))
 
+# ── 券商改碼對照（兩件都有官方來源，是事實不是用資料反推的猜測）──
+#   元富 592x → 9B2x：2026-02-02 起，「各分公司代號由原 592* 改為 9B2*」，後一碼不變。
+#     元富證券公告（115-01-05）https://www.masterlink.com.tw/936/
+#   台新 815x → 9B1x：台新與元富合併基準日 2026-04-06，台新自家分公司自 04-07 改用 9B1x，
+#     後一碼**有變**，要靠分公司名稱對應。台新證券合併專區「服務據點異動」列出對照
+#     （8150→9B17 營業部、8151→9B18 建北、8152→9B19 新莊、8156→9B13 三民、
+#       8159→9B16 台南、815A→9B1g 高雄、815B→9B1h 台中），其餘依 TWSE 現行分公司名稱補齊。
+#     https://www.tssco.com.tw/TSHOLDINGSMERGE/locations/index.html
+# 不合併的話，區間一跨過改碼日，同一家分點就被拆成新舊兩列，長區間累計會低估
+# （例：8150 台新 +26.8 萬 與 9B17 台新-台北營業部 +22.5 萬其實是同一家）。
+# 這裡只產出對照表、不改寫每日明細；合併由前端載入時做，cache 與對帳腳本都不受影響。
+ALIASES = {
+    "8150": "9B17", "8151": "9B18", "8152": "9B19", "8156": "9B13",
+    "8157": "9B1d", "8158": "9B15", "8159": "9B16", "815A": "9B1g",
+    "815B": "9B1h", "815H": "9B1n", "815S": "9B1y", "815Y": "9B11",
+}
+ALIAS_EVENTS = [
+    {"date": "2026-02-02", "from": "592x", "to": "9B2x", "firm": "元富證券（後併入台新）",
+     "rule": "後一碼不變", "source": "https://www.masterlink.com.tw/936/"},
+    {"date": "2026-04-07", "from": "815x", "to": "9B1x", "firm": "台新證券",
+     "rule": "依分公司名稱對應", "source": "https://www.tssco.com.tw/TSHOLDINGSMERGE/locations/index.html"},
+]
+
+
+def alias_of(code):
+    if code in ALIASES:
+        return ALIASES[code]
+    if len(code) == 4 and code.startswith("592"):
+        return "9B2" + code[3:]
+    return None
+
+
 # 「查無資料」要多久之後才可信。TPEx 約 16:35 出檔；在那之前打「今天」一定是空的，
 # 那不是非交易日，只是還沒出。10 天內的空結果一律不當定論、下次再查一次。
 NODATA_TRUST_AFTER_DAYS = 10
@@ -197,15 +229,23 @@ def main():
         sys.exit("沒有抓到任何資料")
 
     used = sorted({r[0] for rows in daily.values() for r in rows})
+    # 舊碼一律掛到新碼的名稱下（見 ALIASES 的說明）；新碼若只在舊碼期間出現過也要有名字
+    aliases = {c: alias_of(c) for c in used if alias_of(c)}
     # 查無名稱多半是已停業／併購的券商，只會出現在較早的歷史資料裡。
     # 直接顯示代號並標記，不要無聲當成一家沒名字的分點。
-    unknown = [c for c in used if c not in names]
+    unknown = [c for c in used if c not in names and c not in aliases]
     brokers = {}
     for c in used:
-        b = {"n": names.get(c, c), "mm": c in makers}
-        if c not in names:
+        new = aliases.get(c)
+        b = {"n": names.get(new or c, c), "mm": c in makers}
+        if new:
+            b["alias"] = new
+            b["old_name"] = names.get(c) or ("元富" + names.get(new, "")[2:] if names.get(new, "").startswith("台新") else c)
+        elif c not in names:
             b["unk"] = True
         brokers[c] = b
+    for new in set(aliases.values()):
+        brokers.setdefault(new, {"n": names.get(new, new), "mm": new in makers})
 
     dates = sorted(daily)
     out = {
@@ -221,6 +261,9 @@ def main():
         "trading_days": len(dates),
         "dates": dates,
         "brokers": brokers,
+        "aliases": aliases,
+        "alias_events": ALIAS_EVENTS,
+        "alias_note": "舊券商代號 → 現行代號。每日明細保留原始代號，前端載入時依此表併為同一分點。",
         "daily": {d: daily[d] for d in dates},
     }
     with open(os.path.join(DATA, "broker_daily.json"), "w", encoding="utf-8") as f:
@@ -230,6 +273,7 @@ def main():
     print(f"\n交易日 {len(dates)} 天：{dates[0]} ~ {dates[-1]}（本次新抓 {fetched} 天）")
     print(f"分點 {len(used)} 家，broker_daily.json {size:.0f} KB")
     print(f"造市商：{'、'.join(f'{c} {names.get(c, c)}' for c in sorted(makers))}")
+    print(f"改碼對照 {len(aliases)} 個舊碼（元富 592x→9B2x、台新 815x→9B1x），前端載入時合併")
     if unknown:
         print(f"⚠️ {len(unknown)} 個代號查無名稱，請補進 fetch_broker_lut.py 的 EXTRA："
               f"{'、'.join(unknown)}")

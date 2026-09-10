@@ -172,8 +172,15 @@ def check_broker(bd, lut):
         fail("S5", f"broker_daily.brokers 缺 {len(missing)} 個代號：{sorted(missing)[:5]}")
     if lut and not (lut.get("names") and lut.get("market_makers")):
         fail("S5", "broker_lut 的 names 或 market_makers 為空")
+    # 改碼對照：目標代號必須在 brokers 裡且不能自己也是舊碼（鏈式對照前端不處理）
+    aliases = bd.get("aliases") or {}
+    bad_alias = [o for o, n in aliases.items() if n not in (bd.get("brokers") or {}) or n in aliases]
+    if bad_alias:
+        fail("S5", f"broker_daily.aliases 有 {len(bad_alias)} 筆目標代號不在 brokers 或形成鏈：{bad_alias[:5]}")
+    if any(v.get("unk") for c, v in (bd.get("brokers") or {}).items() if c in aliases):
+        fail("S5", "有舊碼同時被標成 unk 與 alias，fetch_broker_daily 的命名邏輯壞了")
     if not failed("S5"):
-        ok("S5", f"broker_daily {len(dates)} 個交易日到 {bd['date_to']}，每日買賣合計皆平衡，{len(codes)} 個代號皆有對照")
+        ok("S5", f"broker_daily {len(dates)} 個交易日到 {bd['date_to']}，每日買賣合計皆平衡，{len(codes)} 個代號皆有對照，{len(aliases)} 個舊碼有改碼對照")
 
 
 def check_dates_agree(q, u, p, bd):
