@@ -75,8 +75,21 @@ def load_universe():
 
 
 def px_listed_bulk(d):
-    """上市全市場單日收盤（欄位含 ETF／權證，靠代號比對過濾）"""
+    """上市全市場單日收盤（欄位含 ETF／權證，靠代號比對過濾）
+
+    ⚠️ TWSE 每天台北 13:30–13:45 會停用 type=ALL（他們自己在 stat 裡寫明是尖峰時段）。
+    那段時間所有日期都會回同一句話，看起來就像「每天都不是交易日」。要把它跟
+    「這天真的沒開盤」分開，否則往回找 14 天全數落空，最後報出來的會是
+    「找不到連續兩個交易日，請確認日期或連線」——把人引去查日期和網路，
+    而真正的原因根本不在那裡（2026-09-09 手動觸發就是這樣繞了一圈）。
+    排程跑在台北 17:30，正常不會撞到；會撞到的是手動觸發。
+    """
     j = get(TW + f"rwd/zh/afterTrading/MI_INDEX?date={d:%Y%m%d}&type=ALL&response=json", TW)
+    stat = str(j.get("stat") or "")
+    if "暫停使用" in stat:
+        raise SystemExit(
+            "TWSE 目前停用全市場查詢（每天台北 13:30–13:45 為其尖峰時段），"
+            "換個時間再跑即可。TWSE 原文：" + stat)
     for t in j.get("tables", []):
         if t.get("fields") and t["fields"][0] == "證券代號":
             return {r[0]: num(r[8]) for r in t["data"] if num(r[8])}
