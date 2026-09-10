@@ -25,7 +25,7 @@ Yahoo 是非官方端點、抓不到是正常的營運狀況，不該讓整個�
     python verify_partners.py --self-test  # 突變測試：證明上面那些檢查真的抓得到錯
 """
 import copy, json, os, subprocess, sys
-from datetime import date
+from datetime import date, timedelta
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATA = os.path.join(ROOT, "data")
@@ -326,20 +326,48 @@ def check_partner(p, R):
         want = round((series[-1]["c"] / series[0]["c"] - 1) * 100, 2)
         if abs(perf.get("return_pct", 0) - want) > PCT_TOL:
             R.fail("C11", f"{sym} 期間報酬 {perf.get('return_pct')}% 與序列首末算出的 {want}% 不符")
+        # 52 週高低：Yahoo 的視窗邊界跟我們可能差一天，那不是資料有問題。
+        # 2026-09-09 的排程就因此擋掉一整天：我們的視窗含 2025-09-09（盤中高 6900），
+        # Yahoo 的視窗已把那天滾出去、取到次高的 6790，兩邊都沒算錯。
+        # 所以改成比對「合理視窗帶」（365±7 天各算一次，取兩者構成的區間）：
+        # 自算值與 Yahoo 都必須落在帶內。序列真被動過手腳時整條帶會跟著偏，
+        # 對方的值就會掉出去，一樣擋得下來——而且這比原本只比單一數字更嚴，
+        # 因為現在連我們自己 perf 裡的數字都要能被序列重算出來。
+        last_d = date.fromisoformat(series[-1]["d"])
+
+        def window_band(field, agg):
+            out = []
+            for days in (372, 358):
+                cut = (last_d - timedelta(days=days)).isoformat()
+                vals = [r[field] for r in series
+                        if r.get(field) is not None and r["d"] >= cut]
+                if not vals:
+                    return None
+                out.append(agg(vals))
+            return min(out), max(out)
+
         crossed = []
-        for a, b, label in (("high_52w", "high_52w_yahoo", "52 週高"),
-                            ("low_52w", "low_52w_yahoo", "52 週低")):
-            # Yahoo 的 meta 偶爾整欄回 0（8/27 就因此擋掉一整天的發佈：自算 52 週低
-            # 2300 對上 Yahoo 的 0.0）。價格不可能 ≤ 0，那是「這次沒給」而不是
-            # 「跟我們算的不一樣」——跳過交叉核對，不要拿別人的空值擋自己的發佈。
-            if perf.get(a) is None or not (perf.get(b) or 0) > 0:
+        for key, ykey, field, agg, label in (
+                ("high_52w", "high_52w_yahoo", "h", max, "52 週高"),
+                ("low_52w", "low_52w_yahoo", "l", min, "52 週低")):
+            band = window_band(field, agg)
+            if band is None:
+                continue
+            lo_b, hi_b = band
+            ours = perf.get(key)
+            if ours is not None and not (lo_b - 0.01 <= ours <= hi_b + 0.01):
+                R.fail("C11", f"{sym} 自算{label} {ours} 不在序列重算得出的範圍 "
+                              f"{lo_b}～{hi_b} 內")
+            y = perf.get(ykey)
+            # Yahoo 偶爾整欄回 0（8/27 就因此擋掉一整天）。價格不可能 ≤ 0，
+            # 那是「這次沒給」而不是「跟我們算的不一樣」，跳過不當成失敗。
+            if not (y or 0) > 0:
                 continue
             crossed.append(label)
-            if abs(perf[a] - perf[b]) > 0.01:
-                R.fail("C11", f"{sym} 自算{label} {perf[a]} 與 Yahoo meta {perf[b]} 不符")
+            if not (lo_b - 0.01 <= y <= hi_b + 0.01):
+                R.fail("C11", f"{sym} Yahoo meta {label} {y} 不在序列重算得出的範圍 "
+                              f"{lo_b}～{hi_b} 內")
         if not [f for f in R.fails if f.startswith("[C11]")]:
-            # 跳過的部分要照實講。驗證報告說「一致」卻其實沒比對過，
-            # 比沒有這項檢查更糟——之後沒人知道哪幾天是真的核對過的。
             if crossed:
                 cross = "／".join(crossed) + " 與 Yahoo meta 一致"
             else:
