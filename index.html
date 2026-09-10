@@ -961,7 +961,10 @@ function renderOv(){
   document.getElementById('ovSellTag').textContent=a.dates[0];
 }
 
-/* ---------- 載入 ---------- */
+/* ---------- 載入 ----------
+   所有 data/*.json 都帶 cache:'no-cache'：每次載入向伺服器驗證 ETag，有變就拿新的、沒變回 304。
+   不帶的話 GitHub Pages 的 max-age=600 加上瀏覽器的啟發式快取，會讓人在資料更新後
+   還看到前一天的數字（2026-09-10 就發生過：網站已到 9/9，使用者畫面停在 9/8）。 */
 /* 對現行報表 2026-07-21 那期逐筆對帳。
    同一份對帳 scripts/verify_broker.py 也會跑一次，接資料時就擋在 CI 前面；
    這裡再顯示一次，是為了讓看報表的人自己隨時檢查，不必相信我們的說法。 */
@@ -1652,16 +1655,16 @@ function renderPtn(){
 }
 
 Promise.all([
-  fetch('data/quote_daily.json').then(function(r){return r.json();}),
-  fetch('data/broker_fixture.json').then(function(r){return r.json();}),
-  fetch('data/meta.json').then(function(r){return r.json();}),
-  fetch('data/peers.json').then(function(r){return r.json();}),
-  fetch('data/universe.json').then(function(r){return r.json();}),
-  fetch('data/broker_daily.json').then(function(r){return r.json();}),
+  fetch('data/quote_daily.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+  fetch('data/broker_fixture.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+  fetch('data/meta.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+  fetch('data/peers.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+  fetch('data/universe.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+  fetch('data/broker_daily.json',{cache:'no-cache'}).then(function(r){return r.json();}),
   /* 合作夥伴的兩支檔案是後加的，抓不到時只讓該頁籤顯示「無資料」，
      不要讓既有五個頁籤跟著陣亡，所以各自吞掉錯誤回 null */
-  fetch('data/partners.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
-  fetch('data/partners_profile.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  fetch('data/partners.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+  fetch('data/partners_profile.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
 ]).then(function(a){
   Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];BD=a[5];PT=a[6];PP=a[7];
   var s=Q.series;

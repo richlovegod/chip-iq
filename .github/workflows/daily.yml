@@ -87,5 +87,8 @@ jobs:
             echo "資料無變化（可能是國定假日），不提交"
           else
             git commit -m "資料更新 $(TZ=Asia/Taipei date +%Y-%m-%d)"
+            # 跑到這裡通常已經 6～7 分鐘，期間若有人推了程式碼，直接 push 會被拒。
+            # 機器人只改 data／cache、人只改程式碼，rebase 不會衝突。
+            git pull --rebase origin main
             git push
           fi
