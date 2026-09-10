@@ -160,6 +160,7 @@
       </div>
       <div class="meta">
         最後更新：<b id="mUpdated">—</b><br>
+        資料日：<b id="mDataDate">—</b><br>
         造市商：<b id="mMakers">—</b>
       </div>
     </div>
@@ -1668,7 +1669,15 @@ Promise.all([
 ]).then(function(a){
   Q=a[0];F=a[1];M=a[2];P=a[3];U=a[4];BD=a[5];PT=a[6];PP=a[7];
   var s=Q.series;
-  document.getElementById('mUpdated').textContent=M.updated_at;
+  /* 「更新時間」與「資料日」是兩件事，這是使用者最容易誤會的一點：
+       更新時間＝排程幾點跑的；資料日＝畫面上的數字是哪一個交易日的**盤後**資料。
+       盤中去 Yahoo 看到的即時價一定比這裡新，那不是本站漏更新。
+     generated_at 是帶 +08:00 的 ISO 字串，只做字串切片、不經 Date 解析
+     ——經過 Date 會被瀏覽器再轉一次時區，在美國看就變成前一天晚上。 */
+  var gen=M.generated_at||'';
+  document.getElementById('mUpdated').textContent=
+    gen.length>=16 ? gen.slice(0,10)+' '+gen.slice(11,16)+'（台北）' : M.updated_at;
+  document.getElementById('mDataDate').textContent=s[s.length-1].date+' 盤後'
   document.getElementById('mMakers').textContent=(M.market_makers||[]).map(function(m){return m.dealer_name;}).join('、');
   document.getElementById('rangeTag').textContent='歷史 '+s[0].date+' ～ '+s[s.length-1].date+'（'+s.length+' 個交易日）';
 

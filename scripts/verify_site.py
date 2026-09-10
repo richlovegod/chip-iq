@@ -95,6 +95,12 @@ def check_meta(m, q):
     a = age(m.get("updated_at"))
     if a is None or a > 1:
         fail("S2", f"meta.updated_at = {m.get('updated_at')}，不是今天或昨天（台北 {TODAY}）")
+    gen = m.get("generated_at") or ""
+    if len(gen) < 16 or not gen.endswith("+08:00"):
+        # 頁首要顯示「幾點更新的（台北）」，靠的就是這一欄；沒有它前端會退回只顯示日期。
+        warn("S2", f"meta.generated_at 不是帶 +08:00 的 ISO 時間（實際：{gen or '缺'}），頁首只會顯示日期不顯示時間")
+    elif gen[:10] != m.get("updated_at"):
+        fail("S2", f"meta.generated_at 的日期 {gen[:10]} 與 updated_at {m.get('updated_at')} 不一致")
     t = m.get("today") or {}
     if t.get("latest_price") is None:
         warn("S2", "meta.today.latest_price 為空（總覽的「最後成交價」會顯示 —）")
@@ -105,7 +111,8 @@ def check_meta(m, q):
     elif q and q.get("shares_outstanding") != m.get("shares_outstanding"):
         fail("S2", f"股數不一致：quote_daily {q.get('shares_outstanding')} vs meta {m.get('shares_outstanding')}")
     if not failed("S2"):
-        ok("S2", f"meta 更新於 {m.get('updated_at')}，造市商 {len(m.get('market_makers'))} 家，股數 {m.get('shares_outstanding'):,}")
+        stamp = (gen[:10] + " " + gen[11:16]) if len(gen) >= 16 else m.get("updated_at")
+        ok("S2", f"meta 更新於 {stamp}（台北），造市商 {len(m.get('market_makers'))} 家，股數 {m.get('shares_outstanding'):,}")
 
 
 def check_universe(u):

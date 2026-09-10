@@ -14,12 +14,16 @@
 用法：python fetch_tpex.py [YYYY/MM ...]   (預設抓最近 6 個月)
 """
 import json, os, sys, time
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 
 from _http import fetch_json
 
 STOCK = "7729"
 STOCK_NAME = "仲恩生醫"
+
+# 「現在」一律用台北時間，不信任機器時區：runner 是 UTC，排程被延遲到台北午夜之後
+# 時 date.today() 會慢一天。與 fetch_broker_daily.py 同一套做法。
+TPE = timezone(timedelta(hours=8))
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATA = os.path.join(ROOT, "data")
 
@@ -127,9 +131,10 @@ def fetch_capital():
 
 
 def main():
+    now = datetime.now(TPE)
     months = sys.argv[1:]
     if not months:
-        today = date.today()
+        today = now.date()
         y, m = today.year, today.month
         months = []
         for _ in range(24):
@@ -170,7 +175,10 @@ def main():
     with open(os.path.join(DATA, "meta.json"), "w", encoding="utf-8") as f:
         json.dump({
             "stock_id": STOCK, "stock_name": STOCK_NAME, "market": "興櫃",
-            "updated_at": date.today().isoformat(),
+            "updated_at": now.date().isoformat(),
+            # 使用者要知道的是「幾點更新的」，不只是哪一天。存 ISO 帶時區，
+            # 前端只做字串切片顯示，不經過 Date 解析（免得又被瀏覽器時區轉一次）。
+            "generated_at": now.replace(microsecond=0).isoformat(),
             "today": today_q,
             "capital": capital,
             "market_makers": makers,
