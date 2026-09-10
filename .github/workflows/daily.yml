@@ -10,6 +10,9 @@
 # 中位晚 2.1 小時、最近兩週固定晚 4.3 小時（21:45 才跑），最慘晚 11.5 小時（隔天凌晨）。
 # 兩個時段各是獨立的一次機會；第二次若第一次已成功，抓到相同資料、只更新時間戳。
 # 為什麼是 :17 和 :47：GitHub 文件明說整點是最壅塞的時刻，建議排在其他分鐘數。
+#   UTC 22:00 = 隔天台北 06:00（補跑班）：前一晚兩班都沒更新才跑。判斷邏輯在 check job。
+#   之所以要有這班：晚上兩班都可能被延遲到隔天凌晨或都撞到暫時性錯誤；
+#   早上這班保證「上班前一定看得到昨天的資料」，而且昨晚已更新時完全不跑、不多打請求。
 # 要更準時（例如一定要 18:00 前更新）只能靠外部觸發（見 README「排程」節）。
 #
 # ⚠️ repo 連續 60 天沒有活動時，GitHub 會自動停用排程工作流程。
@@ -21,6 +24,8 @@ on:
   schedule:
     - cron: "17 10 * * 1-5"
     - cron: "47 12 * * 1-5"
+    # 隔天台北 06:00。UTC 的週一～週五 = 台北週二～週六早上，正好接住週一～週五每個晚上
+    - cron: "0 22 * * 1-5"
   workflow_dispatch: # 也可以在 Actions 頁面手動觸發
 
 permissions:
@@ -36,7 +41,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # 早上補跑班先看昨晚有沒有更新過；有就讓整個 update job 不跑，
+  # 不是跑完才發現沒差異——那樣還是白打一百多個請求給 TWSE／TPEx／Yahoo。
+  # 判斷依據：HEAD 是不是機器人在 16 小時內推的「資料更新」commit。
+  #   晚上任一班成功 → HEAD 是機器人、幾小時前 → 略過
+  #   兩班都失敗     → HEAD 是前一天的機器人 commit（>16h）→ 跑
+  #   昨晚有人推程式碼 → HEAD 是人 → 跑（多跑一次無害，沒差異就不 commit）
+  #   國定假日       → 晚上沒東西可 commit → 早上跑一次、一樣沒差異；一年十幾次，可忽略
+  # 晚上兩班與手動觸發不經這個判斷，一律直接跑。
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.c.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: c
+        run: |
+          if [ "${{ github.event.schedule }}" != "0 22 * * 1-5" ]; then
+            echo "不是早上補跑班，直接跑"; exit 0
+          fi
+          # 明確看 HEAD 的作者。不用 --author 過濾：那是「往回找第一個機器人 commit」，
+          # 在 depth-1 checkout 剛好等於 HEAD，但誰改了 fetch-depth 就會默默變質。
+          line=$(git log -1 --format='%ct|%an')
+          ts=${line%%|*}; name=${line#*|}
+          if [ "$name" != "chip-iq bot" ]; then echo "HEAD 是「$name」的 commit，不是機器人，跑"; exit 0; fi
+          age=$(( ($(date +%s) - ts) / 3600 ))
+          if [ "$age" -lt 16 ]; then
+            echo "昨晚已更新（${age} 小時前），略過"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "最近一次更新是 ${age} 小時前，補跑"
+          fi
+
   update:
+    needs: check
+    if: needs.check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
