@@ -189,6 +189,8 @@ python scripts/verify_site.py         # 全站形狀與日期檢查（發佈前�
 
 若之後需要準時（例如一定要 18:00 前更新，取代現行 17:04 寄出的 email 報表），GitHub 排程做不到，要改成**外部觸發**：仲恩現行的 Google Apps Script 時間觸發器（準到 ±15 分鐘）用 GitHub API 呼叫本 workflow 的 `workflow_dispatch`。代價是要在 GAS 存一把只有 `actions:write` 權限的 GitHub token——那是本站第一個需要保管的憑證，要先決定放誰的帳號下。
 
+**每日健檢**：排程失敗或資料沒更新時怎麼判斷、能修什麼、不能修什麼，照 [`RUNBOOK.md`](RUNBOOK.md)。目前由 Claude Code 排程每個交易日隔天台北早上照這份執行。
+
 兩件維運上要知道的事：
 
 - **repo 連續 60 天沒有活動，GitHub 會自動停用排程**。機器人自己推的 commit 算不算活動並不明確，請每月看一眼網頁上的「最後更新」日期。
@@ -213,6 +215,7 @@ python -m http.server 8899
 ```
 index.html                  介面（單檔，含所有圖表，無外部相依）
 versions.html               版本紀錄與維運說明（讀 data/versions.json）
+RUNBOOK.md                  每日健檢與維修手冊（檢查什麼、怎麼判斷、能改什麼不能改什麼）
 data/quote_daily.json       7729 每日價量與市值
 data/peers.json             再生醫療 12 檔每日市值 + 對帳結果
 data/universe.json          生技全市場排名、Top 30、7729 名次
