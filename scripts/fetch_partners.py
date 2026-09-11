@@ -293,6 +293,14 @@ def main():
         try:
             result = fetch_chart(sym)
             p = build_partner(ref, result)
+            # Yahoo 偶爾回一份比上一版還舊的序列（2026-09-11 台北 00:41 那班，兩家都少了
+            # 9/10 最後一根，疑似 Yahoo 盤後批次重算中）。這不算抓取失敗，但照寫會讓資料
+            # 倒退、被 verify_partners 的 C9 擋下——而 C9 一擋就是整個 workflow 不 commit，
+            # 連分點與台股行情都跟著停。所以跟抓取失敗同樣處理：沿用上一版、標 stale、只警告。
+            # C9 本身不放寬：真的有人把資料改舊，照擋。
+            old = prev_partners.get(ref["id"])
+            if old and old.get("as_of") and p["as_of"] < old["as_of"]:
+                raise RuntimeError(f"Yahoo 回傳的資料只到 {p['as_of']}，比上一版 {old['as_of']} 舊")
             partners.append(p)
             print(f"  {sym:<12} {p['as_of']}  {len(p['series'])} 筆  "
                   f"收盤 {p['latest']['c']:,.2f}  剔除 {p['dropped_rows']['count']} 筆  "
